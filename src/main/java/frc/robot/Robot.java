@@ -5,15 +5,16 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.subsystems.BallShooter;
+//import frc.robot.subsystems.BallShooter;
 import frc.robot.subsystems.DriveBase;
-import frc.robot.subsystems.HatchPanel;
+//import frc.robot.subsystems.HatchPanel;
 //import frc.robot.subsystems.HatchSolenoid;
+import edu.wpi.first.wpilibj.CameraServer;
 
 public class Robot extends TimedRobot {
   public static DriveBase driveBase;
-  public static BallShooter ballShooter;
-  public static HatchPanel hatchPanel;
+ // public static BallShooter ballShooter;
+ // public static HatchPanel hatchPanel;
   //public static HatchSolenoid hatchSolenoid;
   public static OI oi;
 
@@ -23,10 +24,11 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     driveBase = new DriveBase();
-    ballShooter = new BallShooter();
-    hatchPanel = new HatchPanel();
+    //ballShooter = new BallShooter();
+    //hatchPanel = new HatchPanel();
     //hatchSolenoid = new HatchSolenoid();
     oi = new OI();
+    CameraServer.getInstance().startAutomaticCapture();
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
   }

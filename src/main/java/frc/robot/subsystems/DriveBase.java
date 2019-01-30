@@ -53,11 +53,11 @@ public class DriveBase extends Subsystem {
     drive.setExpiration(0.1);
   }
   public void drive(Joystick j){
-    drive(j.getRawAxis(RobotMap.LEFTYAXIS), j.getRawAxis(RobotMap.RIGHTYAXIS));
+    drive(j.getRawAxis(RobotMap.LEFTXAXIS), j.getRawAxis(RobotMap.RIGHTXAXIS));
   }
 
-  public void drive(double left, double right) {
-    drive.tankDrive(left, right);
+public void drive(Double xSpeed, Double zRotation) {
+    drive.arcadeDrive(xSpeed, zRotation);
   }
 
   public void reset() {
@@ -71,7 +71,7 @@ public class DriveBase extends Subsystem {
 	public void driveForward() {
 		reset();
 		while(getAverageEncoderPosition() <= 50.0){
-			drive.tankDrive(0.4, 0.4);  // left, right 
+			drive.arcadeDrive(0.4, 0.4);  // speed, rotation 
 			SmartDashboard.putNumber("Left Distance", leftEncoder.getDistance());
 			SmartDashboard.putNumber("Right Distance", rightEncoder.getDistance());
 			//SmartDashboard.putNumber("Right Raw Count", rightEncoder.getRaw());
@@ -87,7 +87,7 @@ public class DriveBase extends Subsystem {
 		reset();
 		arcLength = (PI/2)*wheelBase;
 		while(leftEncoder.getDistance() <= arcLength/2) {
-			drive.tankDrive(0.6, -0.6);
+			drive.arcadeDrive(0.6, -0.6);//speed and rotation
 		}
 		reset();
 	}
@@ -96,3 +96,4 @@ public class DriveBase extends Subsystem {
     setDefaultCommand(new JoystickDrive());
   }
 }
+

@@ -17,19 +17,22 @@ public class RobotMap {
   
   public static final int RIGHTYAXIS = 5;
   public static final int LEFTYAXIS = 6;
+  public static final int LEFTXAXIS = 0;
+  public static final int RIGHTXAXIS = 4;
 
-  public static final int LEFT_FRONT_MOTOR = 1;
-  public static final int RIGHT_FRONT_MOTOR = 2;
-  public static final int LEFT_BACK_MOTOR = 3;
-  public static final int RIGHT_BACK_MOTOR = 4;
+  public static final int LEFT_FRONT_MOTOR = 6;
+  public static final int RIGHT_FRONT_MOTOR = 4;
+  public static final int LEFT_BACK_MOTOR = 22;
+  public static final int RIGHT_BACK_MOTOR = 7;
 
-  public static final int BALL_SHOOTER_LEFT = 5;
-  public static final int BALL_SHOOTER_RIGHT = 6;
+  public static final int BALL_SHOOTER_LEFT = 21;
+  public static final int BALL_SHOOTER_RIGHT = 5;
 
   public static final int SOLENOID_FORWARD = 0;
   public static final int SOLENOID_REVERSE = 1;
 
-  public static final int HATCH_PANEL =  7;
+  public static final int HATCH_PANEL =  9;
+  public static final int BALL_SHOOTER_LIFT = 8;
 
   public static int ENCODER_LEFTA = 1;
 	public static int ENCODER_LEFTB = 2;

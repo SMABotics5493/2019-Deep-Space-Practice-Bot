@@ -2,10 +2,10 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.HatchMotorForward;
-import frc.robot.commands.HatchMotorReverse;
-import frc.robot.commands.Intake;
-import frc.robot.commands.Outtake;
+//import frc.robot.commands.HatchMotorForward;
+//import frc.robot.commands.HatchMotorReverse;
+//import frc.robot.commands.Intake;
+//import frc.robot.commands.Outtake;
 //import frc.robot.commands.SolenoidForward;
 //import frc.robot.commands.SolenoidReverse;
 
@@ -28,7 +28,7 @@ public class OI {
     public Joystick getJoystick(){
       return joystick;
     }
-
+/*
     public OI(){
 
       ballIntake.whileHeld(new Intake());
@@ -38,5 +38,5 @@ public class OI {
      // solenoidForward.whileHeld(new SolenoidForward());
      // solenoidReverse.whileHeld(new SolenoidReverse());
     }
-
+*/
 }
