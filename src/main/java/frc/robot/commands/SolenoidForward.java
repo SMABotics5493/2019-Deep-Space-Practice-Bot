@@ -5,14 +5,14 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-/*package frc.robot.commands;
+package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class SolenoidForward extends Command {
 
-  private boolean isFinsihed;
+  private boolean isFinished;
 
   public SolenoidForward() {
     requires(Robot.hatchSolenoid);
@@ -27,14 +27,14 @@ public class SolenoidForward extends Command {
   @Override
   protected void execute() {
     Robot.hatchSolenoid.forward();
-    isFinsihed = false;
+    isFinished = false;
      
    }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return isFinsihed;
+    return isFinished;
   }
 
   // Called once after isFinished returns true
@@ -49,4 +49,3 @@ public class SolenoidForward extends Command {
     end();
   }
 }
-*/

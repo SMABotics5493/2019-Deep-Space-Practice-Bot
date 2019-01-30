@@ -6,20 +6,20 @@ import frc.robot.commands.HatchMotorForward;
 import frc.robot.commands.HatchMotorReverse;
 import frc.robot.commands.Intake;
 import frc.robot.commands.Outtake;
-//import frc.robot.commands.SolenoidForward;
-//import frc.robot.commands.SolenoidReverse;
+import frc.robot.commands.SolenoidForward;
+import frc.robot.commands.SolenoidReverse;
 
 public class OI {
 
     private Joystick driveJoystick = new Joystick(RobotMap.DRIVE_JOYSTICK);
     private Joystick joystick = new Joystick(RobotMap.JOYSTICK);
 
-    JoystickButton ballIntake = new JoystickButton(joystick, RobotMap.JOYB_LB);
-    JoystickButton ballOuttake = new JoystickButton(joystick, RobotMap.JOYB_RB);
-   // JoystickButton solenoidForward = new JoystickButton(joystick, RobotMap.JOYB_A);
-    //JoystickButton solenoidReverse = new JoystickButton(joystick, RobotMap.JOYB_B);
-    JoystickButton hatchMotorForward = new JoystickButton(joystick, RobotMap.JOYB_Y);
-    JoystickButton hatchMotorReverse = new JoystickButton(joystick, RobotMap.JOYB_X);
+    JoystickButton ballIntake = new JoystickButton(driveJoystick, RobotMap.JOYB_LB);
+    JoystickButton ballOuttake = new JoystickButton(driveJoystick, RobotMap.JOYB_RB);
+    JoystickButton solenoidForward = new JoystickButton(driveJoystick, RobotMap.JOYB_A);
+    JoystickButton solenoidReverse = new JoystickButton(driveJoystick, RobotMap.JOYB_B);
+    JoystickButton hatchMotorForward = new JoystickButton(driveJoystick, RobotMap.JOYB_Y);
+    JoystickButton hatchMotorReverse = new JoystickButton(driveJoystick, RobotMap.JOYB_X);
 
     public Joystick getDriveJoystick() {
       return driveJoystick;
@@ -35,8 +35,8 @@ public class OI {
       ballOuttake.whileHeld(new Outtake());
       hatchMotorForward.whileHeld(new HatchMotorForward());
       hatchMotorReverse.whileHeld(new HatchMotorReverse());
-     // solenoidForward.whileHeld(new SolenoidForward());
-     // solenoidReverse.whileHeld(new SolenoidReverse());
+      solenoidForward.whileHeld(new SolenoidForward());
+      solenoidReverse.whileHeld(new SolenoidReverse());
     }
 
 }
