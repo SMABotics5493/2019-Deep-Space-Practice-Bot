@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.commands.JoystickDrive;
 
@@ -94,5 +95,11 @@ public class DriveBase extends Subsystem {
   @Override
   public void initDefaultCommand() {
     setDefaultCommand(new JoystickDrive());
-  }
+	}
+	public void DriveLine() {
+	//	while (Robot.lineSubsystem.getLineValue() <=3700){
+
+            Robot.driveBase.drive(0.44, 0.44);     
+        }
+		
 }

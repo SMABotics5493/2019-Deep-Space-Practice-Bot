@@ -3,12 +3,14 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.BallShooter;
 import frc.robot.subsystems.DriveBase;
 import frc.robot.subsystems.HatchPanel;
 //import frc.robot.subsystems.HatchSolenoid;
+import frc.subsystems.LineValueSubsystem;
 
 public class Robot extends TimedRobot {
   public static DriveBase driveBase;
@@ -16,6 +18,7 @@ public class Robot extends TimedRobot {
   public static HatchPanel hatchPanel;
   //public static HatchSolenoid hatchSolenoid;
   public static OI oi;
+public static Subsystem lineSubsystem;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -25,6 +28,7 @@ public class Robot extends TimedRobot {
     driveBase = new DriveBase();
     ballShooter = new BallShooter();
     hatchPanel = new HatchPanel();
+    lineSubsystem = new LineValueSubsystem();
     //hatchSolenoid = new HatchSolenoid();
     oi = new OI();
     // chooser.addOption("My Auto", new MyAutoCommand());
