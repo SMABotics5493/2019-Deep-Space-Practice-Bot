@@ -9,8 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.BallShooter;
 import frc.robot.subsystems.DriveBase;
 import frc.robot.subsystems.HatchPanel;
-//import frc.robot.subsystems.HatchSolenoid;
-import frc.subsystems.LineValueSubsystem;
+import frc.robot.subsystems.LineValueSubsystem;
 
 public class Robot extends TimedRobot {
   public static DriveBase driveBase;

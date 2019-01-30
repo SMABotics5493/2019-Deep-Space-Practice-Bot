@@ -1,4 +1,4 @@
-package frc.commands;
+package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
@@ -34,12 +34,8 @@ public class LineCommand extends Command {
         isFinished = false;
         DriverStation.reportError("linereadexecute", false);
         //number are in seconds
-        Robot.lineSubsystem.writeValue();
-        tankdrive (1.00);
+       // Robot.lineSubsystem.writeValue();
         isFinished = true;
-    }
-
-    private void tankdrive(double d) {
     }
 
     // Make this return true when this Command no longer needs to run execute()
