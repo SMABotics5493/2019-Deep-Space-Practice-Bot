@@ -17,10 +17,10 @@ public class BallLift extends Subsystem {
   }
 
   public void liftUp(){
-    Robot.ballLift.ballLiftMotor.set(0.4);
+    Robot.ballLift.ballLiftMotor.set(1.0);
   }
   public void liftDown(){
-    Robot.ballLift.ballLiftMotor.set(-0.3);
+    Robot.ballLift.ballLiftMotor.set(-0.5);
   }
   public void end(){
     Robot.ballLift.ballLiftMotor.set(0.05);

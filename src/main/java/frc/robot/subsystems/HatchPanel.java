@@ -17,11 +17,11 @@ public class HatchPanel extends Subsystem {
   }
 
   public void hatchForward(){
-    Robot.hatchPanel.hatchPanelMotor.set(0.4);
+    Robot.hatchPanel.hatchPanelMotor.set(1.0);
   }
 
   public void hatchReverse() {
-    Robot.hatchPanel.hatchPanelMotor.set(-0.4);
+    Robot.hatchPanel.hatchPanelMotor.set(-0.5);
   }
 
   public void end(){
