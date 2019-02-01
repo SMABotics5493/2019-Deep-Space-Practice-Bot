@@ -35,14 +35,14 @@ public class OI {
 		b1.whileHeld(new DriveForDistance());
 		b2.whenPressed(new TurnRightNinety());
 		b3.whenPressed(new Auto_StraightTurn());
-		b4.whenPressed(new AutoTurn());
+		b4.whenPressed(new AutoTurn())
 		//b4.whenPressed
 
 
 		//b4.whileHeld(new CascadeDown());		
 		
 
-    private Joystick joystick = new Joystick(RobotMap.JOYSTICK);
+    Joystick joystick = new Joystick(RobotMap.JOYSTICK);
 
     JoystickButton ballIntake = new JoystickButton(joystick, RobotMap.JOYB_LB);
     JoystickButton ballOuttake = new JoystickButton(joystick, RobotMap.JOYB_RB);
