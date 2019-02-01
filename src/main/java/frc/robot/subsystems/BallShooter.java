@@ -30,8 +30,8 @@ public class BallShooter extends Subsystem {
   }
 
   public void end(){
-    Robot.ballShooter.ballShooterLeft.set(0.0);
-    Robot.ballShooter.ballShooterRight.set(0.0);
+    Robot.ballShooter.ballShooterLeft.set(0.05);
+    Robot.ballShooter.ballShooterRight.set(0.05);
   }
   
   @Override

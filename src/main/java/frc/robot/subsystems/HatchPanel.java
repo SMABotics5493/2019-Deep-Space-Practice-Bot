@@ -25,7 +25,7 @@ public class HatchPanel extends Subsystem {
   }
 
   public void end(){
-    Robot.hatchPanel.hatchPanelMotor.set(0.0);
+    Robot.hatchPanel.hatchPanelMotor.set(0.05);
   }
 
   @Override

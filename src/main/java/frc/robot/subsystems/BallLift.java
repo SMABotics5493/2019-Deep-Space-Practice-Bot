@@ -23,7 +23,7 @@ public class BallLift extends Subsystem {
     Robot.ballLift.ballLiftMotor.set(-0.3);
   }
   public void end(){
-    Robot.ballLift.ballLiftMotor.set(0.0);
+    Robot.ballLift.ballLiftMotor.set(0.05);
   }
 
   @Override
