@@ -1,16 +1,16 @@
 package frc.robot.commands;
 
-import frc.robot.ButtonMonitor;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.ButtonMonitor;
 import frc.robot.Robot;
 
-public class HatchMotorForward extends Command {
+public class BallIntake extends Command {
 
   private ButtonMonitor buttonMonitor;
 
-  public HatchMotorForward(Button cmdButton) {
-    requires(Robot.ballLift);
+  public BallIntake(Button cmdButton) {
+    requires(Robot.ballShooter);
     buttonMonitor = new ButtonMonitor(cmdButton);
   }
 
@@ -21,7 +21,7 @@ public class HatchMotorForward extends Command {
   @Override
   protected void execute(){
     if (buttonMonitor.checkButtonState() == ButtonMonitor.ButtonState.Active){
-      Robot.hatchPanel.hatchForward();
+      Robot.ballShooter.intake();
     }
   }
 
@@ -32,7 +32,7 @@ public class HatchMotorForward extends Command {
 
   @Override
   protected void end() {
-   Robot.hatchPanel.end();
+    Robot.ballShooter.end();
   }
 
   @Override
