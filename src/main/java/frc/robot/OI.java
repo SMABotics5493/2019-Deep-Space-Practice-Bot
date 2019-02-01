@@ -14,12 +14,14 @@ public class OI {
     private Joystick driveJoystick = new Joystick(RobotMap.DRIVE_JOYSTICK);
     private Joystick joystick = new Joystick(RobotMap.JOYSTICK);
 
-    JoystickButton ballIntake = new JoystickButton(joystick, RobotMap.JOYB_LB);
-    JoystickButton ballOuttake = new JoystickButton(joystick, RobotMap.JOYB_RB);
-   // JoystickButton solenoidForward = new JoystickButton(joystick, RobotMap.JOYB_A);
-    //JoystickButton solenoidReverse = new JoystickButton(joystick, RobotMap.JOYB_B);
-    JoystickButton hatchMotorForward = new JoystickButton(joystick, RobotMap.JOYB_Y);
-    JoystickButton hatchMotorReverse = new JoystickButton(joystick, RobotMap.JOYB_X);
+  //   JoystickButton ballIntake = new JoystickButton(joystick, RobotMap.JOYB_LB);
+  //   JoystickButton ballOuttake = new JoystickButton(joystick, RobotMap.JOYB_RB);
+  //   JoystickButton solenoidForward = new JoystickButton(joystick, RobotMap.JOYB_A);
+  //   JoystickButton solenoidReverse = new JoystickButton(joystick, RobotMap.JOYB_B);
+  //   JoystickButton hatchMotorForward = new JoystickButton(joystick, RobotMap.JOYB_Y);
+  //   JoystickButton hatchMotorReverse = new JoystickButton(joystick, RobotMap.JOYB_X);
+
+    JoystickButton testButton = new JoystickButton(driveJoystick,RobotMap.JOYB_A); //This button is mapped to A
 
     public Joystick getDriveJoystick() {
       return driveJoystick;
@@ -30,11 +32,11 @@ public class OI {
     }
 
     public OI(){
-
-      ballIntake.whileHeld(new Intake());
-      ballOuttake.whileHeld(new Outtake());
-      hatchMotorForward.whileHeld(new HatchMotorForward());
-      hatchMotorReverse.whileHeld(new HatchMotorReverse());
+      
+      // ballIntake.whileHeld(new Intake());
+      // ballOuttake.whileHeld(new Outtake());
+      // hatchMotorForward.whileHeld(new HatchMotorForward());
+      // hatchMotorReverse.whileHeld(new HatchMotorReverse());
      // solenoidForward.whileHeld(new SolenoidForward());
      // solenoidReverse.whileHeld(new SolenoidReverse());
     }
