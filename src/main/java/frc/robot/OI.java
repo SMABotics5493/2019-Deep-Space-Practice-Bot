@@ -31,23 +31,18 @@ public class OI {
 	Button b6 = new JoystickButton(driveJoystick, RobotMap.JOYB_RB);
 	Button b7 = new JoystickButton(driveJoystick, RobotMap.JOYB_LT);
 	Button b8 = new JoystickButton(driveJoystick, RobotMap.JOYB_RT);
-	
+
 		b1.whileHeld(new DriveForDistance());
 		b2.whenPressed(new TurnRightNinety());
 		b3.whenPressed(new Auto_StraightTurn());
-		b4.whenPressed(new AutoTurn())
-		//b4.whenPressed
-
-
-		//b4.whileHeld(new CascadeDown());		
+		b4.whenPressed(new AutoTurn());
 		
 
     Joystick joystick = new Joystick(RobotMap.JOYSTICK);
 
     JoystickButton ballIntake = new JoystickButton(joystick, RobotMap.JOYB_LB);
     JoystickButton ballOuttake = new JoystickButton(joystick, RobotMap.JOYB_RB);
-   // JoystickButton solenoidForward = new JoystickButton(joystick, RobotMap.JOYB_A);
-   // JoystickButton solenoidReverse = new JoystickButton(joystick, RobotMap.JOYB_B);
+   	JoystickButton DriveForDistance = new JoystickButton(joystick, RobotMap.JOYB_A);
     JoystickButton TurnRightNinety = new JoystickButton(joystick, RobotMap.JOYB_B);
     JoystickButton hatchMotorForward = new JoystickButton(joystick, RobotMap.JOYB_Y);
     JoystickButton hatchMotorReverse = new JoystickButton(joystick, RobotMap.JOYB_X);
@@ -57,6 +52,7 @@ public class OI {
     }
 
     public Joystick getJoystick(){
-      return joystick;
+	  return joystick;
+	}
 
 }

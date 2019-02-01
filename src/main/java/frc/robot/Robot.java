@@ -22,13 +22,13 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
+    oi = new OI();
+    // chooser.addOption("My Auto", new MyAutoCommand());
+    SmartDashboard.putData("Auto mode", m_chooser);
     driveBase = new DriveBase();
     ballShooter = new BallShooter();
     hatchPanel = new HatchPanel();
     //hatchSolenoid = new HatchSolenoid();
-    oi = new OI();
-    // chooser.addOption("My Auto", new MyAutoCommand());
-    SmartDashboard.putData("Auto mode", m_chooser);
   }
 
   @Override
