@@ -6,10 +6,6 @@ import frc.robot.commands.AutoTurn;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.HatchMotorForward;
-import frc.robot.commands.HatchMotorReverse;
-import frc.robot.commands.Intake;
-import frc.robot.commands.Outtake;
 import frc.robot.commands.Auto_StraightTurn;
 
 
@@ -26,11 +22,12 @@ public class OI {
 	Button b7 = new JoystickButton(driveJoystick, RobotMap.JOYB_LT);
 	Button b8 = new JoystickButton(driveJoystick, RobotMap.JOYB_RT);
 
+	public OI (){
 		b1.whileHeld(new DriveForDistance());
 		b2.whenPressed(new TurnRightNinety());
 		b3.whenPressed(new Auto_StraightTurn());
 		b4.whenPressed(new AutoTurn());
-		
+}
 
     Joystick joystick = new Joystick(RobotMap.JOYSTICK);
 
