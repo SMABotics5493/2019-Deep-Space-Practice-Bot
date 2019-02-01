@@ -1,9 +1,9 @@
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
 import frc.robot.utilities.TurnDirection;
 
+import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
 
 /**
  *
@@ -22,7 +22,7 @@ public class AutoTurn extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         isFinished = false;
-        Robot.driveBase.turn(TurnDirection.left, 90, 0.6); //doesn't work
+        Robot.driveBase.turn(TurnDirection.left, 90, 0.6); // doesn't work
         isFinished = true;
     }
 

@@ -84,6 +84,19 @@ public class DriveBase extends Subsystem {
 		leftFrontMotor.setSelectedSensorPosition(0);
 		rightFrontMotor.setSelectedSensorPosition(0);
 	}
+	
+	public void turnRight() {
+		resetDrive();
+		resetEncoders();
+		arcLength = (PI/2)*wheelBase;
+		while(leftFrontMotor.getSelectedSensorPosition() >= -arcLength/2) {
+			drive.tankDrive(0.6, -0.6);
+			SmartDashboard.putNumber("Left Distance", leftFrontMotor.getSelectedSensorPosition());
+			SmartDashboard.putNumber("Right Distance", rightFrontMotor.getSelectedSensorPosition());
+	
+		}
+		resetDrive();
+	}
 	public void driveForward() {
 		resetDrive();
 		resetEncoders();
@@ -102,18 +115,6 @@ public class DriveBase extends Subsystem {
 	}
 	private double getAverageEncoderPosition()  {
 		return (leftFrontMotor.getSelectedSensorPosition() + rightFrontMotor.getSelectedSensorPosition())/2;
-	}
-	public void turnRight() {
-		resetDrive();
-		resetEncoders();
-		arcLength = (PI/2)*wheelBase;
-		while(leftFrontMotor.getSelectedSensorPosition() >= -arcLength/2) {
-			drive.tankDrive(0.6, -0.6);
-			SmartDashboard.putNumber("Left Distance", leftFrontMotor.getSelectedSensorPosition());
-			SmartDashboard.putNumber("Right Distance", rightFrontMotor.getSelectedSensorPosition());
-	
-		}
-		resetDrive();
 	}
 
 	public void displayEncoders(){

@@ -1,17 +1,47 @@
 package frc.robot;
 
+//import org.usfirst.frc.team5493.robot.commands.CascadeDown;
+//import org.usfirst.frc.team5493.robot.commands.CascadeUp;
+import frc.robot.commands.DriveForDistance;
+import frc.robot.commands.TurnRightNinety;
+import frc.robot.commands.AutoTurn;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.HatchMotorForward;
 import frc.robot.commands.HatchMotorReverse;
 import frc.robot.commands.Intake;
 import frc.robot.commands.Outtake;
+import frc.robot.commands.Auto_StraightTurn;
 //import frc.robot.commands.SolenoidForward;
 //import frc.robot.commands.SolenoidReverse;
+// import com.sun.org.apache.xerces.internal.impl.xpath.XPath.Axis;
+
+
 
 public class OI {
+	
+	private Joystick driveJoystick = new Joystick(RobotMap.DRIVE_JOYSTICK);
+	
+	Button b1 = new JoystickButton(driveJoystick, RobotMap.JOYB_A);
+	Button b2 = new JoystickButton(driveJoystick, RobotMap.JOYB_B);
+	Button b3 = new JoystickButton(driveJoystick, RobotMap.JOYB_X);
+	Button b4 = new JoystickButton(driveJoystick, RobotMap.JOYB_Y);
+	Button b5 = new JoystickButton(driveJoystick, RobotMap.JOYB_LB);
+	Button b6 = new JoystickButton(driveJoystick, RobotMap.JOYB_RB);
+	Button b7 = new JoystickButton(driveJoystick, RobotMap.JOYB_LT);
+	Button b8 = new JoystickButton(driveJoystick, RobotMap.JOYB_RT);
+	
+		b1.whileHeld(new DriveForDistance());
+		b2.whenPressed(new TurnRightNinety());
+		b3.whenPressed(new Auto_StraightTurn());
+		b4.whenPressed(new AutoTurn());
+		//b4.whenPressed
 
-    private Joystick driveJoystick = new Joystick(RobotMap.DRIVE_JOYSTICK);
+
+		//b4.whileHeld(new CascadeDown());		
+		
+
     private Joystick joystick = new Joystick(RobotMap.JOYSTICK);
 
     JoystickButton ballIntake = new JoystickButton(joystick, RobotMap.JOYB_LB);
@@ -28,16 +58,5 @@ public class OI {
 
     public Joystick getJoystick(){
       return joystick;
-    }
-
-    public OI(){
-
-      ballIntake.whileHeld(new Intake());
-      ballOuttake.whileHeld(new Outtake());
-      hatchMotorForward.whileHeld(new HatchMotorForward());
-      hatchMotorReverse.whileHeld(new HatchMotorReverse());
-     // solenoidForward.whileHeld(new SolenoidForward());
-     // solenoidReverse.whileHeld(new SolenoidReverse());
-    }
 
 }
