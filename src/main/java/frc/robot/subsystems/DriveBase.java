@@ -80,11 +80,11 @@ public class DriveBase extends Subsystem {
 		leftFrontMotor.setSelectedSensorPosition(0);
 		rightFrontMotor.setSelectedSensorPosition(0);
 	}
-	public void driveForward() {
+	public void driveForward(double distance,double speed) {
 		resetDrive();
 		resetEncoders();
-		if(getAverageEncoderPosition() <= 50.0){
-			drive.tankDrive(1,1); // left, right 
+		while(getAverageEncoderPosition() < distance){
+			drive.tankDrive(speed,speed); // left, right 
 			SmartDashboard.putNumber("Left Distance", leftFrontMotor.getSelectedSensorPosition());
 			SmartDashboard.putNumber("Right Distance", rightFrontMotor.getSelectedSensorPosition());
 			//SmartDashboard.putNumber("Right Raw Count", rightEncoder.getRaw());
@@ -92,12 +92,11 @@ public class DriveBase extends Subsystem {
 			SmartDashboard.putNumber("Average Encoder Position", getAverageEncoderPosition());
 			//SmartDashboard.putNumber("Angle", gyro.getAngle());
 		} 
-		else {
-			resetDrive();
-		}
+		resetDrive();
+		
 	}
 	private double getAverageEncoderPosition()  {
-		return (leftFrontMotor.getSelectedSensorPosition() + rightFrontMotor.getSelectedSensorPosition())/2;
+		return (-leftFrontMotor.getSelectedSensorPosition() + rightFrontMotor.getSelectedSensorPosition())/2;
 	}
 	// public void turnRight() {
 	// 	resetDrive();
