@@ -38,7 +38,7 @@ public class LineCommand extends Command {
         isFinished = false;
         DriverStation.reportError("linereadexecute", false);
         // number are in seconds
-        // Robot.lineSubsystem.writeValue();
+        Robot.lineValueSubsystem.writeValue();
         isFinished = true;
     }
 
