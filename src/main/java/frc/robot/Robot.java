@@ -17,7 +17,7 @@ public class Robot extends TimedRobot {
   public static HatchPanel hatchPanel;
   //public static HatchSolenoid hatchSolenoid;
   public static OI oi;
-public static Subsystem lineSubsystem;
+public static LineValueSubsystem lineValueSubsystem;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -27,8 +27,9 @@ public static Subsystem lineSubsystem;
     driveBase = new DriveBase();
     ballShooter = new BallShooter();
     hatchPanel = new HatchPanel();
-    lineSubsystem = new LineValueSubsystem();
+    lineValueSubsystem = new LineValueSubsystem();
     //hatchSolenoid = new HatchSolenoid();
+    
     oi = new OI();
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);

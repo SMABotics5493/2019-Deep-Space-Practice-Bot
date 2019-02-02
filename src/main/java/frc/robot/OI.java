@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.HatchMotorForward;
 import frc.robot.commands.HatchMotorReverse;
 import frc.robot.commands.Intake;
+import frc.robot.commands.LineCommand;
 import frc.robot.commands.Outtake;
 //import frc.robot.commands.SolenoidForward;
 //import frc.robot.commands.SolenoidReverse;
@@ -20,6 +21,7 @@ public class OI {
     //JoystickButton solenoidReverse = new JoystickButton(joystick, RobotMap.JOYB_B);
     JoystickButton hatchMotorForward = new JoystickButton(joystick, RobotMap.JOYB_Y);
     JoystickButton hatchMotorReverse = new JoystickButton(joystick, RobotMap.JOYB_X);
+    JoystickButton lineCommand = new JoystickButton(joystick, RobotMap.JOYB_A);
 
     public Joystick getDriveJoystick() {
       return driveJoystick;
@@ -35,6 +37,7 @@ public class OI {
       ballOuttake.whileHeld(new Outtake());
       hatchMotorForward.whileHeld(new HatchMotorForward());
       hatchMotorReverse.whileHeld(new HatchMotorReverse());
+      lineCommand.whenPressed(new LineCommand());
      // solenoidForward.whileHeld(new SolenoidForward());
      // solenoidReverse.whileHeld(new SolenoidReverse());
     }

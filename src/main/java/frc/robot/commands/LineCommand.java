@@ -15,10 +15,11 @@ public class LineCommand extends Command {
     public LineCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        DriverStation.reportError("line read constructor: is linesubsystem valid? " + ( Robot.lineSubsystem != null), false);
-        requires(Robot.lineSubsystem);
+        DriverStation.reportError(
+                "line read constructor: is linesubsystem valid? " + (Robot.lineValueSubsystem != null), false);
+        requires(Robot.lineValueSubsystem);
         DriverStation.reportError("line read constructor", false);
-        
+
         initialize();
     }
 
@@ -33,8 +34,8 @@ public class LineCommand extends Command {
     protected void execute() {
         isFinished = false;
         DriverStation.reportError("linereadexecute", false);
-        //number are in seconds
-       // Robot.lineSubsystem.writeValue();
+        // number are in seconds
+        // Robot.lineSubsystem.writeValue();
         isFinished = true;
     }
 
@@ -56,4 +57,17 @@ public class LineCommand extends Command {
         DriverStation.reportError("interrupted", false);
         end();
     }
+
+    public void lineStop() {
+        Robot.driveBase.reset();
+        if (Robot.lineValueSubsystem.getLineValue() >= Robot.lineValueSubsystem.carpetColor) {
+            Robot.driveBase.drive(0.1, 0.1);
+        }
+        if (Robot.lineValueSubsystem.getLineValue() <= Robot.lineValueSubsystem.stopColor) {
+            Robot.driveBase.drive(0, 0);
+        } else {
+            Robot.driveBase.reset();
+        }
+    }
+
 }

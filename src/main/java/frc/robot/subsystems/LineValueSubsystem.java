@@ -8,8 +8,11 @@ import frc.robot.RobotMap;
 public class LineValueSubsystem extends Subsystem {
 
 	private AnalogInput ai;
+	public static double carpetColor = 3800;
+	public static double stopColor = 3800;
 
 	public LineValueSubsystem() {
+		super();
 		ai = new AnalogInput(RobotMap.LINE_TRACKER_MIDDLE);
 	}
 
@@ -29,6 +32,7 @@ public class LineValueSubsystem extends Subsystem {
 	}
 
 	public double getLineValue(){
-		return ai.getValue();
+		double number = ai.getValue();
+		return number;
 	}
 }
