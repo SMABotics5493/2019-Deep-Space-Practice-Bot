@@ -13,6 +13,8 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+//import java.util.math;
+
 public class DriveBase extends Subsystem {
 
 	private static final double PI = 3.14159;
@@ -63,6 +65,7 @@ public class DriveBase extends Subsystem {
 		SmartDashboard.putNumber("Right Distance", rightFrontMotor.getSelectedSensorPosition());
 		SmartDashboard.putNumber("Left Speed", leftFrontMotor.getSelectedSensorVelocity());
 		SmartDashboard.putNumber("Right Speed", rightFrontMotor.getSelectedSensorVelocity());
+		
 		//SmartDashboard.putNumber("Gyro", gyro.getYawPitchRoll(ypr_deg)); 	
 	}
 	
@@ -102,7 +105,7 @@ public class DriveBase extends Subsystem {
 	// 	resetDrive();
 	// 	resetEncoders();
 	// 	arcLength = (PI/2)*wheelBase;
-	// 	while(leftFrontMotor.getSelectedSensorPosition() >= -arcLength/2) {
+	// 	while(lef//tFrontMotor.getSelectedSensorPosition() >= -arcLength/2) {
 	// 		drive.tankDrive(0.6, -0.6);
 	// 		SmartDashboard.putNumber("Left Distance", leftFrontMotor.getSelectedSensorPosition());
 	// 		SmartDashboard.putNumber("Right Distance", rightFrontMotor.getSelectedSensorPosition());
@@ -130,6 +133,13 @@ public class DriveBase extends Subsystem {
 		return rightFrontMotor.getSelectedSensorPosition() <= rightSide;
 	}
 
+	private boolean areDoneTurningPigeon(double startingYaw, double angle) {
+		if(Math.abs(getYaw()-startingYaw)< angle) {
+		return true;
+		}
+		return false;
+	}
+
 	public double getYaw() {
 		double ypr[] = new double[3];
 		gyro.getYawPitchRoll(ypr);
@@ -153,18 +163,18 @@ public class DriveBase extends Subsystem {
 
 	}
 
-	public void turnRight() {
-		resetDrive();
-		resetEncoders();
-		arcLength = (PI/2)*wheelBase;
-		while(leftFrontMotor.getSelectedSensorPosition() >= -arcLength/2) {
-			drive.tankDrive(0.6, -0.6);
-			SmartDashboard.putNumber("Left Distance", leftFrontMotor.getSelectedSensorPosition());
-			SmartDashboard.putNumber("Right Distance", rightFrontMotor.getSelectedSensorPosition());
+	// public void turnRight() {
+	// 	resetDrive();
+	// 	resetEncoders();
+	// 	arcLength = (PI/2)*wheelBase;
+	// 	while(leftFrontMotor.getSelectedSensorPosition() >= -arcLength/2) {
+	// 		drive.tankDrive(0.6, -0.6);
+	// 		SmartDashboard.putNumber("Left Distance", leftFrontMotor.getSelectedSensorPosition());
+	// 		SmartDashboard.putNumber("Right Distance", rightFrontMotor.getSelectedSensorPosition());
 	
-		}
-		resetDrive();
-	}
+	// 	}
+	// 	resetDrive();
+	// }
 
 	public void turn(TurnDirection direction, double angle, double speed) { //somthing here isn't working
 		resetDrive();
@@ -183,6 +193,22 @@ public class DriveBase extends Subsystem {
 		}
 		resetDrive();
 	}
+
+	public void pigeonTurn(TurnDirection direction, double angle, double speed) { //somthing here isn't working
+		resetDrive();
+		double startingYaw = getYaw();
+		int flip = 1;
+		if (TurnDirection.left == direction){
+			flip = flip*-1;
+		}
+		while(areDoneTurningPigeon(startingYaw, angle)) {
+			drive.tankDrive(flip*speed, flip*-speed);
+			SmartDashboard.putNumber("Yaw", getYaw());
+	
+		}
+		resetDrive();
+	}
+
 
 	
 	/*public void turnRight() {

@@ -22,7 +22,8 @@ public class AutoTurn extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         isFinished = false;
-        Robot.driveBase.turn(TurnDirection.right, 90, 0.6); //does work -- is hard coded!
+        //Robot.driveBase.turn(TurnDirection.right, 90, 0.6); //does work -- is hard coded!
+        Robot.driveBase.pigeonTurn(TurnDirection.right, 90, 0.6); //does work -- is hard coded!
         isFinished = true;
     }
 
