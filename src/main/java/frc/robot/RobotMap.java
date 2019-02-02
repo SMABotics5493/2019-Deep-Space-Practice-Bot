@@ -18,6 +18,9 @@ public class RobotMap {
   public static final int RIGHTYAXIS = 5;
   public static final int LEFTYAXIS = 1;
 
+  public static final int DRIVER_CONTROLLER_MOVE_AXIS = 1;
+  public static final int DRIVER_CONTROLLER_ROTATE_AXIS = 0;
+
   public static final int LEFT_FRONT_MOTOR = 6;
   public static final int RIGHT_FRONT_MOTOR = 9;
   public static final int LEFT_BACK_MOTOR = 22;

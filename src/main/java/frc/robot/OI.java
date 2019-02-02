@@ -11,7 +11,7 @@ import frc.robot.commands.SolenoidReverse;
 
 public class OI {
 
-    private Joystick driveJoystick = new Joystick(RobotMap.DRIVE_JOYSTICK);
+    public Joystick driveJoystick = new Joystick(RobotMap.DRIVE_JOYSTICK);
     private Joystick joystick = new Joystick(RobotMap.JOYSTICK);
 
     JoystickButton ballIntake = new JoystickButton(driveJoystick, RobotMap.JOYB_LB);

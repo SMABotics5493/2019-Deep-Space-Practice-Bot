@@ -9,11 +9,11 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
-public class JoystickDrive extends Command {
+public class ArcadeDrive extends Command {
 
-  private boolean isFinished;
-  public JoystickDrive() {
+  public ArcadeDrive() {
     requires(Robot.driveBase);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -27,19 +27,22 @@ public class JoystickDrive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.driveBase.drive(Robot.oi.getDriveJoystick());
+    double moveSpeed = -Robot.oi.driveJoystick.getRawAxis(RobotMap.DRIVER_CONTROLLER_MOVE_AXIS);
+    double rotateSpeed = -Robot.oi.driveJoystick.getRawAxis(RobotMap.DRIVER_CONTROLLER_ROTATE_AXIS);
+
+    Robot.driveBase.arcadeDrive(moveSpeed, rotateSpeed);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return isFinished;
+    return false;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.driveBase.drive(0.0, 0.0);
+    Robot.driveBase.arcadeDrive(0, 0);
   }
 
   // Called when another command which requires one or more of the same
