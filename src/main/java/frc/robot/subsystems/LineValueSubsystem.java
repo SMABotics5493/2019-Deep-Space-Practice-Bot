@@ -9,11 +9,14 @@ public class LineValueSubsystem extends Subsystem {
 
 	private AnalogInput ai;
 	public static double carpetColor = 3600;
-	public static double stopColor = 3800;
+	public static double stopColor = 3700;
 
 	public LineValueSubsystem() {
 		super();
-		ai = new AnalogInput(RobotMap.LINE_TRACKER_MIDDLE);
+		linereadleft = new AnalogInput(RobotMap.LINE_TRACKER_LEFT);
+		linereadmiddle = new AnalogInput(RobotMap.LINE_TRACKER_MIDDLE);
+		linereadright = new AnalogInput(RobotMap.LINE_TRACKER_RIGHT);
+
 	}
 
 	public void reset() {
