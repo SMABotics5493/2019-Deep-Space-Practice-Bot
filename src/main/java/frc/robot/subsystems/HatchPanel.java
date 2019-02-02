@@ -11,16 +11,21 @@ public class HatchPanel extends Subsystem {
   
   private WPI_TalonSRX hatchPanelMotor;
 
-  public void hatchPanel() {
+  public HatchPanel() {
+    super();
     hatchPanelMotor = new WPI_TalonSRX(RobotMap.HATCH_PANEL);
   }
 
   public void hatchForward(){
-    Robot.hatchPanel.hatchPanelMotor.set(0.4);
+    Robot.hatchPanel.hatchPanelMotor.set(1.0);
   }
 
   public void hatchReverse() {
-    Robot.hatchPanel.hatchPanelMotor.set(-0.4);
+    Robot.hatchPanel.hatchPanelMotor.set(-0.5);
+  }
+
+  public void end(){
+    Robot.hatchPanel.hatchPanelMotor.set(0.05);
   }
 
   @Override
