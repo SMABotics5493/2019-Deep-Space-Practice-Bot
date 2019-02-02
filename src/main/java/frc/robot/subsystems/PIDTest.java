@@ -1,18 +1,14 @@
-
-/*package frc.robot.subsystems;
+package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
 
 public class PIDTest extends PIDSubsystem {
 
-  private static final double p = 4.0;
-  private static final double i = 0.0;
-  private static final double d = 0.0;
-
   public PIDTest() {
+    
     // Intert a subsystem name and PID values here
-    super("PIDTest", p, i, d);
+    super("SubsystemName", 1, 2, 3);
     // Use these to get going:
     // setSetpoint() - Sets where the PID controller should move the system
     // to
@@ -22,7 +18,7 @@ public class PIDTest extends PIDSubsystem {
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    // setDefaultCommand(new JoystickDrive());
+    // setDefaultCommand(new MySpecialCommand());
   }
 
   @Override
@@ -39,19 +35,3 @@ public class PIDTest extends PIDSubsystem {
     // e.g. yourMotor.set(output);
   }
 }
-
-
-// Julia Atempting Code (coppy and paste)
-
-
-package org.usfirst.frc190.{?}.subsytems;
-import edu.wpi.first.wpilibj.*;
-import edu.wpi.first.wpilibj.commmand.PIDSubsystem;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import org.usfirst.frc190.{?}.RobotMap;
-
-public class PIDTest extends PIDSubsystem {
-  motor = RobotMap.pidtestMotor;
-  
-}
-*/
