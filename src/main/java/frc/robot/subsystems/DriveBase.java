@@ -3,7 +3,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.Joystick;
+//import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
@@ -48,7 +48,8 @@ public class DriveBase extends Subsystem {
     
     SpeedController leftSide = new SpeedControllerGroup(leftFrontMotor, leftBackMotor);
     SpeedController rightSide = new SpeedControllerGroup(rightFrontMotor, rightBackMotor);
-    drive = new DifferentialDrive(leftSide, rightSide);
+		drive = new DifferentialDrive(leftSide, rightSide);
+		
 
     drive.setExpiration(0.1);
   }
