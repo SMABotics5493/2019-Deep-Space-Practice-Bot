@@ -60,17 +60,4 @@ public class LineCommand extends Command {
         DriverStation.reportError("interrupted", false);
         end();
     }
-
-    public void lineStop() {
-        Robot.driveBase.reset();
-        if (Robot.lineValueSubsystem.getLineValue() >= Robot.lineValueSubsystem.getCarpetColor()) {
-            Robot.driveBase.drive(0.1, 0.1);
-        }
-        if (Robot.lineValueSubsystem.getLineValue() <= Robot.lineValueSubsystem.getStopColor()) {
-            Robot.driveBase.drive(0, 0);
-        } else {
-            Robot.driveBase.reset();
-        }
-    }
-
 }

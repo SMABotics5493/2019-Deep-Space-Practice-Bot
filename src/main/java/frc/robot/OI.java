@@ -6,6 +6,7 @@ import frc.robot.commands.HatchMotorForward;
 import frc.robot.commands.HatchMotorReverse;
 import frc.robot.commands.Intake;
 import frc.robot.commands.LineCommand;
+import frc.robot.commands.LineDrive;
 import frc.robot.commands.Outtake;
 //import frc.robot.commands.SolenoidForward;
 //import frc.robot.commands.SolenoidReverse;
@@ -22,6 +23,8 @@ public class OI {
     JoystickButton hatchMotorForward = new JoystickButton(driveJoystick, RobotMap.JOYB_Y);
     JoystickButton hatchMotorReverse = new JoystickButton(driveJoystick, RobotMap.JOYB_X);
     JoystickButton lineCommand = new JoystickButton(driveJoystick, RobotMap.JOYB_A);
+    JoystickButton LineDrive = new JoystickButton(driveJoystick, RobotMap.JOYB_B);
+
 
     public Joystick getDriveJoystick() {
       return driveJoystick;
@@ -38,6 +41,8 @@ public class OI {
       hatchMotorForward.whileHeld(new HatchMotorForward());
       hatchMotorReverse.whileHeld(new HatchMotorReverse());
       lineCommand.whenPressed(new LineCommand());
+      LineDrive.whenPressed(new LineDrive());
+
      // solenoidForward.whileHeld(new SolenoidForward());
      // solenoidReverse.whileHeld(new SolenoidReverse());
     }

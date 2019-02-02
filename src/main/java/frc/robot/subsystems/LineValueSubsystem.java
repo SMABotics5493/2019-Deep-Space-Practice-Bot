@@ -8,7 +8,7 @@ import frc.robot.RobotMap;
 public class LineValueSubsystem extends Subsystem {
 
 	private AnalogInput ai;
-	public static double carpetColor = 3800;
+	public static double carpetColor = 3600;
 	public static double stopColor = 3800;
 
 	public LineValueSubsystem() {

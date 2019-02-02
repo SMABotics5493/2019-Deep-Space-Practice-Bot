@@ -1,6 +1,8 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
@@ -18,9 +20,10 @@ public class DriveBase extends Subsystem {
 
 	WPI_TalonSRX leftFrontMotor;
 	WPI_TalonSRX rightFrontMotor;
-	WPI_TalonSRX leftBackMotor;
-	WPI_TalonSRX rightBackMotor;
-	private DifferentialDrive drive;
+	WPI_VictorSPX leftBackMotor;
+	WPI_VictorSPX rightBackMotor;
+	
+	public DifferentialDrive drive;
 
 	public Encoder leftEncoder;
 	public Encoder rightEncoder;
@@ -37,10 +40,10 @@ public class DriveBase extends Subsystem {
 	public DriveBase() {
 		super();
 
-		leftFrontMotor = new WPI_TalonSRX(RobotMap.LEFT_FRONT_MOTOR);
-		rightFrontMotor = new WPI_TalonSRX(RobotMap.RIGHT_FRONT_MOTOR);
-		leftBackMotor = new WPI_TalonSRX(RobotMap.LEFT_BACK_MOTOR);
-		rightBackMotor = new WPI_TalonSRX(RobotMap.RIGHT_BACK_MOTOR);
+		leftFrontMotor = new WPI_TalonSRX(RobotMap.LEFT_MASTER_DRIVEBASE);
+		rightFrontMotor = new WPI_TalonSRX(RobotMap.RIGHT_MASTER_DRIVEBASE);
+		leftBackMotor = new WPI_VictorSPX(RobotMap.LEFT_FOLLOWER_DRIVEBASE);
+		rightBackMotor = new WPI_VictorSPX(RobotMap.RIGHT_FOLLOWER_DRIVEBASE);
 
 		leftEncoder = new Encoder(RobotMap.ENCODER_LEFTA, RobotMap.ENCODER_LEFTB, true, EncodingType.k4X);
 		rightEncoder = new Encoder(RobotMap.ENCODER_RIGHTA, RobotMap.ENCODER_RIGHTB, false, EncodingType.k4X);
