@@ -20,6 +20,13 @@ public class LineValueSubsystem extends Subsystem {
 
 	}
 
+	public double getCarpetColor() {
+		return carpetColor;
+	}
+	public double getStopColor() {
+		return stopColor;
+	}
+
 	public void initDefaultCommand() {
 		SmartDashboard.putNumber("Starting ai", ai.getValue());
 		

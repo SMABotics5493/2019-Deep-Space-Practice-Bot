@@ -4,11 +4,14 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
-
+import frc.robot.subsystems.LineValueSubsystem;
 /**
  *
  */
 public class LineCommand extends Command {
+
+    //private LineValueSubsystem lineValueSubsystem = new LineValueSubsystem();
+
 
     private boolean isFinished = true;
 
@@ -60,10 +63,10 @@ public class LineCommand extends Command {
 
     public void lineStop() {
         Robot.driveBase.reset();
-        if (Robot.lineValueSubsystem.getLineValue() >= Robot.lineValueSubsystem.carpetColor) {
+        if (Robot.lineValueSubsystem.getLineValue() >= Robot.lineValueSubsystem.getCarpetColor()) {
             Robot.driveBase.drive(0.1, 0.1);
         }
-        if (Robot.lineValueSubsystem.getLineValue() <= Robot.lineValueSubsystem.stopColor) {
+        if (Robot.lineValueSubsystem.getLineValue() <= Robot.lineValueSubsystem.getStopColor()) {
             Robot.driveBase.drive(0, 0);
         } else {
             Robot.driveBase.reset();

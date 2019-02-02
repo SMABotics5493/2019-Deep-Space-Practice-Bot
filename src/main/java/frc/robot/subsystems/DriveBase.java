@@ -103,9 +103,10 @@ public class DriveBase extends Subsystem {
 	}
 
 	public void DriveLine() {
-		// while (Robot.lineSubsystem.getLineValue() <=3700){
+		 //while (Robot.lineValueSubsystem.getLineVal() <=3700){
 
 		Robot.driveBase.drive(0.44, 0.44);
 	}
+
 
 }
