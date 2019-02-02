@@ -7,10 +7,10 @@ import frc.robot.commands.HatchMotorReverse;
 import frc.robot.commands.Intake;
 import frc.robot.commands.Outtake;
 import frc.robot.commands.AutoTurn;
+import frc.robot.commands.DriveForDistance;
+//import frc.robot.commands.Auto_StraightTurn;
 //import frc.robot.commands.SolenoidForward;
 //import frc.robot.commands.SolenoidReverse;
-//import frc.robot.commands.TurnRightNinety;
-import frc.robot.commands.DriveForDistance;
 
 public class OI {
 
@@ -26,6 +26,7 @@ public class OI {
 
     JoystickButton turnButton = new JoystickButton(driveJoystick, RobotMap.JOYB_B);
     JoystickButton driveForward = new JoystickButton(driveJoystick, RobotMap.JOYB_A);
+   // JoystickButton driveTurn = new JoystickButton(driveJoystick, RobotMap.JOYB_RT);
 
 
     public Joystick getDriveJoystick() {
@@ -35,7 +36,7 @@ public class OI {
     public Joystick getJoystick(){
       return joystick;
     }
-
+    
     public OI(){
 
       ballIntake.whileHeld(new Intake());
@@ -44,8 +45,10 @@ public class OI {
       hatchMotorReverse.whileHeld(new HatchMotorReverse());
       turnButton.whenPressed(new AutoTurn());
       driveForward.whenPressed(new DriveForDistance());
-     // solenoidForward.whileHeld(new SolenoidForward());
-     // solenoidReverse.whileHeld(new SolenoidReverse());
+      //  driveTurn.whenPressed(new Auto_StraightTurn());
+
+      // solenoidForward.whileHeld(new SolenoidForward());
+      // solenoidReverse.whileHeld(new SolenoidReverse());
     }
 
 }

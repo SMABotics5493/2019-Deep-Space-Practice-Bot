@@ -24,7 +24,7 @@ public class RobotMap {
   public static final int RIGHT_FRONT_MOTOR = 4;
   /* lines 23 and 24 were back motors, but everything
   was coded for front motors so i changed them for
-  simplicity's sake
+  simplicity's sake - liz
   */
 
   public static final int BALL_SHOOTER_LEFT = 5;

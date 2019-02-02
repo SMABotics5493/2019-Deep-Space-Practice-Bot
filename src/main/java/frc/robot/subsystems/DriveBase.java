@@ -86,7 +86,7 @@ public class DriveBase extends Subsystem {
 	public void driveForward(double distance,double speed) {
 		resetDrive();
 		resetEncoders();
-		while(getAverageEncoderPosition() < distance){
+		while(getAverageEncoderPosition() < driveMath(distance)){
 			drive.tankDrive(speed,speed); // left, right 
 			SmartDashboard.putNumber("Left Distance", leftFrontMotor.getSelectedSensorPosition());
 			SmartDashboard.putNumber("Right Distance", rightFrontMotor.getSelectedSensorPosition());
@@ -98,6 +98,12 @@ public class DriveBase extends Subsystem {
 		resetDrive();
 		
 	}
+
+	public double driveMath(double distance){
+		return distance * 111.1;
+	}
+
+
 	private double getAverageEncoderPosition()  {
 		return (-leftFrontMotor.getSelectedSensorPosition() + rightFrontMotor.getSelectedSensorPosition())/2;
 	}

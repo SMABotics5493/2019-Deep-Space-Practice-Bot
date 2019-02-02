@@ -18,11 +18,11 @@ public class DriveForDistance extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         isFinished = false;
-        Robot.driveBase.driveForward(5000,.5); //Hardcoded distance value and speed value
+        Robot.driveBase.driveForward(36,.5); //Hardcoded distance value and speed value
         isFinished = true;
     }
 
-    // Make this return true when this Command no longer needs to run execute()
+        // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return isFinished;
     }
