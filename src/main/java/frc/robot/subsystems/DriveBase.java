@@ -39,7 +39,7 @@ public class DriveBase extends Subsystem {
 	@SuppressWarnings("deprecation")
 	public DriveBase() {
 		//super();
-		// pigeonMotor = new WPI_TalonSRX(RobotMap.PIGEON_IMU_MOTOR);
+		pigeonMotor = new WPI_TalonSRX(RobotMap.PIGEON_IMU_MOTOR);
 		leftFrontMotor = new WPI_TalonSRX(RobotMap.LEFT_FRONT_MOTOR);
 		rightFrontMotor = new WPI_TalonSRX(RobotMap.RIGHT_FRONT_MOTOR);
 		drive = new DifferentialDrive(leftFrontMotor, rightFrontMotor);	
@@ -48,7 +48,7 @@ public class DriveBase extends Subsystem {
 		// rightEncoder = new Encoder(RobotMap.ENCODER_RIGHTA,RobotMap.ENCODER_RIGHTB,false,EncodingType.k4X);
 		// leftEncoder.setDistancePerPulse(DistancePerPulse);
 		// rightEncoder.setDistancePerPulse(DistancePerPulse);
-		gyro = new PigeonIMU(leftFrontMotor);
+		gyro = new PigeonIMU(pigeonMotor);
 		gyro.setYaw(0);
 		//leftEncoder.setSamplesToAverage(1);
 		//rightEncoder.setSamplesToAverage(1);
@@ -200,6 +200,10 @@ public class DriveBase extends Subsystem {
 		resetDrive();
 	}
 
+	public void displayYaw(){
+		SmartDashboard.putNumber("Yaw", getYaw());
+	}
+
 	public void pigeonTurn(TurnDirection direction, double angle, double speed) { //somthing here isn't working
 		resetDrive();
 		double startingYaw = getYaw();
@@ -209,7 +213,7 @@ public class DriveBase extends Subsystem {
 		}
 		while(areDoneTurningPigeon(startingYaw, angle)) {
 			drive.tankDrive(flip*speed, flip*-speed);
-			SmartDashboard.putNumber("Yaw", getYaw());
+			displayYaw();
 	
 		}
 		resetDrive();

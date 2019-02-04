@@ -35,7 +35,7 @@ public class RobotMap {
 
   public static final int HATCH_PANEL =  7;
 
-  public static final int PIGEONIMU = 6;
+  public static final int PIGEON_IMU_MOTOR = 6;
 
   public static int ENCODER_LEFTA = 1;
 	public static int ENCODER_LEFTB = 2;

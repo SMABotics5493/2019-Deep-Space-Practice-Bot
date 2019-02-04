@@ -1,4 +1,7 @@
-/* driveForwardvalue / distance driven = difference factor
+/* 
+DRIVE FOR DISTANCE
+
+driveForwardvalue / distance driven = difference factor
 difference factor * distance driven inches = driveForwardvalue 
 
 5000 / 45in = 111.1
@@ -25,5 +28,42 @@ difference factor * distance driven inches = driveForwardvalue
     x3 = 33
 **************
 
+
+AUTOTURN
+
+y = start
+x = turn
+y +/- x = ~90 (hopefully)
+**************
+y1 = -162
+x1 = -285
+-162 - 90 = -252
+-252 /= 285
+overshooting = -33
+**************
+y2 = -25
+x2 = -141
+-25 - 90 = -115
+-115 /= -141
+overshooting = -26
+**************
+y3 = -140
+x3 = -257
+-140 - 90 = -230
+-230 /= -257
+overshooting: -27
+**************
+-27 + -26 + -33 = -86
+-86 / 3 = -28.6
+
+
+LOWERED SPEED RATE
+y1 = -85
+x1 = -186
+-85 - 90 = -175
+-175 /= -186
+overshooting = -11
+
+throttle_input = max_throttle_input*[1 - (stopping_angle - angle_from_target) / (stopping_angle) ]
 
 */
