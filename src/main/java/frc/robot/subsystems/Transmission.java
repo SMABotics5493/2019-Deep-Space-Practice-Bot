@@ -21,6 +21,5 @@ public class Transmission extends Subsystem {
   @Override
   public void initDefaultCommand() {
    transmissionSolenoid.set(DoubleSolenoid.Value.kOff);
-  }}
-
+  }
 }
