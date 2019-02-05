@@ -1,5 +1,5 @@
 
-/*package frc.robot.subsystems;
+package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
@@ -41,17 +41,3 @@ public class PIDTest extends PIDSubsystem {
 }
 
 
-// Julia Atempting Code (coppy and paste)
-
-
-package org.usfirst.frc190.{?}.subsytems;
-import edu.wpi.first.wpilibj.*;
-import edu.wpi.first.wpilibj.commmand.PIDSubsystem;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import org.usfirst.frc190.{?}.RobotMap;
-
-public class PIDTest extends PIDSubsystem {
-  motor = RobotMap.pidtestMotor;
-  
-}
-*/

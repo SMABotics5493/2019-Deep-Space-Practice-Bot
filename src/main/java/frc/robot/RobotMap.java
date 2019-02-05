@@ -35,6 +35,9 @@ public class RobotMap {
   public static final int SOLENOID_FORWARD = 0;
   public static final int SOLENOID_REVERSE = 1;
 
+  public static final int TRANSMISSION_FORWARD = 0;
+  public static final int TRANSMISSION_REVERSE = 1;
+
   public static final int HATCH_PANEL =  4;
   public static final int BALL_SHOOTER_LIFT = 8;
 

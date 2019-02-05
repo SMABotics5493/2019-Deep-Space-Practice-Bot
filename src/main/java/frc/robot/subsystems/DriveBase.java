@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.Encoder;
@@ -32,6 +33,7 @@ public class DriveBase extends Subsystem {
 	public static double arcLength;
 	public static double kp_straight = 0.25;
 	public static double kp_turn = 0.005;
+	public static double voltsPerSecond = 5.18;
 
   public DriveBase(){
     super();
@@ -49,6 +51,11 @@ public class DriveBase extends Subsystem {
     SpeedController leftSide = new SpeedControllerGroup(leftFrontMotor, leftBackMotor);
     SpeedController rightSide = new SpeedControllerGroup(rightFrontMotor, rightBackMotor);
 		drive = new DifferentialDrive(leftSide, rightSide);
+
+		leftFrontMotor.configOpenloopRamp(voltsPerSecond);
+		rightFrontMotor.configOpenloopRamp(voltsPerSecond);
+		leftFrontMotor.set(ControlMode.Follower, RobotMap.LEFT_BACK_MOTOR);
+		rightFrontMotor.set(ControlMode.Follower, RobotMap.RIGHT_BACK_MOTOR);
 		
 
     drive.setExpiration(0.1);
