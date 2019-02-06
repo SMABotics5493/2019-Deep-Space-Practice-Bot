@@ -23,7 +23,7 @@ public class DriveBase extends Subsystem {
   private DifferentialDrive drive;
 
   public Encoder leftEncoder;
-	public Encoder rightEncoder;
+  public Encoder rightEncoder;
   public static double PulsesPerRevolution = 360;  //Same as PPR for E4T
   public static double PI = 3.1415926;
 	public static double wheelDiameter = 8.25;  // in inches

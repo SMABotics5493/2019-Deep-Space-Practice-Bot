@@ -44,7 +44,12 @@ public class RobotMap {
   public static int ENCODER_LEFTA = 1;
 	public static int ENCODER_LEFTB = 2;
 	public static int ENCODER_RIGHTA = 5;
-	public static int ENCODER_RIGHTB = 6;
+  public static int ENCODER_RIGHTB = 6;
+  
+  public static final int ENCODER_HATCHA = 0;
+  public static final int ENCODER_HATCHB = 1;
+  public static final int ENCODER_BALL_SHOOTERA = 0;
+  public static final int ENCODER_BALL_SHOOTERB = 1;
 	
 
 }
