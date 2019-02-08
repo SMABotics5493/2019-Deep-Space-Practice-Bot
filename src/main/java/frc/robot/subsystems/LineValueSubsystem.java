@@ -13,9 +13,9 @@ public class LineValueSubsystem extends Subsystem {
 
 	public LineValueSubsystem() {
 		super();
-		linereadleft = new AnalogInput(RobotMap.LINE_TRACKER_LEFT);
-		linereadmiddle = new AnalogInput(RobotMap.LINE_TRACKER_MIDDLE);
-		linereadright = new AnalogInput(RobotMap.LINE_TRACKER_RIGHT);
+		ai = new AnalogInput(RobotMap.LINE_TRACKER_LEFT);
+		ai = new AnalogInput(RobotMap.LINE_TRACKER_MIDDLE);
+		ai = new AnalogInput(RobotMap.LINE_TRACKER_RIGHT);
 
 	}
 

@@ -1,11 +1,14 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.BallShooterIntake;
 import frc.robot.subsystems.BallShooter;
 import frc.robot.subsystems.DriveBase;
 import frc.robot.subsystems.HatchPanel;
@@ -16,6 +19,8 @@ public class Robot extends TimedRobot {
   public static BallShooter ballShooter;
   public static HatchPanel hatchPanel;
   //public static HatchSolenoid hatchSolenoid;
+  public static DigitalInput limitSwitch;
+  public static BallShooterIntake shooter;
   public static OI oi;
 public static LineValueSubsystem lineValueSubsystem;
 
@@ -28,11 +33,21 @@ public static LineValueSubsystem lineValueSubsystem;
     ballShooter = new BallShooter();
     hatchPanel = new HatchPanel();
     lineValueSubsystem = new LineValueSubsystem();
+    limitSwitch = new DigitalInput(1);
+    shooter = new BallShooterIntake();
     //hatchSolenoid = new HatchSolenoid();
     
     oi = new OI();
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
+  }
+
+  public void operatorControl() {
+
+    while (limitSwitch.get()) {
+      Timer.delay(10);
+
+    }
   }
 
   @Override

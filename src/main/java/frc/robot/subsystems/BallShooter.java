@@ -59,4 +59,14 @@ public class BallShooter extends Subsystem {
   public void initDefaultCommand() {
    
   }
+
+public static void shooterUp() {
+}
+
+public static boolean isSwitchSet() {
+	return false;
+}
+
+public static void shooterStop() {
+}
 }

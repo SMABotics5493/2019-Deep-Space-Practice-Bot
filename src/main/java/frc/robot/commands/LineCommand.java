@@ -25,7 +25,7 @@ public class LineCommand extends Command {
 
         initialize();
     }
-
+ 
     // Called just before this Command runs the first time
     protected void initialize() {
         DriverStation.reportError("lineread initialize", false);

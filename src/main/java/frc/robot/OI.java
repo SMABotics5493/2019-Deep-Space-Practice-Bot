@@ -14,7 +14,7 @@ import frc.robot.commands.Outtake;
 public class OI {
 
     private Joystick driveJoystick = new Joystick(RobotMap.DRIVE_JOYSTICK);
-    private Joystick joystick = new Joystick(RobotMap.JOYSTICK);
+    public Joystick joystick = new Joystick(RobotMap.JOYSTICK);
 
     JoystickButton ballIntake = new JoystickButton(driveJoystick, RobotMap.JOYB_LB);
     JoystickButton ballOuttake = new JoystickButton(driveJoystick, RobotMap.JOYB_RB);
@@ -24,6 +24,7 @@ public class OI {
     JoystickButton hatchMotorReverse = new JoystickButton(driveJoystick, RobotMap.JOYB_X);
     JoystickButton lineCommand = new JoystickButton(driveJoystick, RobotMap.JOYB_A);
     JoystickButton LineDrive = new JoystickButton(driveJoystick, RobotMap.JOYB_B);
+    
 
 
     public Joystick getDriveJoystick() {
