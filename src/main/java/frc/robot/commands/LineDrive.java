@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class LineDrive extends Command {
+  
   public LineDrive() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -26,10 +27,10 @@ public class LineDrive extends Command {
   @Override
   protected void execute() {
     Robot.driveBase.reset();
-        if (Robot.lineValueSubsystem.getLineValue() >= Robot.lineValueSubsystem.getStopColor()) {
+        if (Robot.lineValueSubsystem.getAverageValue() >= Robot.lineValueSubsystem.getStopColor()) {
             Robot.driveBase.drive(.44, .44);
         }
-              if (Robot.lineValueSubsystem.getLineValue() <= Robot.lineValueSubsystem.getCarpetColor()) {
+              if (Robot.lineValueSubsystem.getAverageValue() <= Robot.lineValueSubsystem.getCarpetColor()) {
             Robot.driveBase.drive(0, 0);
              Robot.driveBase.reset();     
             }

@@ -7,10 +7,12 @@ import frc.robot.RobotMap;
 
 public class LineValueSubsystem extends Subsystem {
 
-	private AnalogInput ai;
+	private AnalogInput linereadleft;
+	private AnalogInput linereadmiddle;
+	private AnalogInput linereadright;
 	public static double carpetColor = 3600;
 	public static double stopColor = 3700;
-
+	public static AverageValue = (linereadleft + linereadmiddle + linereadright)/3;
 	public LineValueSubsystem() {
 		super();
 		linereadleft = new AnalogInput(RobotMap.LINE_TRACKER_LEFT);
@@ -31,18 +33,25 @@ public class LineValueSubsystem extends Subsystem {
 	}
 
 	public void initDefaultCommand() {
-		SmartDashboard.putNumber("Starting ai", ai.getValue());
+		SmartDashboard.putNumber("Starting linereadleft", linereadleft.getValue());
+		SmartDashboard.putNumber("Starting linereadmiddle", linereadmiddle.getValue());
+		SmartDashboard.putNumber("Starting linereadright", linereadright.getValue());
 		
 		reset();
 	}
 
 	public void writeValue() {
-		SmartDashboard.putNumber("Running ai", ai.getValue());
-
+		SmartDashboard.putNumber("Starting linereadleft", linereadleft.getValue());
+		SmartDashboard.putNumber("Starting linereadmiddle", linereadmiddle.getValue());
+		SmartDashboard.putNumber("Starting linereadright", linereadright.getValue());
+		
 	}
 
 	public double getLineValue(){
-		double number = ai.getValue();
+		double number = linereadleft.getValue();
+		double number = linereadmiddle.getValue();
+		double number = linereadright.getValue();
+
 		return number;
 	}
 }
