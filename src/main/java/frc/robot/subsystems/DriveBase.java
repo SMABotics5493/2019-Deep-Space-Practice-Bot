@@ -1,5 +1,9 @@
 package frc.robot.subsystems;
 
+import java.sql.Time;
+import java.time.LocalDateTime;
+
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.sensors.PigeonIMU;
 
@@ -22,7 +26,7 @@ public class DriveBase extends Subsystem {
 	WPI_TalonSRX leftFrontMotor;
 	WPI_TalonSRX rightFrontMotor;
 	WPI_TalonSRX pigeonMotor;
-	private DifferentialDrive drive;
+	public DifferentialDrive drive;
 	// public Encoder leftEncoder = null;
 	// public Encoder rightEncoder = null;
 	public static double PulsesPerRevolution = 360; // Same as PPR for E4T
@@ -34,8 +38,7 @@ public class DriveBase extends Subsystem {
 	public static double kp_straight = 0.25;
 	public static double kp_turn = 0.005;
 	public static double StopItNow = 0.5;
-	public static double turboSpeed = 0.6;
-	public static double RoadWorkAhead = 20;
+	public static double RoadWorkAhead = 45;
 	public PigeonIMU gyro;
 	
 	@SuppressWarnings("deprecation")
@@ -89,24 +92,37 @@ public class DriveBase extends Subsystem {
 
 	public void pigeonTurn2(TurnDirection direction, double angle, double speed) { 
 		resetDrive();
+		// leftFrontMotor.setNeutralMode(NeutralMode.Brake);
+		// rightFrontMotor.setNeutralMode(NeutralMode.Brake);
+
+		gyro.setYaw(0);
 		double startingYaw = getYaw();
-		
 		int flip = 1;
 		if (TurnDirection.left == direction){
-			flip = flip*-1;
+			flip = -1;
 		}
 
-		double targetAngle = startingYaw - flip*angle;
+		// double targetAngle = startingYaw - flip*angle;
+		double remainingDegrees = angle;
+		double currentSpeed = speed;
+		// while(remainingDegrees > 0){
+		
+		//(areDoneTurningPigeon2(startingYaw, targetAngle)) {
+		// 	if(remainingDegrees < RoadWorkAhead){
+		// // currentSpeed = Math.max(0.1, speed * (remainingDegrees / (RoadWorkAhead)));
+		// currentSpeed = 0.33;
+		// 	}
+		// 	SmartDashboard.putNumber("deBugSpeed", currentSpeed);
+		// 	SmartDashboard.putString("loopTime", LocalDateTime.now().toString());
+		// 	drive.tankDrive(flip*currentSpeed, flip*-currentSpeed);
+		// 	 displayYaw();
+		// 	remainingDegrees = angle + getYaw()*flip;
+		// 	SmartDashboard.putNumber("remainingDegrees", remainingDegrees);
 
-		while(areDoneTurningPigeon2(startingYaw, targetAngle)) {
-			if(Math.abs(getYaw() - angle) < RoadWorkAhead){
-				speed = turboSpeed*(1 - (RoadWorkAhead - getYaw() / (RoadWorkAhead)));
-			}
-			SmartDashboard.putNumber("deBugSpeed", speed);
-			drive.tankDrive(flip*speed, flip*-speed);
-			displayYaw();
-		}
-		resetDrive();
+		//  }
+		//  leftFrontMotor.setNeutralMode(NeutralMode.Coast);
+		//  rightFrontMotor.setNeutralMode(NeutralMode.Coast); 
+		//  resetDrive();
 	}
 
 	public void drive(Joystick j) {
