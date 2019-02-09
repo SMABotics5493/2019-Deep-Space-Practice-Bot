@@ -16,6 +16,7 @@ public class BallLiftDown extends Command {
 
   @Override
   protected void initialize() {
+    Robot.ballLift.initializeCounter();
   }
 
   @Override
@@ -27,8 +28,9 @@ public class BallLiftDown extends Command {
 
   @Override
   protected boolean isFinished() {
-    return buttonMonitor.checkButtonState() == ButtonMonitor.ButtonState.Inactive;
-  }
+  //return buttonMonitor.checkButtonState() == ButtonMonitor.ButtonState.Inactive; 
+   return Robot.ballLift.isSwitchSet();
+}
 
   @Override
   protected void end() {
