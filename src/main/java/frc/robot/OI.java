@@ -47,8 +47,8 @@ public class OI {
       // ballOuttake.whileHeld(new Outtake());
       // hatchMotorForward.whileHeld(new HatchMotorForward());
       // hatchMotorReverse.whileHeld(new HatchMotorReverse());
-      turnButton.whenPressed(new AutoTurn());
-      turnCorrect.whenPressed(new AutoTurn1());
+      turnButton.whenPressed(new AutoTurn1(-45));
+      turnCorrect.whenPressed(new AutoTurn1(90));
       driveForward.whenPressed(new DriveForDistance());
       //  driveTurn.whenPressed(new Auto_StraightTurn());
 
