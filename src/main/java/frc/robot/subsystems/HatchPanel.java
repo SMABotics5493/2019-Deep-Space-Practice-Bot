@@ -18,7 +18,7 @@ public class HatchPanel extends Subsystem {
   public HatchPanel() {
     super();
     hatchPanelMotor = new WPI_TalonSRX(RobotMap.HATCH_PANEL);
-    hatchEncoder = new Encoder(RobotMap.ENCODER_HATCHA,RobotMap.ENCODER_HATCHB, true, EncodingType.k4X);
+    //hatchEncoder = new Encoder(RobotMap.ENCODER_HATCHA,RobotMap.ENCODER_HATCHB, true, EncodingType.k4X);
   }
 
   public void hatchForward(){

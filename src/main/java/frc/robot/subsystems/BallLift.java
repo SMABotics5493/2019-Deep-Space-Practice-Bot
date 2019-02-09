@@ -20,8 +20,8 @@ public class BallLift extends Subsystem {
     super();
 
     ballLiftMotor = new WPI_TalonSRX(RobotMap.BALL_SHOOTER_LIFT);
-    ballEncoder = new Encoder(RobotMap.ENCODER_BALL_SHOOTERA,RobotMap.ENCODER_BALL_SHOOTERB, true, EncodingType.k4X);
-    limitSwitch = new DigitalInput(1);
+    //ballEncoder = new Encoder(RobotMap.ENCODER_BALL_SHOOTERA,RobotMap.ENCODER_BALL_SHOOTERB, true, EncodingType.k4X);
+   // limitSwitch = new DigitalInput(1);
   }
 
   public void liftUp(){

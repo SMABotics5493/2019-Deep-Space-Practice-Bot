@@ -15,8 +15,8 @@ public class RobotMap {
 	public static final int JOYB_LT = 7;
   public static final int JOYB_RT = 8;
   
-  public static final int RIGHTYAXIS = 5;
-  public static final int LEFTYAXIS = 1;
+  public static final int RIGHTYAXIS = 1;
+  public static final int LEFTYAXIS = 5;
 
   public static final int RIGHTTRIGGER = 3;
   public static final int LEFTTRIGGER = 2; 
@@ -46,10 +46,10 @@ public class RobotMap {
 	public static int ENCODER_RIGHTA = 5;
   public static int ENCODER_RIGHTB = 6;
   
-  public static final int ENCODER_HATCHA = 0;
+ /* public static final int ENCODER_HATCHA = 0;
   public static final int ENCODER_HATCHB = 1;
   public static final int ENCODER_BALL_SHOOTERA = 0;
-  public static final int ENCODER_BALL_SHOOTERB = 1;
+  public static final int ENCODER_BALL_SHOOTERB = 1;*/
 	
 
 }
