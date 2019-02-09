@@ -35,7 +35,7 @@ public class DriveBase extends Subsystem {
 	public static double kp_turn = 0.005;
 	public static double StopItNow = 0.5;
 	public static double turboSpeed = 0.6;
-	public static double RoadWorkAhead = 10;
+	public static double RoadWorkAhead = 20;
 	public PigeonIMU gyro;
 	
 	@SuppressWarnings("deprecation")
@@ -90,16 +90,19 @@ public class DriveBase extends Subsystem {
 	public void pigeonTurn2(TurnDirection direction, double angle, double speed) { 
 		resetDrive();
 		double startingYaw = getYaw();
+		
 		int flip = 1;
 		if (TurnDirection.left == direction){
 			flip = flip*-1;
 		}
-		
-		
-		while(areDoneTurningPigeon2(startingYaw, angle)) {
+
+		double targetAngle = startingYaw - flip*angle;
+
+		while(areDoneTurningPigeon2(startingYaw, targetAngle)) {
 			if(Math.abs(getYaw() - angle) < RoadWorkAhead){
 				speed = turboSpeed*(1 - (RoadWorkAhead - getYaw() / (RoadWorkAhead)));
 			}
+			SmartDashboard.putNumber("deBugSpeed", speed);
 			drive.tankDrive(flip*speed, flip*-speed);
 			displayYaw();
 		}
@@ -161,19 +164,20 @@ public class DriveBase extends Subsystem {
 		SmartDashboard.putNumber("Right Distance", rightFrontMotor.getSelectedSensorPosition());
 	}
 
-	private boolean areDoneTurningPigeon2(double startingYaw, double angle) {
-		if(Math.abs(getYaw()-angle)< StopItNow) {
+	private boolean areDoneTurningPigeon2(double startingYaw, double targetAngle) {
+		SmartDashboard.putNumber("deBugDoneTurn", (Math.abs(getYaw()-targetAngle)-StopItNow));
+		if(Math.abs(getYaw()-targetAngle)< StopItNow) {
+		return false;
+		}
+		return true;
+	}
+	
+	private boolean areDoneTurningPigeon(double startingYaw, double angle) {
+		if(Math.abs(getYaw()-startingYaw)< angle) {
 		return true;
 		}
 		return false;
 	}
-	
-	// private boolean areDoneTurningPigeon(double startingYaw, double angle) {
-	// 	if(Math.abs(getYaw()-startingYaw)< angle) {
-	// 	return true;
-	// 	}
-	// 	return false;
-	// }
 
 
 	private boolean areDoneTurningLeft(double leftSide, TurnDirection direction) {
@@ -189,20 +193,6 @@ public class DriveBase extends Subsystem {
 		}
 		return rightFrontMotor.getSelectedSensorPosition() <= rightSide;
 	}
-
-	// private boolean areDoneTurningPigeon(double startingYaw, double angle) {
-	// 	if(Math.abs(getYaw()-startingYaw)< angle) {
-	// 	return true;
-	// 	}
-	// 	return false;
-	// }
-
-	// private boolean areDoneTurningPigeon(double startingYaw, double angle) {
-	// 	if(Math.abs(getYaw()-startingYaw)< angle) {
-	// 	return true;
-	// 	}
-	// 	return false;
-	// }
 
 	public double getYaw() {
 		double ypr[] = new double[3];
@@ -262,20 +252,20 @@ public class DriveBase extends Subsystem {
 		SmartDashboard.putNumber("Yaw", getYaw());
 	}
 
-	// public void pigeonTurn(TurnDirection direction, double angle, double speed) { //somthing here isn't working
-	// 	resetDrive();
-	// 	double startingYaw = getYaw();
-	// 	int flip = 1;
-	// 	if (TurnDirection.left == direction){
-	// 		flip = flip*-1;
-	// 	}
-	// 	while(areDoneTurningPigeon(startingYaw, angle)) {
-	// 		drive.tankDrive(flip*speed, flip*-speed);
-	// 		displayYaw();
+	public void pigeonTurn(TurnDirection direction, double angle, double speed) { //somthing here isn't working
+		resetDrive();
+		double startingYaw = getYaw();
+		int flip = 1;
+		if (TurnDirection.left == direction){
+			flip = flip*-1;
+		}
+		while(areDoneTurningPigeon(startingYaw, angle)) {
+			drive.tankDrive(flip*speed, flip*-speed);
+			displayYaw();
 	
-	// 	}
-	// 	resetDrive();
-	// }
+		}
+		resetDrive();
+	}
 
 
 	

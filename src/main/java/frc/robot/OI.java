@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 // import frc.robot.commands.Intake;
 // import frc.robot.commands.Outtake;
 // import frc.robot.commands.AutoTurn;
+import frc.robot.commands.AutoTurn;
 import frc.robot.commands.AutoTurn1;
 import frc.robot.commands.DriveForDistance;
 //import frc.robot.commands.Auto_StraightTurn;
@@ -46,7 +47,7 @@ public class OI {
       // ballOuttake.whileHeld(new Outtake());
       // hatchMotorForward.whileHeld(new HatchMotorForward());
       // hatchMotorReverse.whileHeld(new HatchMotorReverse());
-      // turnButton.whenPressed(new AutoTurn());
+      turnButton.whenPressed(new AutoTurn());
       turnCorrect.whenPressed(new AutoTurn1());
       driveForward.whenPressed(new DriveForDistance());
       //  driveTurn.whenPressed(new Auto_StraightTurn());
