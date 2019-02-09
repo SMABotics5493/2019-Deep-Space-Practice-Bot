@@ -7,8 +7,8 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 // import frc.robot.commands.Intake;
 // import frc.robot.commands.Outtake;
 // import frc.robot.commands.AutoTurn;
-import frc.robot.commands.AutoTurn;
 import frc.robot.commands.AutoTurn1;
+import frc.robot.commands.Auto_StraightTurn;
 import frc.robot.commands.DriveForDistance;
 //import frc.robot.commands.Auto_StraightTurn;
 //import frc.robot.commands.SolenoidForward;
@@ -29,8 +29,7 @@ public class OI {
     JoystickButton turnButton = new JoystickButton(driveJoystick, RobotMap.JOYB_B);
     JoystickButton driveForward = new JoystickButton(driveJoystick, RobotMap.JOYB_A);
     JoystickButton turnCorrect = new JoystickButton(driveJoystick, RobotMap.JOYB_X);
-
-    // JoystickButton driveTurn = new JoystickButton(driveJoystick, RobotMap.JOYB_RT);
+    JoystickButton driveTurn = new JoystickButton(driveJoystick, RobotMap.JOYB_RB);
 
 
     public Joystick getDriveJoystick() {
@@ -47,10 +46,10 @@ public class OI {
       // ballOuttake.whileHeld(new Outtake());
       // hatchMotorForward.whileHeld(new HatchMotorForward());
       // hatchMotorReverse.whileHeld(new HatchMotorReverse());
-      turnButton.whenPressed(new AutoTurn1(-45));
+      turnButton.whenPressed(new AutoTurn1(45));
       turnCorrect.whenPressed(new AutoTurn1(90));
-      driveForward.whenPressed(new DriveForDistance());
-      //  driveTurn.whenPressed(new Auto_StraightTurn());
+      driveForward.whenPressed(new DriveForDistance(36));
+      driveTurn.whenPressed(new Auto_StraightTurn());
 
       // solenoidForward.whileHeld(new SolenoidForward());
       // solenoidReverse.whileHeld(new SolenoidReverse());

@@ -7,8 +7,10 @@ import frc.robot.Robot;
 public class DriveForDistance extends Command {
     private boolean isFinished = true;
 
-    public DriveForDistance() {
-        requires(Robot.driveBase);
+    double targetDistance;
+    public DriveForDistance(double targetDistance) {
+        requires (Robot.driveBase);
+        this.targetDistance = targetDistance;
     }
 
     // Called just before this Command runs the first time
@@ -18,7 +20,7 @@ public class DriveForDistance extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         isFinished = false;
-        Robot.driveBase.driveForward(36,.5); //Hardcoded distance value and speed value
+        Robot.driveBase.driveForward(targetDistance,.5); //Hardcoded distance value and speed value
         isFinished = true;
     }
 

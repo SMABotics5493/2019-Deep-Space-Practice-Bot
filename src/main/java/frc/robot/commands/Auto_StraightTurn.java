@@ -9,9 +9,8 @@ public class Auto_StraightTurn extends CommandGroup {
 
     public Auto_StraightTurn() {
     	requires(Robot.driveBase);
-        addSequential(new DriveForDistance());
+        addSequential(new DriveForDistance(24));
         addSequential(new AutoTurn1(90));
-
 
 
     // these will run in order.

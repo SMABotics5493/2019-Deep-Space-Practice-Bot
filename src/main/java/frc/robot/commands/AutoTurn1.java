@@ -13,10 +13,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class AutoTurn1 extends Command {
     // private boolean isFinished = true;
-    public double targetAngle;
+    double targetAngle;
     public AutoTurn1(double targetAngle) {
-    	requires (Robot.driveBase);
+        requires (Robot.driveBase);
+        this.targetAngle = targetAngle;
     }
+
 
     private double slowangle = Parameters.SLOWANGLE;
     private double slowspeed = Parameters.SLOWSPEED;
@@ -40,7 +42,8 @@ public class AutoTurn1 extends Command {
                 SmartDashboard.putString("loopTime", LocalDateTime.now().toString());
                 Robot.driveBase.drive.tankDrive(currentSpeed, -currentSpeed);
                  Robot.driveBase.displayYaw();
-    
+                 SmartDashboard.putNumber("targetAngle", targetAngle);
+
     }
 
     // Make this return true when this Command no longer needs to run execute()

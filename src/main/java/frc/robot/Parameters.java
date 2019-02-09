@@ -2,7 +2,7 @@ package frc.robot;
 
 
 public class Parameters {
-    public static final int SLOWANGLE = 45;
+    public static final int SLOWANGLE = 30;
     public static final double SLOWSPEED = 0.34;
     public static final double MAXSPEED = 0.6;
 
