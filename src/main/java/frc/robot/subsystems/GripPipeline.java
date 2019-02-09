@@ -1,4 +1,4 @@
-package org.usfirst.frc.team3493.subsystems
+package frc.robot.subsystems;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -23,7 +23,7 @@ import org.opencv.objdetect.*;
 *
 * @author GRIP
 */
-public class GripPipelinePublish {
+public class GripPipeline {
 
 	//Outputs
 
