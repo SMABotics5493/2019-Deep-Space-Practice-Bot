@@ -19,7 +19,8 @@ public class DriveBase extends Subsystem {
   WPI_TalonSRX leftFrontMotor;
   WPI_TalonSRX rightFrontMotor;
   WPI_TalonSRX leftBackMotor;
-  WPI_TalonSRX rightBackMotor;
+	WPI_TalonSRX rightBackMotor;
+	WPI_TalonSRX talonTachMotor;
   private DifferentialDrive drive;
 
   public Encoder leftEncoder;
@@ -40,7 +41,8 @@ public class DriveBase extends Subsystem {
     leftFrontMotor = new WPI_TalonSRX(RobotMap.LEFT_FRONT_MOTOR);
     rightFrontMotor = new WPI_TalonSRX(RobotMap.RIGHT_FRONT_MOTOR);
     leftBackMotor = new WPI_TalonSRX(RobotMap.LEFT_BACK_MOTOR);
-    rightBackMotor = new WPI_TalonSRX(RobotMap.RIGHT_BACK_MOTOR);
+		rightBackMotor = new WPI_TalonSRX(RobotMap.RIGHT_BACK_MOTOR);
+		talonTachMotor = new WPI_TalonSRX(RobotMap.TALON_TACH_MOTOR);
 
     leftEncoder = new Encoder(RobotMap.ENCODER_LEFTA,RobotMap.ENCODER_LEFTB,true, EncodingType.k4X);
 		rightEncoder = new Encoder(RobotMap.ENCODER_RIGHTA,RobotMap.ENCODER_RIGHTB,false,EncodingType.k4X);

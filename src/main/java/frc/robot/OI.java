@@ -20,6 +20,7 @@ public class OI {
     //JoystickButton solenoidReverse = new JoystickButton(joystick, RobotMap.JOYB_B);
     JoystickButton hatchMotorForward = new JoystickButton(joystick, RobotMap.JOYB_Y);
     JoystickButton hatchMotorReverse = new JoystickButton(joystick, RobotMap.JOYB_X);
+    JoystickButton talonTachMotor = new JostickButton(joystick, RobotMap.JOYB_A);
 
     public Joystick getDriveJoystick() {
       return driveJoystick;
