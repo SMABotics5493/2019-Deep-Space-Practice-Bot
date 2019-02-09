@@ -10,7 +10,6 @@ import frc.robot.RobotMap;
 
 public class BallShooter extends Subsystem {
 
-  public static final String ballLiftMotor = null;
   private WPI_TalonSRX ballShooterLeft;
   private WPI_TalonSRX ballShooterRight;
 
