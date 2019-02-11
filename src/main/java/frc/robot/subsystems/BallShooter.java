@@ -21,8 +21,8 @@ public class BallShooter extends Subsystem {
   }
 
   public void intake(){
-    Robot.ballShooter.ballShooterLeft.set(0.7);
-    Robot.ballShooter.ballShooterRight.set(-0.7);
+    Robot.ballShooter.ballShooterLeft.set(0.4);
+    Robot.ballShooter.ballShooterRight.set(-0.4);
   }
 
   public void outtake(){
