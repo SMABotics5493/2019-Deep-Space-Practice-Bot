@@ -30,7 +30,7 @@ public class HatchPanel extends Subsystem {
   }
 
   public void end(){
-    Robot.hatchPanel.hatchPanelMotor.set(0.05);
+    Robot.hatchPanel.hatchPanelMotor.set(0.0);
   }
   public void hatchValue() {
 		reset();
