@@ -18,11 +18,11 @@ public class HatchPanel extends Subsystem {
   public HatchPanel() {
     super();
     hatchPanelMotor = new WPI_TalonSRX(RobotMap.HATCH_PANEL);
-    hatchEncoder = new Encoder(RobotMap.ENCODER_HATCHA,RobotMap.ENCODER_HATCHB, true, EncodingType.k4X);
+    //hatchEncoder = new Encoder(RobotMap.ENCODER_HATCHA,RobotMap.ENCODER_HATCHB, true, EncodingType.k4X);
   }
 
   public void hatchForward(){
-    Robot.hatchPanel.hatchPanelMotor.set(1.0);
+    Robot.hatchPanel.hatchPanelMotor.set(0.5);
   }
 
   public void hatchReverse() {
@@ -30,7 +30,7 @@ public class HatchPanel extends Subsystem {
   }
 
   public void end(){
-    Robot.hatchPanel.hatchPanelMotor.set(0.05);
+    Robot.hatchPanel.hatchPanelMotor.set(0.0);
   }
   public void hatchValue() {
 		reset();

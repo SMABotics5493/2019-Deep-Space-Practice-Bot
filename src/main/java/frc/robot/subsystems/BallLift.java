@@ -22,18 +22,18 @@ public class BallLift extends Subsystem {
     super();
 
     ballLiftMotor = new WPI_TalonSRX(RobotMap.BALL_SHOOTER_LIFT);
-    ballEncoder = new Encoder(RobotMap.ENCODER_BALL_SHOOTERA,RobotMap.ENCODER_BALL_SHOOTERB, true, EncodingType.k4X);
-    limitSwitch = new DigitalInput(1);
-    counter = new Counter(limitSwitch);
+    //ballEncoder = new Encoder(RobotMap.ENCODER_BALL_SHOOTERA,RobotMap.ENCODER_BALL_SHOOTERB, true, EncodingType.k4X);
+   // limitSwitch = new DigitalInput(1);
+   // counter = new Counter(limitSwitch);
   }
 
-  public boolean isSwitchSet() {
+ /* public boolean isSwitchSet() {
     return counter.get() > 0;
   }
 
   public void initializeCounter() {
     counter.reset();
-  }
+  }*/
 
   public void liftUp(){
     Robot.ballLift.ballLiftMotor.set(1.0);
