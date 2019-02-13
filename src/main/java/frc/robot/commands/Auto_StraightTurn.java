@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class Auto_StraightTurn extends CommandGroup {
 
     public Auto_StraightTurn() {
-    	requires(Robot.driveBase);
-        addSequential(new DriveForDistance(24));
-        addSequential(new AutoTurn1(90));
+        requires(Robot.driveBase);
+        addSequential(new autoDriveForward(24));
+        addSequential(new turnRight(90));
 
 
     // these will run in order.

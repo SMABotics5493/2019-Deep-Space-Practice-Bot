@@ -4,17 +4,20 @@ import edu.wpi.first.wpilibj.command.Command;
 
 import frc.robot.Robot;
 
-public class DriveForDistance extends Command {
+public class autoDriveForward extends Command {
+
     private boolean isFinished = true;
 
+    
     double targetDistance;
-    public DriveForDistance(double targetDistance) {
+    public autoDriveForward(double targetDistance) {
         requires (Robot.driveBase);
         this.targetDistance = targetDistance;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        SmartDashboard.putString("driveStartTime", LocalDateTime.now().toString());
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -24,6 +27,21 @@ public class DriveForDistance extends Command {
         isFinished = true;
     }
 
+	public void driveForward() {
+        double distance = targetDistance * 111.1
+
+
+		resetDrive();
+        resetEncoders();
+        
+		while(getAverageEncoderPosition() < driveMath(distance)){
+            SmartDashboard.putString("driveLoopTime", LocalDateTime.now().toString());
+
+		} 
+		
+	}
+
+
         // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return isFinished;
@@ -31,10 +49,14 @@ public class DriveForDistance extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+        SmartDashboard.putString("driveEndTime", LocalDateTime.now().toString());
+
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+        SmartDashboard.putString("driveInterruptedTime", LocalDateTime.now().toString());
+
     }
 }

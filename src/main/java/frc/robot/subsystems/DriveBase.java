@@ -90,41 +90,6 @@ public class DriveBase extends Subsystem {
 // }
 
 
-	public void pigeonTurn2(TurnDirection direction, double angle, double speed) { 
-		resetDrive();
-		// leftFrontMotor.setNeutralMode(NeutralMode.Brake);
-		// rightFrontMotor.setNeutralMode(NeutralMode.Brake);
-
-		gyro.setYaw(0);
-		double startingYaw = getYaw();
-		int flip = 1;
-		if (TurnDirection.left == direction){
-			flip = -1;
-		}
-
-		// double targetAngle = startingYaw - flip*angle;
-		double remainingDegrees = angle;
-		double currentSpeed = speed;
-		// while(remainingDegrees > 0){
-		
-		//(areDoneTurningPigeon2(startingYaw, targetAngle)) {
-		// 	if(remainingDegrees < RoadWorkAhead){
-		// // currentSpeed = Math.max(0.1, speed * (remainingDegrees / (RoadWorkAhead)));
-		// currentSpeed = 0.33;
-		// 	}
-		// 	SmartDashboard.putNumber("deBugSpeed", currentSpeed);
-		// 	SmartDashboard.putString("loopTime", LocalDateTime.now().toString());
-		// 	drive.tankDrive(flip*currentSpeed, flip*-currentSpeed);
-		// 	 displayYaw();
-		// 	remainingDegrees = angle + getYaw()*flip;
-		// 	SmartDashboard.putNumber("remainingDegrees", remainingDegrees);
-
-		//  }
-		//  leftFrontMotor.setNeutralMode(NeutralMode.Coast);
-		//  rightFrontMotor.setNeutralMode(NeutralMode.Coast); 
-		//  resetDrive();
-	}
-
 	public void drive(Joystick j) {
 		drive(j.getRawAxis(RobotMap.LEFTYAXIS), j.getRawAxis(RobotMap.RIGHTYAXIS));
 	}
@@ -155,60 +120,19 @@ public class DriveBase extends Subsystem {
 		
 	}
 
-	public double driveMath(double distance){
-		return distance * 111.1;
-	}
+	// public double driveMath(double distance){
+	// 	return distance * 111.1;
+	// }
 
-	private double getAverageEncoderPosition()  {
+	public double getAverageEncoderPosition()  {
 		return (-leftFrontMotor.getSelectedSensorPosition() + rightFrontMotor.getSelectedSensorPosition())/2;
 	}
-	// public void turnRight() {
-	// 	resetDrive();
-	// 	resetEncoders();
-	// 	arcLength = (PI/2)*wheelBase;
-	// 	while(lef//tFrontMotor.getSelectedSensorPosition() >= -arcLength/2) {
-	// 		drive.tankDrive(0.6, -0.6);
-	// 		SmartDashboard.putNumber("Left Distance", leftFrontMotor.getSelectedSensorPosition());
-	// 		SmartDashboard.putNumber("Right Distance", rightFrontMotor.getSelectedSensorPosition());
-	
-	// 	}
-	// 	resetDrive();
-	// }
 
 	public void displayEncoders(){
 		SmartDashboard.putNumber("Left Distance", leftFrontMotor.getSelectedSensorPosition());
 		SmartDashboard.putNumber("Right Distance", rightFrontMotor.getSelectedSensorPosition());
 	}
 
-	private boolean areDoneTurningPigeon2(double startingYaw, double targetAngle) {
-		SmartDashboard.putNumber("deBugDoneTurn", (Math.abs(getYaw()-targetAngle)-StopItNow));
-		if(Math.abs(getYaw()-targetAngle)< StopItNow) {
-		return false;
-		}
-		return true;
-	}
-	
-	private boolean areDoneTurningPigeon(double startingYaw, double angle) {
-		if(Math.abs(getYaw()-startingYaw)< angle) {
-		return true;
-		}
-		return false;
-	}
-
-
-	private boolean areDoneTurningLeft(double leftSide, TurnDirection direction) {
-		if(TurnDirection.left == direction) {
-		return leftFrontMotor.getSelectedSensorPosition() <= leftSide;
-		}
-		return leftFrontMotor.getSelectedSensorPosition() >= leftSide;
-	}
-
-	private boolean areDoneTurningRight(double rightSide, TurnDirection direction) {
-		if(TurnDirection.right == direction) {
-		return rightFrontMotor.getSelectedSensorPosition() >= rightSide;
-		}
-		return rightFrontMotor.getSelectedSensorPosition() <= rightSide;
-	}
 
 	public double getYaw() {
 		double ypr[] = new double[3];
@@ -266,21 +190,6 @@ public class DriveBase extends Subsystem {
 
 	public void displayYaw(){
 		SmartDashboard.putNumber("Yaw", getYaw());
-	}
-
-	public void pigeonTurn(TurnDirection direction, double angle, double speed) { //somthing here isn't working
-		resetDrive();
-		double startingYaw = getYaw();
-		int flip = 1;
-		if (TurnDirection.left == direction){
-			flip = flip*-1;
-		}
-		while(areDoneTurningPigeon(startingYaw, angle)) {
-			drive.tankDrive(flip*speed, flip*-speed);
-			displayYaw();
-	
-		}
-		resetDrive();
 	}
 
 
