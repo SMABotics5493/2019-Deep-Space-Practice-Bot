@@ -42,7 +42,7 @@ public class BallLift extends Subsystem {
     Robot.ballLift.ballLiftMotor.set(-0.5);
   }
   public void end(){
-    Robot.ballLift.ballLiftMotor.set(0.05);
+    Robot.ballLift.ballLiftMotor.set(0.0);
   }
   public void ballValue() {
 		reset();
