@@ -1,8 +1,14 @@
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-
 import frc.robot.Robot;
+import frc.robot.subsystems.DriveBase;
+import frc.robot.utilities.TurnDirection;
+import frc.robot.Parameters;
+
+import java.time.LocalDateTime;
+
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class autoDriveForward extends Command {
 
@@ -27,18 +33,22 @@ public class autoDriveForward extends Command {
         isFinished = true;
     }
 
-	public void driveForward() {
-        double distance = targetDistance * 111.1
+        public void driveForward(double distance,double speed) {
+            resetDrive();
+            resetEncoders();
+            while(getAverageEncoderPosition() < driveMath(distance)){
+                drive.tankDrive(speed,speed); // left, right 
+                SmartDashboard.putNumber("Left Distance", leftFrontMotor.getSelectedSensorPosition());
+                SmartDashboard.putNumber("Right Distance", rightFrontMotor.getSelectedSensorPosition());
+                //SmartDashboard.putNumber("Right Raw Count", rightEncoder.getRaw());
+                //SmartDashboard.putNumber("Left Raw Count", leftEncoder.getRaw());
+                SmartDashboard.putNumber("Average Encoder Position", getAverageEncoderPosition());
+                //SmartDashboard.putNumber("Angle", gyro.getAngle());
+            } 
+            resetDrive();
+            
+	}
 
-
-		resetDrive();
-        resetEncoders();
-        
-		while(getAverageEncoderPosition() < driveMath(distance)){
-            SmartDashboard.putString("driveLoopTime", LocalDateTime.now().toString());
-
-		} 
-		
 	}
 
 
