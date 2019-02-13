@@ -1,8 +1,6 @@
 package frc.robot.commands;
 
 import frc.robot.Robot;
-import frc.robot.subsystems.DriveBase;
-import frc.robot.utilities.TurnDirection;
 import frc.robot.Parameters;
 
 import java.time.LocalDateTime;
@@ -18,7 +16,6 @@ public class autoTurnLeft extends Command {
         requires (Robot.driveBase);
         this.targetAngle = targetAngle;
     }
-
 
     private double slowangle = Parameters.SLOWANGLE;
     private double slowspeed = Parameters.SLOWSPEED;
