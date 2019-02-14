@@ -1,14 +1,11 @@
 package frc.robot.commands;
 
-import frc.robot.Robot;
-import frc.robot.subsystems.DriveBase;
-import frc.robot.utilities.TurnDirection;
-import frc.robot.Parameters;
-
 import java.time.LocalDateTime;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.Parameters;
+import frc.robot.Robot;
 
 
 public class autoTurnLeft extends Command {
@@ -44,8 +41,6 @@ public class autoTurnLeft extends Command {
                  Robot.driveBase.displayYaw();
                  SmartDashboard.putNumber("targetAngle", targetAngle);
 
-    }
-        
     }
 
     // Make this return true when this Command no longer needs to run execute()
