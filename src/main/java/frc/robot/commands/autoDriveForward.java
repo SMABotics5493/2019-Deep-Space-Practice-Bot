@@ -16,90 +16,63 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
-public class autoDriveForward extends Command {
+public class autoDriveBackward extends Command {
 //    private boolean isFinished = true;
 
     
-    double targetDistance;
-    public autoDriveForward(double targetDistance) {
+    double targetInches;
+    double targetEncoderUnits;
+
+
+    public autoDriveBackward(double targetInches) {
         requires (Robot.driveBase);
-        this.targetDistance = targetDistance;
+        this.targetInches = targetInches;
+        this.targetEncoderUnits = targetInches * encoderunitsperinch;
     }
 
-    // -----------------------------------------------
-
-    private static final double PI = 3.141592;
-	public static double average;
-	WPI_TalonSRX leftFrontMotor;
-	WPI_TalonSRX rightFrontMotor;
-	WPI_TalonSRX pigeonMotor;
-	public DifferentialDrive drive;
-	public static double PulsesPerRevolution = 360; // Same as PPR for E4T
-	public static double wheelDiameter = 8.25; // in inches
-	public static double DistancePerRevolution = wheelDiameter * PI;
-	public static double DistancePerPulse = DistancePerRevolution / PulsesPerRevolution;
-	public static double wheelBase = 50; // in inches
-	public static double kp_straight = 0.25;
-
-    @SuppressWarnings("deprecation")
-	public autoDriveForward() {
-    pigeonMotor = new WPI_TalonSRX(RobotMap.PIGEON_IMU_MOTOR);
-    leftFrontMotor = new WPI_TalonSRX(RobotMap.LEFT_FRONT_MOTOR);
-    rightFrontMotor = new WPI_TalonSRX(RobotMap.RIGHT_FRONT_MOTOR);
-    drive = new DifferentialDrive(leftFrontMotor, rightFrontMotor);	
-    drive.setExpiration(0.1);
-    }
-
-
-    double distance = targetDistance * 111.1;
-    
-	public void resetEncoders() {
-		leftFrontMotor.setSelectedSensorPosition(0);
-		rightFrontMotor.setSelectedSensorPosition(0);
-	}
-
-// -----------------------------------------------
-
+    private double slowdistance = Parameters.SLOWDISTANCE;
+    private double slowspeed = Parameters.SLOWSPEED;
+    private double maxspeed = Parameters.MAXSPEED;
+    private double encoderunitsperinch = Parameters.ENCODERSPERINCH;
 
     // Called just before this Command runs the first time
     protected void initialize() {
         SmartDashboard.putString("driveStartTime", LocalDateTime.now().toString());
-        resetDrive();
-        resetEncoders();
+        Robot.driveBase.resetEncoders();
+        Robot.driveBase.resetDrive();
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException ex) {
+            // ignore
+        }
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        isFinished = false;
-        Robot.driveBase.driveForward(targetDistance,.5); //Hardcoded distance value and speed value
-        isFinished = true;
+        double remainingEncoderUnits = targetEncoderUnits - getAverageEncoderPosition();
+        double currentSpeed = remainingEncoderUnits < slowdistance? slowspeed:maxspeed;
+        // if remainingEncoderUnits < 45 then the currentSpeed = 0.33; if it is over 45, currentSpeed = 0.6
+                SmartDashboard.putNumber("deBugSpeed", currentSpeed);
+                SmartDashboard.putString("driveLoopTime", LocalDateTime.now().toString());
+                Robot.driveBase.drive.tankDrive(currentSpeed, currentSpeed);
+                 Robot.driveBase.displayYaw();
+                 SmartDashboard.putNumber("targetInches", remainingEncoderUnits / encoderunitsperinch);
 
-        getAverageEncoderPosition() < driveMath(distance);
-        drive.tankDrive(speed,speed); // left, right 
+    }
 
-		SmartDashboard.putNumber("Left Speed", leftFrontMotor.getSelectedSensorVelocity());
-		SmartDashboard.putNumber("Right Speed", rightFrontMotor.getSelectedSensorVelocity());
-
-        SmartDashboard.putNumber("Left Distance", leftFrontMotor.getSelectedSensorPosition());
-        SmartDashboard.putNumber("Right Distance", rightFrontMotor.getSelectedSensorPosition());
-        SmartDashboard.putNumber("Average Encoder Position", getAverageEncoderPosition());
-    
-	}
-
-        // Make this return true when this Command no longer needs to run execute()
+    // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        double remainingDistance = targetDistance - getAverageEncoderPosition;
-        return remainingDistance <= 0;
+        double remainingEncoderUnits = targetEncoderUnits - getAverageEncoderPosition();
+        SmartDashboard.putNumber("remainingEncoderUnits", remainingEncoderUnits);
+        return remainingEncoderUnits <= 0;
     }
 
     // Called once after isFinished returns true
     protected void end() {
         SmartDashboard.putString("driveEndTime", LocalDateTime.now().toString());
-
     }
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
+    // Called when another command which requires one or more of the same subsystems is scheduled to run
     protected void interrupted() {
         SmartDashboard.putString("driveInterruptedTime", LocalDateTime.now().toString());
 

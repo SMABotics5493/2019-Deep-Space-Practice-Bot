@@ -20,39 +20,51 @@ public class autoDriveBackward extends Command {
 //    private boolean isFinished = true;
 
     
-    double targetDistance;
-    public autoDriveForward(double targetDistance) {
+    double targetInches;
+    double targetEncoderUnits;
+
+
+    public autoDriveBackward(double targetInches) {
         requires (Robot.driveBase);
-        this.targetDistance = targetDistance;
+        this.targetInches = targetInches;
+        this.targetEncoderUnits = targetInches * encoderunitsperinch;
     }
-    double distance = targetDistance * 111.1
+
+    private double slowdistance = Parameters.SLOWDISTANCE;
+    private double slowspeed = Parameters.SLOWSPEED;
+    private double maxspeed = Parameters.MAXSPEED;
+    private double encoderunitsperinch = Parameters.ENCODERSPERINCH;
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        SmartDashboard.putString("turnStartTime", LocalDateTime.now().toString());
-        Robot.driveBase.gyro.setYaw(0);
-        while (Robot.driveBase.getYaw() != 0) {
+        SmartDashboard.putString("driveStartTime", LocalDateTime.now().toString());
+        Robot.driveBase.resetEncoders();
+        Robot.driveBase.resetDrive();
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException ex) {
+            // ignore
         }
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        double remainingDegrees = targetAngle - Robot.driveBase.getYaw();
-        double currentSpeed = remainingDegrees < slowangle? slowspeed:maxspeed;
-        // if remainingDegrees < 45 then the currentSpeed = 0.33; if it is over 45, currentSpeed = 0.6
+        double remainingEncoderUnits = targetEncoderUnits + getAverageEncoderPosition();
+        double currentSpeed = remainingEncoderUnits < slowdistance? slowspeed:maxspeed;
+        // if remainingEncoderUnits < 45 then the currentSpeed = 0.33; if it is over 45, currentSpeed = 0.6
                 SmartDashboard.putNumber("deBugSpeed", currentSpeed);
-                SmartDashboard.putString("turnLoopTime", LocalDateTime.now().toString());
-                Robot.driveBase.drive.tankDrive(-currentSpeed, currentSpeed);
+                SmartDashboard.putString("driveLoopTime", LocalDateTime.now().toString());
+                Robot.driveBase.drive.tankDrive(-currentSpeed, -currentSpeed);
                  Robot.driveBase.displayYaw();
-                 SmartDashboard.putNumber("targetDistance", targetDistance);
+                 SmartDashboard.putNumber("targetInches", remainingEncoderUnits / encoderunitsperinch);
 
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        double remainingDistance = distance - getAverageEncoderPosition();
-        SmartDashboard.putNumber("remainingDistance", remainingDistance);
-        return remainingDegrees <= 0;
+        double remainingEncoderUnits = targetEncoderUnits + getAverageEncoderPosition();
+        SmartDashboard.putNumber("remainingEncoderUnits", remainingEncoderUnits);
+        return remainingEncoderUnits <= 0;
     }
 
     // Called once after isFinished returns true
