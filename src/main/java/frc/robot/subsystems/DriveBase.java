@@ -20,7 +20,7 @@ public class DriveBase extends Subsystem {
   WPI_TalonSRX rightFrontMotor;
   WPI_TalonSRX leftBackMotor;
   WPI_TalonSRX rightBackMotor;
-  private DifferentialDrive drive;
+  public DifferentialDrive drive;
 
   public Encoder leftEncoder;
   public Encoder rightEncoder;
