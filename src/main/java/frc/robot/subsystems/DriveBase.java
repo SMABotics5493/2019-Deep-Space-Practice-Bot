@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.sensors.PigeonIMU;
 
@@ -60,7 +61,6 @@ public class DriveBase extends Subsystem {
 	}
 	public void drive(double left, double right) {
 		drive.tankDrive(-left, -right);
-
 	}
 	public void resetDrive() {
 		drive(0.0,0.0);
@@ -68,6 +68,10 @@ public class DriveBase extends Subsystem {
 	public void resetEncoders() {
 		leftFrontMotor.setSelectedSensorPosition(0);
 		rightFrontMotor.setSelectedSensorPosition(0);
+	}
+	public void setNeutralMode(NeutralMode mode) {
+		leftFrontMotor.setNeutralMode(mode);
+		rightFrontMotor.setNeutralMode(mode);
 	}
 
 	public double getAverageEncoderPosition()  {

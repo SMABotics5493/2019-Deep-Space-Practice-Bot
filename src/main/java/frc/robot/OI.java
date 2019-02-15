@@ -37,12 +37,12 @@ public class OI {
       right1.whenPressed(new autoTurnRight(90));
       right2.whenPressed(new autoTurnRight(45));
 
-      left1.whenPressed(new autoTurnLeft(45));
+      left1.whenPressed(new autoTurnLeft(90));
 
       driveForward.whenPressed(new autoDriveForward(16));
       driveBackward.whenPressed(new autoDriveBackward(16));
 
       driveTurn.whenPressed(new Auto_StraightTurn());
-    }
+    } 
 
 }
