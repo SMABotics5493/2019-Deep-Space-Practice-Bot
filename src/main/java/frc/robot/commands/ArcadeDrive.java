@@ -17,7 +17,7 @@ public class ArcadeDrive extends Command {
   @Override
   protected void execute() {
     double moveSpeed = -Robot.oi.driveJoystick.getRawAxis(RobotMap.DRIVER_CONTROLLER_MOVE_AXIS);
-    double rotateSpeed = -Robot.oi.driveJoystick.getRawAxis(RobotMap.DRIVER_CONTROLLER_ROTATE_AXIS);
+    double rotateSpeed = Robot.oi.driveJoystick.getRawAxis(RobotMap.DRIVER_CONTROLLER_ROTATE_AXIS);
 
     Robot.driveBase.arcadeDrive(moveSpeed, rotateSpeed);
   }

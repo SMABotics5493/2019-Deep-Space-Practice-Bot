@@ -32,7 +32,7 @@ public class BallLiftUp extends Command {
 
   @Override
   protected void end() {
-   Robot.ballLift.end();
+    Robot.ballLift.end();
   }
 
   @Override
