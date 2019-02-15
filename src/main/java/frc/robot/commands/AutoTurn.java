@@ -37,7 +37,7 @@ public class AutoTurn extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
 
-        double currentYaw = Robot.driveBase.getYaw() * m_turnDirection;
+        double currentYaw = Robot.driveBase.getYaw() * -m_turnDirection;
         double remainingDegrees = m_targetAngle - currentYaw;
         double elapsedTime = System.currentTimeMillis() - m_startTime;
 
@@ -75,7 +75,7 @@ public class AutoTurn extends Command {
             m_currentPower = Math.max(0.4, m_currentPower - 0.05);
         }
 
-        Robot.driveBase.drive.tankDrive(-m_currentPower * m_turnDirection, m_currentPower * m_turnDirection);
+        Robot.driveBase.drive.tankDrive(m_currentPower * m_turnDirection, -m_currentPower * m_turnDirection);
 
 
         Robot.driveBase.displayYaw();
@@ -86,7 +86,7 @@ public class AutoTurn extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        double remainingDegrees = m_targetAngle - (Robot.driveBase.getYaw() * m_turnDirection);
+        double remainingDegrees = m_targetAngle - (Robot.driveBase.getYaw() * -m_turnDirection);
         SmartDashboard.putNumber("remainingDegrees", remainingDegrees);
         return remainingDegrees <= 3;
     }
