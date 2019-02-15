@@ -2,6 +2,8 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.sensors.PigeonIMU;
+
 
 import edu.wpi.first.wpilibj.Encoder;
 //import edu.wpi.first.wpilibj.Joystick;
@@ -21,6 +23,7 @@ public class DriveBase extends Subsystem {
   WPI_TalonSRX leftBackMotor;
   WPI_TalonSRX rightBackMotor;
   public DifferentialDrive drive;
+	public PigeonIMU gyro;
 
   public Encoder leftEncoder;
   public Encoder rightEncoder;
@@ -66,41 +69,40 @@ public class DriveBase extends Subsystem {
 
   public void arcadeDrive(double moveSpeed, double rotateSpeed) {
     drive.arcadeDrive(moveSpeed, rotateSpeed);
-  }
+	}
+	
+	public void drive(double left, double right) {
+		drive.tankDrive(-left, -right);
+	}
+	public void resetDrive() {
+		drive(0.0,0.0);
+	}
 
-  public void reset() {
-   // drive(0.0, 0.0);
-  }
-
-  public void resetEncoders() {
+	public void resetEncoders() {
 		leftEncoder.reset();
 		rightEncoder.reset();
 	}
-	public void driveForward() {
-		reset();
-		while(getAverageEncoderPosition() <= 50.0){
-			drive.arcadeDrive(0.4, 0.4);  // left, right 
-			SmartDashboard.putNumber("Left Distance", leftEncoder.getDistance());
-			SmartDashboard.putNumber("Right Distance", rightEncoder.getDistance());
-			//SmartDashboard.putNumber("Right Raw Count", rightEncoder.getRaw());
-			//SmartDashboard.putNumber("Left Raw Count", leftEncoder.getRaw());
-			SmartDashboard.putNumber("Average Encoder Position", getAverageEncoderPosition());
-		} 
-		reset();
-	}
-	private double getAverageEncoderPosition()  {
+
+	public double getAverageEncoderPosition()  {
 		return (leftEncoder.getDistance() + rightEncoder.getDistance())/2;
 	}
-	public void turnRight() {
-		reset();
-		arcLength = (PI/2)*wheelBase;
-		while(leftEncoder.getDistance() <= arcLength/2) {
-			drive.arcadeDrive(0.6, -0.6);
-		}
-		reset();
+	
+
+	public double getYaw() {
+		double ypr[] = new double[3];
+		gyro.getYawPitchRoll(ypr);
+		return ypr[0];
 	}
-  @Override
-  public void initDefaultCommand() {
-    setDefaultCommand(new ArcadeDrive());
-  }
+	
+	@Override
+	protected void initDefaultCommand() {
+		setDefaultCommand(new ArcadeDrive());
+	}
+
+	public void displayYaw(){
+		SmartDashboard.putNumber("Yaw", getYaw());
+	}
 }
+
+
+
