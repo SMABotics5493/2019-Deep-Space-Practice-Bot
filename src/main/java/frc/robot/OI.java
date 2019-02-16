@@ -28,10 +28,10 @@ public class OI {
     JoystickButton solenoidReverse = new JoystickButton(driveJoystick, RobotMap.JOYB_B);
     JoystickButton hatchMotorForward = new JoystickButton(driveJoystick, RobotMap.JOYB_Y);
     JoystickButton hatchMotorReverse = new JoystickButton(driveJoystick, RobotMap.JOYB_A);
-    JoystickButton autoForward = new JoystickButton(driveJoystick, RobotMap.JOYB_Y);
-    JoystickButton autoBackward = new JoystickButton(driveJoystick, RobotMap.JOYB_A);
-    JoystickButton autoLeft = new JoystickButton(driveJoystick, RobotMap.JOYB_X);
-    JoystickButton autoRight = new JoystickButton(driveJoystick, RobotMap.JOYB_B);
+    // JoystickButton autoForward = new JoystickButton(driveJoystick, RobotMap.JOYB_Y);
+    // JoystickButton autoBackward = new JoystickButton(driveJoystick, RobotMap.JOYB_A);
+    // JoystickButton autoLeft = new JoystickButton(driveJoystick, RobotMap.JOYB_X);
+    // JoystickButton autoRight = new JoystickButton(driveJoystick, RobotMap.JOYB_B);
 
     public Joystick getDriveJoystick() {
       return driveJoystick;
