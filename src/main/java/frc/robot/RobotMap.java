@@ -22,7 +22,6 @@ public class RobotMap {
   public static final int DRIVER_CONTROLLER_MOVE_AXIS = 1;
   public static final int DRIVER_CONTROLLER_ROTATE_AXIS = 0;
 
-  public static final int PIGEON_IMU_MOTOR = 6;
   public static final int LEFT_FRONT_MOTOR = 9;
   public static final int RIGHT_FRONT_MOTOR = 6;
   public static final int LEFT_BACK_MOTOR = 7;
@@ -37,6 +36,7 @@ public class RobotMap {
   public static final int TRANSMISSION_FORWARD = 0;
   public static final int TRANSMISSION_REVERSE = 1;
 
+  public static final int PIGEON_IMU_MOTOR = 4;
   public static final int HATCH_PANEL =  4;
   public static final int BALL_SHOOTER_LIFT = 8;
 
