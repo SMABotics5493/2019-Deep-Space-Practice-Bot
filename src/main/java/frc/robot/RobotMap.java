@@ -10,8 +10,8 @@ public class RobotMap {
 	public static final int JOYB_Y = 4;
 	public static final int JOYB_LB = 5;
 	public static final int JOYB_RB = 6;
-//	public static final int JOYB_LT = 7;
- // public static final int JOYB_RT = 8;
+  public static final int JOYB_LT = 9;
+  public static final int JOYB_RT = 10;
   
   public static final int RIGHTYAXIS = 5;
   public static final int LEFTYAXIS = 1;
@@ -22,6 +22,7 @@ public class RobotMap {
   public static final int DRIVER_CONTROLLER_MOVE_AXIS = 1;
   public static final int DRIVER_CONTROLLER_ROTATE_AXIS = 0;
 
+  public static final int PIGEON_IMU_MOTOR = 6;
   public static final int LEFT_FRONT_MOTOR = 9;
   public static final int RIGHT_FRONT_MOTOR = 6;
   public static final int LEFT_BACK_MOTOR = 7;
@@ -44,8 +45,8 @@ public class RobotMap {
 	public static int ENCODER_RIGHTA = 5;
   public static int ENCODER_RIGHTB = 6;
   
-  public static final int ENCODER_HATCHA = 0;
-  public static final int ENCODER_HATCHB = 1;
+  public static final int ENCODER_HATCHA = 8;
+  public static final int ENCODER_HATCHB = 9;
   public static final int ENCODER_BALL_SHOOTERA = 0;
   public static final int ENCODER_BALL_SHOOTERB = 1;
 	

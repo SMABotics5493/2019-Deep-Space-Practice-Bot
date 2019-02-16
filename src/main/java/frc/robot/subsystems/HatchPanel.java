@@ -3,6 +3,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
@@ -17,15 +18,18 @@ public class HatchPanel extends Subsystem {
   public HatchPanel() {
     super();
     hatchPanelMotor = new WPI_TalonSRX(RobotMap.HATCH_PANEL);
-    //hatchEncoder = new Encoder(RobotMap.ENCODER_HATCHA,RobotMap.ENCODER_HATCHB, true, EncodingType.k4X);
+    hatchEncoder = new Encoder(RobotMap.ENCODER_HATCHA,RobotMap.ENCODER_HATCHB, true, EncodingType.k4X);
   }
 
   public void hatchForward(){
     Robot.hatchPanel.hatchPanelMotor.set(0.8);
+    SmartDashboard.putNumber("Hatch Value", hatchEncoder.getDistance());
   }
 
   public void hatchReverse() {
     Robot.hatchPanel.hatchPanelMotor.set(-0.6);
+    SmartDashboard.putNumber("Hatch Value", hatchEncoder.getDistance());
+
   }
 
   public void end(){

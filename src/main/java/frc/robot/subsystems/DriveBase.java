@@ -2,6 +2,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.ctre.phoenix.sensors.PigeonIMU;
 
 
@@ -18,10 +19,11 @@ import frc.robot.commands.ArcadeDrive;
 
 public class DriveBase extends Subsystem {
 
-  WPI_TalonSRX leftFrontMotor;
-  WPI_TalonSRX rightFrontMotor;
+  WPI_VictorSPX leftFrontMotor;
+  WPI_VictorSPX rightFrontMotor;
   WPI_TalonSRX leftBackMotor;
-  WPI_TalonSRX rightBackMotor;
+	WPI_TalonSRX rightBackMotor;
+	WPI_TalonSRX pigeonMotor;
   public DifferentialDrive drive;
 	public PigeonIMU gyro;
 
@@ -40,9 +42,10 @@ public class DriveBase extends Subsystem {
 
   public DriveBase(){
     super();
+		pigeonMotor = new WPI_TalonSRX(RobotMap.PIGEON_IMU_MOTOR);
 
-    leftFrontMotor = new WPI_TalonSRX(RobotMap.LEFT_FRONT_MOTOR);
-    rightFrontMotor = new WPI_TalonSRX(RobotMap.RIGHT_FRONT_MOTOR);
+    leftFrontMotor = new WPI_VictorSPX(RobotMap.LEFT_FRONT_MOTOR);
+    rightFrontMotor = new WPI_VictorSPX(RobotMap.RIGHT_FRONT_MOTOR);
     leftBackMotor = new WPI_TalonSRX(RobotMap.LEFT_BACK_MOTOR);
     rightBackMotor = new WPI_TalonSRX(RobotMap.RIGHT_BACK_MOTOR);
 
@@ -55,11 +58,11 @@ public class DriveBase extends Subsystem {
     SpeedController rightSide = new SpeedControllerGroup(rightFrontMotor, rightBackMotor);
 		drive = new DifferentialDrive(leftSide, rightSide);
 
-		leftFrontMotor.configOpenloopRamp(voltsPerSecond);
-		rightFrontMotor.configOpenloopRamp(voltsPerSecond);
+		//leftBackMotor.configOpenloopRamp(voltsPerSecond);
+		//rightBackMotor.configOpenloopRamp(voltsPerSecond);
 		leftFrontMotor.set(ControlMode.Follower, RobotMap.LEFT_BACK_MOTOR);
 		rightFrontMotor.set(ControlMode.Follower, RobotMap.RIGHT_BACK_MOTOR);
-		
+		gyro = new PigeonIMU(pigeonMotor);
 
     drive.setExpiration(0.1);
   }
@@ -68,12 +71,13 @@ public class DriveBase extends Subsystem {
   //}
 
   public void arcadeDrive(double moveSpeed, double rotateSpeed) {
-    drive.arcadeDrive(moveSpeed, rotateSpeed);
+		drive.arcadeDrive(moveSpeed, rotateSpeed);
 	}
 	
 	public void drive(double left, double right) {
 		drive.tankDrive(-left, -right);
 	}
+
 	public void resetDrive() {
 		drive(0.0,0.0);
 	}
