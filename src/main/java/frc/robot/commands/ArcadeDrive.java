@@ -28,7 +28,7 @@ public class ArcadeDrive extends Command {
     SmartDashboard.putNumber("arcadeMoveSpeed", moveSpeed);
     SmartDashboard.putNumber("arcadeRotateSpeed", rotateSpeed);
 
-    Robot.driveBase.arcadeDrive(-moveSpeed, -rotateSpeed);
+    Robot.driveBase.arcadeDrive(-moveSpeed, rotateSpeed);
     
   }
 
