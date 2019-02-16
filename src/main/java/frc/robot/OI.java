@@ -21,8 +21,8 @@ public class OI {
     JoystickButton ballIntake = new JoystickButton(joystick, RobotMap.JOYB_X);
     JoystickButton ballOuttake = new JoystickButton(joystick, RobotMap.JOYB_B);
   
-    JoystickButton ballLiftUp = new JoystickButton(joystick, RobotMap.JOYB_Y);
-    JoystickButton ballLiftDown = new JoystickButton(joystick, RobotMap.JOYB_A);
+    JoystickButton ballLiftUp = new JoystickButton(joystick, RobotMap.JOYB_A);
+    JoystickButton ballLiftDown = new JoystickButton(joystick, RobotMap.JOYB_Y);
 
     JoystickButton solenoidForward = new JoystickButton(driveJoystick, RobotMap.JOYB_X);
     JoystickButton solenoidReverse = new JoystickButton(driveJoystick, RobotMap.JOYB_B);

@@ -40,13 +40,13 @@ public class AutoDrive extends Command {
         Robot.driveBase.displayYaw();
         SmartDashboard.putString("driveLoopTime", LocalDateTime.now().toString());
         SmartDashboard.putNumber("driveSpeed", currentSpeed * m_driveDirection);
-        SmartDashboard.putNumber("remainingInches", remainingEncoderUnits / Parameters.ENCODERSPERINCH);
+        SmartDashboard.putNumber("driveRemainingInches", remainingEncoderUnits / Parameters.ENCODERSPERINCH);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         double remainingEncoderUnits = m_targetEncoderUnits - (Robot.driveBase.getAverageEncoderPosition() * m_driveDirection);
-        SmartDashboard.putNumber("remainingEncoderUnits", remainingEncoderUnits);
+        SmartDashboard.putNumber("driveRemainingEncoderUnits", remainingEncoderUnits);
         return remainingEncoderUnits <= 0;
     }
 

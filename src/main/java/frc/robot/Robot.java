@@ -35,7 +35,7 @@ public class Robot extends TimedRobot {
   //  transmission = new Transmission();
     oi = new OI();
     // chooser.addOption("My Auto", new MyAutoCommand());
-    SmartDashboard.putData("Auto mode", m_chooser);
+    SmartDashboard.putData("robotAutoMode", m_chooser);
     CameraServer.getInstance().startAutomaticCapture();
   }
 

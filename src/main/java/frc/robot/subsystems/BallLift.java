@@ -46,8 +46,8 @@ public class BallLift extends Subsystem {
   public void ballValue() {
 		reset();
 			SmartDashboard.putNumber("Hatch Value", ballEncoder.getDistance());
-			//SmartDashboard.putNumber("Right Raw Count", rightEncoder.getRaw());
-			//SmartDashboard.putNumber("Left Raw Count", leftEncoder.getRaw());
+			// SmartDashboard.putNumber("Right Raw Count", rightEncoder.getRaw());
+			// SmartDashboard.putNumber("Left Raw Count", leftEncoder.getRaw());
 		reset();
   }
   private void reset() {

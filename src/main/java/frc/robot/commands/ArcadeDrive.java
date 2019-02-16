@@ -15,12 +15,12 @@ public class ArcadeDrive extends Command {
 
   @Override
   protected void initialize() {
-    SmartDashboard.putString("arcadeStart", LocalDateTime.now().toString());
+    SmartDashboard.putString("arcadeStartTime", LocalDateTime.now().toString());
   }
 
   @Override
   protected void execute() {
-    SmartDashboard.putString("arcadeLoop", LocalDateTime.now().toString());
+    SmartDashboard.putString("arcadeLoopTime", LocalDateTime.now().toString());
 
     double moveSpeed = -Robot.oi.driveJoystick.getRawAxis(RobotMap.DRIVER_CONTROLLER_MOVE_AXIS);
     double rotateSpeed = -Robot.oi.driveJoystick.getRawAxis(RobotMap.DRIVER_CONTROLLER_ROTATE_AXIS);
@@ -28,7 +28,7 @@ public class ArcadeDrive extends Command {
     SmartDashboard.putNumber("arcadeMoveSpeed", moveSpeed);
     SmartDashboard.putNumber("arcadeRotateSpeed", rotateSpeed);
 
-    Robot.driveBase.arcadeDrive(-moveSpeed, rotateSpeed);
+    Robot.driveBase.arcadeDrive(-moveSpeed, -rotateSpeed);
     
   }
 
@@ -39,13 +39,13 @@ public class ArcadeDrive extends Command {
 
   @Override
   protected void end() {
-    SmartDashboard.putString("arcadeEnd", LocalDateTime.now().toString());
+    SmartDashboard.putString("arcadeEndTime", LocalDateTime.now().toString());
     Robot.driveBase.arcadeDrive(0, 0);
   }
 
   @Override
   protected void interrupted() {
-    SmartDashboard.putString("arcadeInterrupted", LocalDateTime.now().toString());
+    SmartDashboard.putString("arcadeInterruptedTime", LocalDateTime.now().toString());
     end();
   }
 }
