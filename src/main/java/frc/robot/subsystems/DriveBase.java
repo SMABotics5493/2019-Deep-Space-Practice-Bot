@@ -7,6 +7,7 @@ import com.ctre.phoenix.sensors.PigeonIMU;
 
 
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Joystick;
 //import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
@@ -16,6 +17,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 import frc.robot.commands.ArcadeDrive;
+import frc.robot.commands.JoystickDrive;
 
 public class DriveBase extends Subsystem {
 
@@ -66,20 +68,16 @@ public class DriveBase extends Subsystem {
 
     drive.setExpiration(0.1);
   }
-  //public void drive(Joystick j){
-   // drive(j.getRawAxis(RobotMap.LEFTYAXIS), j.getRawAxis(RobotMap.RIGHTYAXIS));
-  //}
+  public void drive(Joystick j){
+   drive.tankDrive(j.getRawAxis(RobotMap.LEFTYAXIS), j.getRawAxis(RobotMap.RIGHTYAXIS));
+  }
 
-  public void arcadeDrive(double moveSpeed, double rotateSpeed) {
-		drive.arcadeDrive(moveSpeed, rotateSpeed);
-	}
+  // public void arcadeDrive(double moveSpeed, double rotateSpeed) {
+	// 	drive.arcadeDrive(moveSpeed, rotateSpeed);
+	// }
 	
-	public void drive(double left, double right) {
-		drive.tankDrive(-left, -right);
-	}
-
 	public void resetDrive() {
-		drive(0.0,0.0);
+		drive.tankDrive(0.0,0.0);
 	}
 
 	public void resetEncoders() {
@@ -100,7 +98,7 @@ public class DriveBase extends Subsystem {
 	
 	@Override
 	protected void initDefaultCommand() {
-		setDefaultCommand(new ArcadeDrive());
+		setDefaultCommand(new JoystickDrive());
 	}
 
 	public void displayYaw(){
