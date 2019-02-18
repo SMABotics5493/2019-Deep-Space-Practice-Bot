@@ -4,7 +4,6 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.Joystick;
 //import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
@@ -61,36 +60,47 @@ public class DriveBase extends Subsystem {
 
     drive.setExpiration(0.1);
   }
-  public void drive(Joystick j){
-		drive.tankDrive(j.getRawAxis(RobotMap.LEFTYAXIS), j.getRawAxis(RobotMap.RIGHTYAXIS));
-	 }
- 
-	 // public void arcadeDrive(double moveSpeed, double rotateSpeed) {
-	 // 	drive.arcadeDrive(moveSpeed, rotateSpeed);
-	 // }
-	 
-	 public void resetDrive() {
-		 drive.tankDrive(0.0,0.0);
-	 }
- 
-	 public void resetEncoders() {
-		 leftEncoder.reset();
-		 rightEncoder.reset();
-	 }
- 
-	 public double getAverageEncoderPosition()  {
-		 return (leftEncoder.getDistance() + rightEncoder.getDistance())/2;
-	 }
-	 
-	 public double getYaw() {
-		 double ypr[] = new double[3];
-		 gyro.getYawPitchRoll(ypr);
-		 return ypr[0];
-	 }
-	 
-	 @Override
-	 protected void initDefaultCommand() {
-		 setDefaultCommand(new JoystickDrive());
-	 }
-}
+  //public void drive(Joystick j){
+   // drive(j.getRawAxis(RobotMap.LEFTYAXIS), j.getRawAxis(RobotMap.RIGHTYAXIS));
+  //}
 
+  public void arcadeDrive(double moveSpeed, double rotateSpeed) {
+    drive.arcadeDrive(moveSpeed, rotateSpeed);
+  }
+
+  public void reset() {
+   // drive(0.0, 0.0);
+  }
+
+  public void resetEncoders() {
+		leftEncoder.reset();
+		rightEncoder.reset();
+	}
+	public void driveForward() {
+		reset();
+		while(getAverageEncoderPosition() <= 50.0){
+			drive.arcadeDrive(0.4, 0.4);  // left, right 
+			SmartDashboard.putNumber("Left Distance", leftEncoder.getDistance());
+			SmartDashboard.putNumber("Right Distance", rightEncoder.getDistance());
+			//SmartDashboard.putNumber("Right Raw Count", rightEncoder.getRaw());
+			//SmartDashboard.putNumber("Left Raw Count", leftEncoder.getRaw());
+			SmartDashboard.putNumber("Average Encoder Position", getAverageEncoderPosition());
+		} 
+		reset();
+	}
+	private double getAverageEncoderPosition()  {
+		return (leftEncoder.getDistance() + rightEncoder.getDistance())/2;
+	}
+	public void turnRight() {
+		reset();
+		arcLength = (PI/2)*wheelBase;
+		while(leftEncoder.getDistance() <= arcLength/2) {
+			drive.arcadeDrive(0.6, -0.6);
+		}
+		reset();
+	}
+  @Override
+  public void initDefaultCommand() {
+    setDefaultCommand(new ArcadeDrive());
+  }
+}
