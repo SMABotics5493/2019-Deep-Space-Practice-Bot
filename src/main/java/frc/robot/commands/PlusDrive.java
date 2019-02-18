@@ -6,16 +6,8 @@ import frc.robot.RobotMap;
 
 public class PlusDrive extends Command {
 
-    private double m_moveSpeed; // forward + backward(-)
-    private double m_rotateSpeed; // left(-) + right
-    //private double m_plusDirection; // 1 = forward, -1 = backward
-
-
-    public PlusDrive(double moveSpeed, double rotateSpeed) {
+    public PlusDrive() {
         requires (Robot.driveBase);
-        m_moveSpeed = moveSpeed;
-        m_rotateSpeed = rotateSpeed;
-   //     m_plusDirection = targetInches < 0 ? -1 : 1;
     }
 
 

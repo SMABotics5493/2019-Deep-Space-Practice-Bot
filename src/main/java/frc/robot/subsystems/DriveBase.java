@@ -71,7 +71,7 @@ public class DriveBase extends Subsystem {
   }
 
   public void drive(Joystick j){
-		drive.tankDrive(j.getRawAxis(RobotMap.LEFTYAXIS), j.getRawAxis(RobotMap.RIGHTYAXIS));
+		drive.tankDrive(-j.getRawAxis(RobotMap.LEFTYAXIS), -j.getRawAxis(RobotMap.RIGHTYAXIS));
 	 }
  
 	 public void arcadeDrive(double moveSpeed, double rotateSpeed) {

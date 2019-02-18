@@ -41,10 +41,10 @@ public class JoystickDrive extends Command {
           Robot.driveBase.arcadeDrive(-1,0); 
         }
       else {
-        if(POV == 180) {
+        if(POV == 270) {
          Robot.driveBase.arcadeDrive(0,-1);
           }
-      }}}}}
+      }}}}
 
   }
 

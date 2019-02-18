@@ -40,10 +40,10 @@ public class OI {
     JoystickButton autoRight = new JoystickButton(driveJoystick, RobotMap.JOYB_A);    
    
       // DPAD buttons on mechanism joystick
-     // POVButton arcadeForward = new POVButton(driveJoystick, 90);
-     // POVButton arcadeBackward = new POVButton(driveJoystick, 270);
-      //POVButton arcadeLeft = new POVButton(driveJoystick, 0);
-      //POVButton arcadeRight = new POVButton(driveJoystick, 180);
+    //  POVButton arcadeForward = new POVButton(driveJoystick, 90);
+    //  POVButton arcadeBackward = new POVButton(driveJoystick, 270);
+    //   POVButton arcadeLeft = new POVButton(driveJoystick, 0);
+    //   POVButton arcadeRight = new POVButton(driveJoystick, 180);
   
 
     public Joystick getDriveJoystick() {	
@@ -65,15 +65,15 @@ public class OI {
         solenoidForward.whileHeld(new SolenoidForward());	
         solenoidReverse.whileHeld(new SolenoidReverse());	
                 
-       // autoForward.whenPressed(new AutoDrive(12));	
-       // autoBackward.whenPressed(new AutoDrive(-12));	
-       // autoLeft.whenPressed(new AutoTurn(-90));	
-       // autoRight.whenPressed(new AutoTurn(90));	
+      //  autoForward.whenPressed(new AutoDrive(12));	
+      //  autoBackward.whenPressed(new AutoDrive(-12));	
+      //  autoLeft.whenPressed(new AutoTurn(-90));	
+      //  autoRight.whenPressed(new AutoTurn(90));	
 
-       // arcadeForward.whileHeld(new PlusDrive(0.6,0));
-       // arcadeBackward.whileHeld(new PlusDrive(-0.6, 0));
-       //arcadeLeft.whileHeld(new PlusDrive(0, -0.6));
-       /// arcadeRight.whileHeld(new PlusDrive(0, 0.6));
+      //  arcadeForward.whileHeld(new PlusDrive());
+      //  arcadeBackward.whileHeld(new PlusDrive());
+      //  arcadeLeft.whileHeld(new PlusDrive());
+      //  arcadeRight.whileHeld(new PlusDrive());
   
    }
 
