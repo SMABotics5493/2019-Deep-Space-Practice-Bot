@@ -3,7 +3,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+//import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
@@ -19,8 +19,8 @@ import frc.robot.commands.DriveJoystick;
 
 public class DriveBase extends Subsystem {
 
-	WPI_VictorSPX slaveLeft;
-	WPI_VictorSPX slaveRight;
+	WPI_TalonSRX slaveLeft;
+	WPI_TalonSRX slaveRight;
 	WPI_TalonSRX masterLeft;
 	WPI_TalonSRX masterRight;
 	private DifferentialDrive drive;
@@ -36,15 +36,15 @@ public class DriveBase extends Subsystem {
 	public static double arcLength;
 	public static double kp_straight = 0.25;
 	public static double kp_turn = 0.005;
-	public static double voltsPerSecond = 5.18;
+	public static double voltsPerSecond = .1;
 
 	public DriveBase() {
 		super();
 
-		slaveLeft = new WPI_VictorSPX(RobotMap.LEFT_FRONT_MOTOR);
-		slaveRight = new WPI_VictorSPX(RobotMap.RIGHT_FRONT_MOTOR);
-		masterLeft = new WPI_TalonSRX(RobotMap.LEFT_BACK_MOTOR);
-		masterRight = new WPI_TalonSRX(RobotMap.RIGHT_BACK_MOTOR);
+		slaveLeft = new WPI_TalonSRX(RobotMap.LEFT_BACK_MOTOR);
+		slaveRight = new WPI_TalonSRX(RobotMap.RIGHT_BACK_MOTOR);
+		masterLeft = new WPI_TalonSRX(RobotMap.LEFT_FRONT_MOTOR);
+		masterRight = new WPI_TalonSRX(RobotMap.RIGHT_FRONT_MOTOR);
 
 		 
 		leftEncoder = new Encoder(RobotMap.ENCODER_LEFTA,RobotMap.ENCODER_LEFTB,true,EncodingType.k4X); 
@@ -57,14 +57,14 @@ public class DriveBase extends Subsystem {
 		SpeedController rightSide = new SpeedControllerGroup(slaveRight, masterRight);
 		drive = new DifferentialDrive(leftSide, rightSide);
 
-		masterLeft.setNeutralMode(NeutralMode.Coast);
-		masterRight.setNeutralMode(NeutralMode.Coast);
+		masterLeft.setNeutralMode(NeutralMode.Brake);
+		masterRight.setNeutralMode(NeutralMode.Brake);
 		masterLeft.configOpenloopRamp(voltsPerSecond);
 		masterRight.configOpenloopRamp(voltsPerSecond);
-		slaveLeft.set(ControlMode.Follower, RobotMap.LEFT_BACK_MOTOR);
-		slaveRight.set(ControlMode.Follower, RobotMap.RIGHT_BACK_MOTOR);
-		slaveLeft.setNeutralMode(NeutralMode.Coast);
-		slaveRight.setNeutralMode(NeutralMode.Coast);
+		slaveLeft.set(ControlMode.Follower, RobotMap.LEFT_FRONT_MOTOR);
+		slaveRight.set(ControlMode.Follower, RobotMap.RIGHT_FRONT_MOTOR);
+		slaveLeft.setNeutralMode(NeutralMode.Brake);
+		slaveRight.setNeutralMode(NeutralMode.Brake);
 
 		drive.setExpiration(0.1);
 	}
