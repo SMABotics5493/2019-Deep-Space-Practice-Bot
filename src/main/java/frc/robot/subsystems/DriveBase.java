@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.sensors.PigeonIMU;
@@ -36,7 +37,7 @@ public class DriveBase extends Subsystem {
 	public static double arcLength;
 	public static double kp_straight = 0.25;
 	public static double kp_turn = 0.005;
-	public static double voltsPerSecond = 5.18;
+	public static double voltsPerSecond = 0.1;
 
   public DriveBase(){
     super();
@@ -57,6 +58,12 @@ public class DriveBase extends Subsystem {
 
 		leftBackMotor.configOpenloopRamp(voltsPerSecond);
 		rightBackMotor.configOpenloopRamp(voltsPerSecond);
+		
+		leftBackMotor.setNeutralMode(NeutralMode.Brake);
+		rightBackMotor.setNeutralMode(NeutralMode.Brake);
+		leftFrontMotor.setNeutralMode(NeutralMode.Brake);
+		rightFrontMotor.setNeutralMode(NeutralMode.Brake);
+		
 		leftBackMotor.set(ControlMode.Follower, RobotMap.LEFT_FRONT_MOTOR);
 		rightBackMotor.set(ControlMode.Follower, RobotMap.RIGHT_FRONT_MOTOR);
 		

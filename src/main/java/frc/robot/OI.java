@@ -70,10 +70,10 @@ public class OI {
         autoLeft.whenPressed(new AutoTurn(-90));	
         autoRight.whenPressed(new AutoTurn(90));	
 
-        arcadeForward.whileHeld(new PlusDrive(0.5,0));
-        arcadeBackward.whileHeld(new PlusDrive(-0.5, 0));
-        arcadeLeft.whileHeld(new PlusDrive(0, -0.5));
-        arcadeRight.whileHeld(new PlusDrive(0, 0.5));
+        arcadeForward.whileHeld(new PlusDrive(0.6,0));
+        arcadeBackward.whileHeld(new PlusDrive(-0.6, 0));
+        arcadeLeft.whileHeld(new PlusDrive(0, -0.6));
+        arcadeRight.whileHeld(new PlusDrive(0, 0.6));
   
    }
 
