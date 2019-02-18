@@ -1,8 +1,9 @@
 package frc.robot;	
 
 import edu.wpi.first.wpilibj.Joystick;	
-import edu.wpi.first.wpilibj.buttons.JoystickButton;	
-import frc.robot.commands.AutoDrive;	
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.buttons.POVButton;
+import frc.robot.commands.AutoDrive;
 import frc.robot.commands.AutoTurn;	
 import frc.robot.commands.BallIntake;	
 import frc.robot.commands.BallLiftDown;	
@@ -16,45 +17,52 @@ import frc.robot.commands.SolenoidReverse;
 public class OI {	
 
     public Joystick driveJoystick = new Joystick(RobotMap.DRIVE_JOYSTICK);	
-   private Joystick joystick = new Joystick(RobotMap.JOYSTICK);	
+   private Joystick mechJoystick = new Joystick(RobotMap.JOYSTICK);	
 
-    JoystickButton ballIntake = new JoystickButton(joystick, RobotMap.JOYB_X);	
-   JoystickButton ballOuttake = new JoystickButton(joystick, RobotMap.JOYB_B);	
+    // A,B,X,Y buttons on mechanism joystick
 
-    JoystickButton ballLiftUp = new JoystickButton(joystick, RobotMap.JOYB_A);	
-   JoystickButton ballLiftDown = new JoystickButton(joystick, RobotMap.JOYB_Y);	
+    JoystickButton ballIntake = new JoystickButton(mechJoystick, RobotMap.JOYB_X);
+    JoystickButton ballOuttake = new JoystickButton(mechJoystick, RobotMap.JOYB_B);
+    JoystickButton ballLiftUp = new JoystickButton(mechJoystick, RobotMap.JOYB_Y);
+    JoystickButton ballLiftDown = new JoystickButton(mechJoystick, RobotMap.JOYB_A);
 
-    JoystickButton solenoidForward = new JoystickButton(driveJoystick, RobotMap.JOYB_B);	
-   JoystickButton solenoidReverse = new JoystickButton(driveJoystick, RobotMap.JOYB_X);	
-   JoystickButton hatchMotorForward = new JoystickButton(driveJoystick, RobotMap.JOYB_Y);	
-   JoystickButton hatchMotorReverse = new JoystickButton(driveJoystick, RobotMap.JOYB_A);	
-   // JoystickButton autoForward = new JoystickButton(driveJoystick, RobotMap.JOYB_Y);	
-   // JoystickButton autoBackward = new JoystickButton(driveJoystick, RobotMap.JOYB_A);	
-   // JoystickButton autoLeft = new JoystickButton(driveJoystick, RobotMap.JOYB_X);	
-   // JoystickButton autoRight = new JoystickButton(driveJoystick, RobotMap.JOYB_B);	
+    // DPAD buttons on mechanism joystick
+    POVButton solenoidForward = new POVButton(mechJoystick, 90);
+    POVButton solenoidReverse = new POVButton(mechJoystick, 270);
+    POVButton hatchMotorForward = new POVButton(mechJoystick, 0);
+    POVButton hatchMotorReverse = new POVButton(mechJoystick, 180);
+
+    // DPAD buttons on drive joystick
+    POVButton autoForward = new POVButton(driveJoystick, 0);
+    POVButton autoBackward = new POVButton(driveJoystick, 180);
+    POVButton autoLeft = new POVButton(driveJoystick, 270);
+    POVButton autoRight = new POVButton(driveJoystick, 90);    
+   
+   
 
     public Joystick getDriveJoystick() {	
      return driveJoystick;	
    }	
 
     public Joystick getJoystick(){	
-     return joystick;	
+     return mechJoystick;	
    }	
 
     public OI(){	
+        ballIntake.whileHeld(new BallIntake(ballIntake));	
+        ballOuttake.whileHeld(new BallOuttake(ballOuttake));	
+        ballLiftUp.whileHeld(new BallLiftUp(ballLiftUp));	
+        ballLiftDown.whileHeld(new BallLiftDown(ballLiftDown));	
 
-      ballIntake.whileHeld(new BallIntake(ballIntake));	
-     ballOuttake.whileHeld(new BallOuttake(ballOuttake));	
-     hatchMotorForward.whileHeld(new HatchMotorForward(hatchMotorForward));	
-     hatchMotorReverse.whileHeld(new HatchMotorReverse(hatchMotorReverse));	
-     solenoidForward.whileHeld(new SolenoidForward());	
-     solenoidReverse.whileHeld(new SolenoidReverse());	
-     ballLiftUp.whileHeld(new BallLiftUp(ballLiftUp));	
-     ballLiftDown.whileHeld(new BallLiftDown(ballLiftDown));	
-     // autoForward.whenPressed(new AutoDrive(12));	
-     // autoBackward.whenPressed(new AutoDrive(-12));	
-     // autoLeft.whenPressed(new AutoTurn(-90));	
-     // autoRight.whenPressed(new AutoTurn(90));	
+        hatchMotorForward.whileHeld(new HatchMotorForward(hatchMotorForward));	
+        hatchMotorReverse.whileHeld(new HatchMotorReverse(hatchMotorReverse));	
+        solenoidForward.whileHeld(new SolenoidForward());	
+        solenoidReverse.whileHeld(new SolenoidReverse());	
+                
+        autoForward.whenPressed(new AutoDrive(12));	
+        autoBackward.whenPressed(new AutoDrive(-12));	
+        autoLeft.whenPressed(new AutoTurn(-90));	
+        autoRight.whenPressed(new AutoTurn(90));	
    }	
 
 }	
