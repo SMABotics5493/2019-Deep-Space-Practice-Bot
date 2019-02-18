@@ -21,31 +21,15 @@ public class JoystickDrive extends Command {
   // make method in drivebase if elses work)
   @Override
   protected void execute() {
-    var driveJoystick = (Robot.oi.getDriveJoystick());
-    var POV = (driveJoystick.getPOV());
-    if(POV < 0) {
+    var driveJoystick = Robot.oi.getDriveJoystick();
+    var pov = driveJoystick.getPOV();
+
+    if(pov < 0) {
       Robot.driveBase.drive(driveJoystick);
     }
-      else { 
-        if(POV == 0) {
-          Robot.driveBase.arcadeDrive(1,0);
-        }
-
-      else {
-        if(POV == 90) {
-         Robot.driveBase.arcadeDrive(0,1);
-        }
-
-      else {
-        if(POV == 180) {
-          Robot.driveBase.arcadeDrive(-1,0); 
-        }
-      else {
-        if(POV == 270) {
-         Robot.driveBase.arcadeDrive(0,-1);
-          }
-      }}}}
-
+    else {
+      Robot.driveBase.povDrive(pov);
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()

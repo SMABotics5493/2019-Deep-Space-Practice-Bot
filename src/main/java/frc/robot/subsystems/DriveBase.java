@@ -77,6 +77,24 @@ public class DriveBase extends Subsystem {
 	 public void arcadeDrive(double moveSpeed, double rotateSpeed) {
 	 	drive.arcadeDrive(moveSpeed, rotateSpeed);
 	 }
+
+	 public void povDrive(double POV) {
+		if(POV == 0) {
+			drive.arcadeDrive(Parameters.POVspeed, 0);
+		  } 
+
+		if(POV == 90) {
+			drive.arcadeDrive(0, Parameters.POVspeed);
+			}
+
+		if(POV == 180) {
+			drive.arcadeDrive(-Parameters.POVspeed, 0); 
+			}
+
+		if(POV == 270) {
+			drive.arcadeDrive(0, -Parameters.POVspeed);
+		} 
+	 }
 	 
 	 public void resetDrive() {
 		 drive.tankDrive(0.0,0.0);
