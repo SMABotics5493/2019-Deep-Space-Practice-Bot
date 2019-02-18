@@ -10,17 +10,18 @@ import frc.robot.commands.BallLiftDown;
 import frc.robot.commands.BallLiftUp;	
 import frc.robot.commands.BallOuttake;	
 import frc.robot.commands.HatchMotorForward;	
-import frc.robot.commands.HatchMotorReverse;	
-import frc.robot.commands.SolenoidForward;	
-import frc.robot.commands.SolenoidReverse;	
+import frc.robot.commands.HatchMotorReverse;
+import frc.robot.commands.PlusDrive;
+import frc.robot.commands.SolenoidForward;
+import frc.robot.commands.SolenoidReverse;
+import frc.robot.subsystems.DriveBase;
 
 public class OI {	
 
     public Joystick driveJoystick = new Joystick(RobotMap.DRIVE_JOYSTICK);	
-   private Joystick mechJoystick = new Joystick(RobotMap.JOYSTICK);	
+    public Joystick mechJoystick = new Joystick(RobotMap.JOYSTICK);	
 
-    // A,B,X,Y buttons on mechanism joystick
-
+    // ABXY buttons on mechanism joystick
     JoystickButton ballIntake = new JoystickButton(mechJoystick, RobotMap.JOYB_X);
     JoystickButton ballOuttake = new JoystickButton(mechJoystick, RobotMap.JOYB_B);
     JoystickButton ballLiftUp = new JoystickButton(mechJoystick, RobotMap.JOYB_Y);
@@ -32,13 +33,18 @@ public class OI {
     POVButton hatchMotorForward = new POVButton(mechJoystick, 0);
     POVButton hatchMotorReverse = new POVButton(mechJoystick, 180);
 
-    // DPAD buttons on drive joystick
-    POVButton autoForward = new POVButton(driveJoystick, 0);
-    POVButton autoBackward = new POVButton(driveJoystick, 180);
-    POVButton autoLeft = new POVButton(driveJoystick, 270);
-    POVButton autoRight = new POVButton(driveJoystick, 90);    
+    // ABXY buttons on drive joystick
+    JoystickButton autoForward = new JoystickButton(driveJoystick, RobotMap.JOYB_X);
+    JoystickButton autoBackward = new JoystickButton(driveJoystick, RobotMap.JOYB_B);
+    JoystickButton autoLeft = new JoystickButton(driveJoystick, RobotMap.JOYB_Y);
+    JoystickButton autoRight = new JoystickButton(driveJoystick, RobotMap.JOYB_A);    
    
-   
+      // DPAD buttons on mechanism joystick
+      POVButton arcadeForward = new POVButton(driveJoystick, 90);
+      POVButton arcadeBackward = new POVButton(driveJoystick, 270);
+      POVButton arcadeLeft = new POVButton(driveJoystick, 0);
+      POVButton arcadeRight = new POVButton(driveJoystick, 180);
+  
 
     public Joystick getDriveJoystick() {	
      return driveJoystick;	
@@ -63,6 +69,12 @@ public class OI {
         autoBackward.whenPressed(new AutoDrive(-12));	
         autoLeft.whenPressed(new AutoTurn(-90));	
         autoRight.whenPressed(new AutoTurn(90));	
+
+        arcadeForward.whileHeld(new PlusDrive(0.5,0));
+        arcadeBackward.whileHeld(new PlusDrive(-0.5, 0));
+        arcadeLeft.whileHeld(new PlusDrive(0, -0.5));
+        arcadeRight.whileHeld(new PlusDrive(0, 0.5));
+  
    }
 
 }

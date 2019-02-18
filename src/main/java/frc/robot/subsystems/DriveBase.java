@@ -62,14 +62,14 @@ public class DriveBase extends Subsystem {
 		
     drive.setExpiration(0.1);
   }
-  
+
   public void drive(Joystick j){
 		drive.tankDrive(j.getRawAxis(RobotMap.LEFTYAXIS), j.getRawAxis(RobotMap.RIGHTYAXIS));
 	 }
  
-	 // public void arcadeDrive(double moveSpeed, double rotateSpeed) {
-	 // 	drive.arcadeDrive(moveSpeed, rotateSpeed);
-	 // }
+	 public void arcadeDrive(double moveSpeed, double rotateSpeed) {
+	 	drive.arcadeDrive(moveSpeed, rotateSpeed);
+	 }
 	 
 	 public void resetDrive() {
 		 drive.tankDrive(0.0,0.0);
