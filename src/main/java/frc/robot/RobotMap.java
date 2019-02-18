@@ -12,8 +12,6 @@ public class RobotMap {
 	public static final int JOYB_Y = 4;
 	public static final int JOYB_LB = 5;
 	public static final int JOYB_RB = 6;
-//	public static final int JOYB_LT = 7;
- // public static final int JOYB_RT = 8;
   
   public static final int RIGHTYAXIS = 5;
   public static final int LEFTYAXIS = 1;

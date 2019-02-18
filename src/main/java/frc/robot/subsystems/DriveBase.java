@@ -2,10 +2,10 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.sensors.PigeonIMU;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
-//import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
-import frc.robot.commands.ArcadeDrive;
+import frc.robot.commands.JoystickDrive;
 
 public class DriveBase extends Subsystem {
 
@@ -21,7 +21,9 @@ public class DriveBase extends Subsystem {
   WPI_TalonSRX rightFrontMotor;
   WPI_TalonSRX leftBackMotor;
   WPI_TalonSRX rightBackMotor;
-  private DifferentialDrive drive;
+  WPI_TalonSRX pigeonMotor;
+  public DifferentialDrive drive;
+  public PigeonIMU gyro;
 
   public Encoder leftEncoder;
   public Encoder rightEncoder;
@@ -53,14 +55,14 @@ public class DriveBase extends Subsystem {
     SpeedController rightSide = new SpeedControllerGroup(rightFrontMotor, rightBackMotor);
 		drive = new DifferentialDrive(leftSide, rightSide);
 
-		leftFrontMotor.configOpenloopRamp(voltsPerSecond);
-		rightFrontMotor.configOpenloopRamp(voltsPerSecond);
-		leftFrontMotor.set(ControlMode.Follower, RobotMap.LEFT_BACK_MOTOR);
-		rightFrontMotor.set(ControlMode.Follower, RobotMap.RIGHT_BACK_MOTOR);
+		leftBackMotor.configOpenloopRamp(voltsPerSecond);
+		rightBackMotor.configOpenloopRamp(voltsPerSecond);
+		leftBackMotor.set(ControlMode.Follower, RobotMap.LEFT_FRONT_MOTOR);
+		rightBackMotor.set(ControlMode.Follower, RobotMap.RIGHT_FRONT_MOTOR);
 		
-
     drive.setExpiration(0.1);
   }
+  
   public void drive(Joystick j){
 		drive.tankDrive(j.getRawAxis(RobotMap.LEFTYAXIS), j.getRawAxis(RobotMap.RIGHTYAXIS));
 	 }
@@ -72,25 +74,28 @@ public class DriveBase extends Subsystem {
 	 public void resetDrive() {
 		 drive.tankDrive(0.0,0.0);
 	 }
- 
-	 public void resetEncoders() {
-		 leftEncoder.reset();
-		 rightEncoder.reset();
-	 }
- 
-	 public double getAverageEncoderPosition()  {
-		 return (leftEncoder.getDistance() + rightEncoder.getDistance())/2;
-	 }
-	 
-	 public double getYaw() {
-		 double ypr[] = new double[3];
-		 gyro.getYawPitchRoll(ypr);
-		 return ypr[0];
-	 }
-	 
-	 @Override
-	 protected void initDefaultCommand() {
-		 setDefaultCommand(new JoystickDrive());
-	 }
-}
+	
+	public void resetEncoders() {
+		leftEncoder.reset();
+		rightEncoder.reset();
+	}
 
+	public double getAverageEncoderPosition()  {
+		return (leftEncoder.getDistance() + rightEncoder.getDistance())/2;
+	}
+
+	public double getYaw() {
+		double ypr[] = new double[3];
+		gyro.getYawPitchRoll(ypr);
+		return ypr[0];
+	}
+
+	@Override
+	protected void initDefaultCommand() {
+		setDefaultCommand(new JoystickDrive());
+	}
+
+	public void displayYaw(){
+		SmartDashboard.putNumber("Yaw", getYaw());
+	}
+}
