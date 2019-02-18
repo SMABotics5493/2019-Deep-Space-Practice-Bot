@@ -37,7 +37,7 @@ public class DriveBase extends Subsystem {
 	public static double arcLength;
 	public static double kp_straight = 0.25;
 	public static double kp_turn = 0.005;
-	public static double voltsPerSecond = 0.1;
+	public static double voltsPerSecond = 0.5;
 
   public DriveBase(){
     super();
