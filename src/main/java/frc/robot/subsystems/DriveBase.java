@@ -48,8 +48,6 @@ public class DriveBase extends Subsystem {
     leftBackMotor = new WPI_TalonSRX(RobotMap.LEFT_BACK_MOTOR);
     rightBackMotor = new WPI_TalonSRX(RobotMap.RIGHT_BACK_MOTOR);
 
-    leftEncoder = new Encoder(RobotMap.ENCODER_LEFTA,RobotMap.ENCODER_LEFTB,true, EncodingType.k4X);
-		rightEncoder = new Encoder(RobotMap.ENCODER_RIGHTA,RobotMap.ENCODER_RIGHTB,false,EncodingType.k4X);
 		leftEncoder.setDistancePerPulse(DistancePerPulse);
 		rightEncoder.setDistancePerPulse(DistancePerPulse);
     
@@ -107,7 +105,7 @@ public class DriveBase extends Subsystem {
 	}
 
 	public double getAverageEncoderPosition()  {
-		return (leftEncoder.getDistance() + rightEncoder.getDistance())/2;
+		return (leftFrontMotor.getSelectedSensorPosition() + rightFrontMotor.getSelectedSensorPosition())/2;
 	}
 
 	public double getYaw() {
