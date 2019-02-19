@@ -70,7 +70,7 @@ public class AutoTurn extends Command {
         // is less than or greater than the target angular velocity.
         if (m_angularVelocity < targetAngularVelocity) {
             // we're turning too slowly - increase power to motors
-            m_currentPower = Math.min(0.6, m_currentPower + 0.05);
+            m_currentPower = Math.min(0.4, m_currentPower + 0.05);
         } else if (m_angularVelocity > targetAngularVelocity) {
             // we're turning too quickly - decrease power to motors
             m_currentPower = Math.max(0.4, m_currentPower - 0.05);

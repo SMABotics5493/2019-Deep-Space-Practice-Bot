@@ -48,8 +48,6 @@ public class DriveBase extends Subsystem {
     leftBackMotor = new WPI_TalonSRX(RobotMap.LEFT_BACK_MOTOR);
     rightBackMotor = new WPI_TalonSRX(RobotMap.RIGHT_BACK_MOTOR);
 
-    leftEncoder = new Encoder(RobotMap.ENCODER_LEFTA,RobotMap.ENCODER_LEFTB,true, EncodingType.k4X);
-		rightEncoder = new Encoder(RobotMap.ENCODER_RIGHTA,RobotMap.ENCODER_RIGHTB,false,EncodingType.k4X);
 		leftEncoder.setDistancePerPulse(DistancePerPulse);
 		rightEncoder.setDistancePerPulse(DistancePerPulse);
     
@@ -57,8 +55,8 @@ public class DriveBase extends Subsystem {
     SpeedController rightSide = new SpeedControllerGroup(rightFrontMotor, rightBackMotor);
 		drive = new DifferentialDrive(leftSide, rightSide);
 
-		leftBackMotor.configOpenloopRamp(voltsPerSecond);
-		rightBackMotor.configOpenloopRamp(voltsPerSecond);
+		leftFrontMotor.configOpenloopRamp(voltsPerSecond);
+		rightFrontMotor.configOpenloopRamp(voltsPerSecond);
 		
 		leftBackMotor.setNeutralMode(NeutralMode.Brake);
 		rightBackMotor.setNeutralMode(NeutralMode.Brake);
@@ -102,12 +100,12 @@ public class DriveBase extends Subsystem {
 	 }
 	
 	public void resetEncoders() {
-		leftEncoder.reset();
-		rightEncoder.reset();
+		leftFrontMotor.getSelectedSensorPosition(0);
+		rightFrontMotor.getSelectedSensorPosition(0);
 	}
 
 	public double getAverageEncoderPosition()  {
-		return (leftEncoder.getDistance() + rightEncoder.getDistance())/2;
+		return (leftFrontMotor.getSelectedSensorPosition() + rightFrontMotor.getSelectedSensorPosition())/2;
 	}
 
 	public double getYaw() {
@@ -119,6 +117,12 @@ public class DriveBase extends Subsystem {
 	@Override
 	protected void initDefaultCommand() {
 		setDefaultCommand(new JoystickDrive());
+	}
+
+	public void displayEncoders(){
+		SmartDashboard.putNumber("currentLeftEncoder", leftFrontMotor.getSelectedSensorPosition());
+		SmartDashboard.putNumber("currentRightEncoder", rightFrontMotor.getSelectedSensorPosition());
+		SmartDashboard.putNumber("currentAverageEncoderValue", getAverageEncoderPosition());
 	}
 
 	public void displayYaw(){
