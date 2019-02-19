@@ -77,7 +77,7 @@ public class DriveBase extends Subsystem {
 	 }
 
 	public void reverseDrive(Joystick j){
-		buttonValue = j.getRawButtonPressed(RobotMap.JOYB_LB);
+		buttonValue = j.getRawButtonPressed(RobotMap.JOYB_BACK);
 		if(buttonValue == true){
 			direction = -1;
 		} else {
