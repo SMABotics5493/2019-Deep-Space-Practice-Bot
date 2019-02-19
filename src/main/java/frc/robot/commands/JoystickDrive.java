@@ -21,7 +21,15 @@ public class JoystickDrive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.driveBase.drive(Robot.oi.getDriveJoystick());
+    var driveJoystick = Robot.oi.getDriveJoystick();
+    var pov = driveJoystick.getPOV();
+
+    if(pov < 0) {
+      Robot.driveBase.drive(driveJoystick);
+    }
+    else {
+      Robot.driveBase.povDrive(pov);
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
