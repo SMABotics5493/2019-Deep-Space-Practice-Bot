@@ -57,8 +57,8 @@ public class DriveBase extends Subsystem {
     SpeedController rightSide = new SpeedControllerGroup(rightFrontMotor, rightBackMotor);
 		drive = new DifferentialDrive(leftSide, rightSide);
 
-		leftBackMotor.configOpenloopRamp(voltsPerSecond);
-		rightBackMotor.configOpenloopRamp(voltsPerSecond);
+		leftFrontMotor.configOpenloopRamp(voltsPerSecond);
+		rightFrontMotor.configOpenloopRamp(voltsPerSecond);
 		
 		leftBackMotor.setNeutralMode(NeutralMode.Brake);
 		rightBackMotor.setNeutralMode(NeutralMode.Brake);
