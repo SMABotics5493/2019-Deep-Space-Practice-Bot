@@ -100,8 +100,8 @@ public class DriveBase extends Subsystem {
 	 }
 	
 	public void resetEncoders() {
-		leftEncoder.reset();
-		rightEncoder.reset();
+		leftFrontMotor.getSelectedSensorPosition(0);
+		rightFrontMotor.getSelectedSensorPosition(0);
 	}
 
 	public double getAverageEncoderPosition()  {
@@ -117,6 +117,12 @@ public class DriveBase extends Subsystem {
 	@Override
 	protected void initDefaultCommand() {
 		setDefaultCommand(new JoystickDrive());
+	}
+
+	public void displayEncoders(){
+		SmartDashboard.putNumber("currentLeftEncoder", leftFrontMotor.getSelectedSensorPosition());
+		SmartDashboard.putNumber("currentRightEncoder", rightFrontMotor.getSelectedSensorPosition());
+		SmartDashboard.putNumber("currentAverageEncoderValue", getAverageEncoderPosition());
 	}
 
 	public void displayYaw(){
