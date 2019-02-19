@@ -22,15 +22,20 @@ public class BallShooter extends Subsystem {
   }
 
   public void intake(){
-    Robot.ballShooter.ballShooterLeft.set(0.4);
-    Robot.ballShooter.ballShooterRight.set(-0.4);
-		ballShooterRight.set(ControlMode.Follower, RobotMap.BALL_SHOOTER_LEFT);
+    //Robot.ballShooter.ballShooterLeft.set(0.44);
+    Robot.ballShooter.ballShooterRight.set(-0.44);
+    ballShooterLeft.setInverted(true);
+		ballShooterLeft.set(ControlMode.Follower, RobotMap.BALL_SHOOTER_RIGHT);
 		
   }
 
   public void outtake(){
-    Robot.ballShooter.ballShooterLeft.set(-1.0);
+   // Robot.ballShooter.ballShooterLeft.set(1.0);
     Robot.ballShooter.ballShooterRight.set(1.0);
+    ballShooterLeft.setInverted(true);
+		ballShooterLeft.set(ControlMode.Follower, RobotMap.BALL_SHOOTER_RIGHT);
+	
+
   }
 
   public void end(){
