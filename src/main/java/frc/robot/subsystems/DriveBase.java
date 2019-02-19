@@ -58,8 +58,8 @@ public class DriveBase extends Subsystem {
     SpeedController rightSide = new SpeedControllerGroup(rightFrontMotor, rightBackMotor);
 		drive = new DifferentialDrive(leftSide, rightSide);
 
-		//leftBackMotor.configOpenloopRamp(voltsPerSecond);
-		//rightBackMotor.configOpenloopRamp(voltsPerSecond);
+		leftBackMotor.configOpenloopRamp(voltsPerSecond);
+		rightBackMotor.configOpenloopRamp(voltsPerSecond);
 		leftFrontMotor.set(ControlMode.Follower, RobotMap.LEFT_BACK_MOTOR);
 		rightFrontMotor.set(ControlMode.Follower, RobotMap.RIGHT_BACK_MOTOR);
 		gyro = new PigeonIMU(pigeonMotor);
@@ -67,16 +67,34 @@ public class DriveBase extends Subsystem {
     drive.setExpiration(0.1);
   }
   public void drive(Joystick j){
-   drive.tankDrive(j.getRawAxis(RobotMap.LEFTYAXIS), j.getRawAxis(RobotMap.RIGHTYAXIS));
-  }
+	drive.tankDrive(-j.getRawAxis(RobotMap.LEFTYAXIS), -j.getRawAxis(RobotMap.RIGHTYAXIS));
+ }
 
-  // public void arcadeDrive(double moveSpeed, double rotateSpeed) {
-	// 	drive.arcadeDrive(moveSpeed, rotateSpeed);
-	// }
-	
-	public void resetDrive() {
-		drive.tankDrive(0.0,0.0);
-	}
+ public void arcadeDrive(double moveSpeed, double rotateSpeed) {
+	 drive.arcadeDrive(moveSpeed, rotateSpeed);
+ }
+
+ public void povDrive(double POV) {
+	if(POV == 0) {
+		drive.arcadeDrive(Parameters.POVspeed, 0);
+	  } 
+
+	if(POV == 90) {
+		drive.arcadeDrive(0, Parameters.POVspeed);
+		}
+
+	if(POV == 180) {
+		drive.arcadeDrive(-Parameters.POVspeed, 0); 
+		}
+
+	if(POV == 270) {
+		drive.arcadeDrive(0, -Parameters.POVspeed);
+	} 
+ }
+ 
+ public void resetDrive() {
+	 drive.tankDrive(0.0,0.0);
+ }
 
 	public void resetEncoders() {
 		leftEncoder.reset();
