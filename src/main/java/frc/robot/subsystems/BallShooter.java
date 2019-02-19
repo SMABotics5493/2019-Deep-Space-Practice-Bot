@@ -1,6 +1,7 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 
@@ -23,6 +24,8 @@ public class BallShooter extends Subsystem {
   public void intake(){
     Robot.ballShooter.ballShooterLeft.set(0.4);
     Robot.ballShooter.ballShooterRight.set(-0.4);
+		ballShooterRight.set(ControlMode.Follower, RobotMap.BALL_SHOOTER_LEFT);
+		
   }
 
   public void outtake(){
