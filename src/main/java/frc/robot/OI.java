@@ -10,18 +10,18 @@ import frc.robot.commands.BallLiftDown;
 import frc.robot.commands.BallLiftUp;	
 import frc.robot.commands.BallOuttake;	
 import frc.robot.commands.HatchMotorForward;	
-import frc.robot.commands.HatchMotorReverse;	
-import frc.robot.commands.SolenoidForward;	
+import frc.robot.commands.HatchMotorReverse;
+import frc.robot.commands.SolenoidForward;
 import frc.robot.commands.SolenoidReverse;	
 
 public class OI {	
 
     public Joystick driveJoystick = new Joystick(RobotMap.DRIVE_JOYSTICK);	
    private Joystick mechJoystick = new Joystick(RobotMap.JOYSTICK);	
-
+ 
     // ABXY buttons on mechanism joystick
 
-    JoystickButton ballIntake = new JoystickButton(mechJoystick, RobotMap.JOYB_X);
+    JoystickButton ballIntake = new JoystickButton(mechJoystick, RobotMap.JOYB_X);      
     JoystickButton ballOuttake = new JoystickButton(mechJoystick, RobotMap.JOYB_B);
     JoystickButton ballLiftUp = new JoystickButton(mechJoystick, RobotMap.JOYB_Y);
     JoystickButton ballLiftDown = new JoystickButton(mechJoystick, RobotMap.JOYB_A);
@@ -37,7 +37,6 @@ public class OI {
     JoystickButton autoRight = new JoystickButton(driveJoystick, RobotMap.JOYB_B);    
     JoystickButton autoForward = new JoystickButton(driveJoystick, RobotMap.JOYB_Y);
     JoystickButton autoBackward = new JoystickButton(driveJoystick, RobotMap.JOYB_A);
-      
 
     public Joystick getDriveJoystick() {	
      return driveJoystick;	
@@ -48,6 +47,7 @@ public class OI {
    }	
 
     public OI(){	
+
         ballIntake.whileHeld(new BallIntake(ballIntake));	
         ballOuttake.whileHeld(new BallOuttake(ballOuttake));	
         ballLiftUp.whileHeld(new BallLiftUp(ballLiftUp));	

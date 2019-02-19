@@ -40,6 +40,9 @@ public class DriveBase extends Subsystem {
 	public static double kp_turn = 0.005;
 	public static double voltsPerSecond = 0.5;
 
+	boolean buttonValue;
+	int direction = 1;
+
   public DriveBase(){
     super();
 
@@ -48,8 +51,8 @@ public class DriveBase extends Subsystem {
     leftBackMotor = new WPI_TalonSRX(RobotMap.LEFT_BACK_MOTOR);
     rightBackMotor = new WPI_TalonSRX(RobotMap.RIGHT_BACK_MOTOR);
 
-		leftEncoder.setDistancePerPulse(DistancePerPulse);
-		rightEncoder.setDistancePerPulse(DistancePerPulse);
+		// leftEncoder.setDistancePerPulse(DistancePerPulse);
+		// rightEncoder.setDistancePerPulse(DistancePerPulse);
     
     SpeedController leftSide = new SpeedControllerGroup(leftFrontMotor, leftBackMotor);
     SpeedController rightSide = new SpeedControllerGroup(rightFrontMotor, rightBackMotor);
@@ -71,6 +74,16 @@ public class DriveBase extends Subsystem {
 
   public void drive(Joystick j){
 		drive.tankDrive(-j.getRawAxis(RobotMap.LEFTYAXIS), -j.getRawAxis(RobotMap.RIGHTYAXIS));
+	 }
+
+	public void reverseDrive(Joystick j){
+		buttonValue = j.getRawButtonPressed(RobotMap.JOYB_LB);
+		if(buttonValue == true){
+			direction = -1;
+		} else {
+			direction = 1;
+		}
+		drive.tankDrive(direction * j.getRawAxis(RobotMap.LEFTYAXIS), direction * j.getRawAxis(RobotMap.RIGHTYAXIS));
 	 }
  
 	 public void arcadeDrive(double moveSpeed, double rotateSpeed) {
