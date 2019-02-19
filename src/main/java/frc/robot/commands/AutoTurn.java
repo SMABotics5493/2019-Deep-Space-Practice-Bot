@@ -22,6 +22,7 @@ public class AutoTurn extends Command {
         m_targetAngle = Math.abs(targetAngle);
     }
 
+    
     // Called just before this Command runs the first time
     protected void initialize() {
        SmartDashboard.putString("turnStartTime", LocalDateTime.now().toString());
@@ -85,6 +86,7 @@ public class AutoTurn extends Command {
         SmartDashboard.putNumber("turnAngularVelocity", m_angularVelocity);
     }
 
+
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         double remainingDegrees = m_targetAngle - (Robot.driveBase.getYaw() * -m_turnDirection);
@@ -92,10 +94,12 @@ public class AutoTurn extends Command {
         return remainingDegrees <= 3;
     }
 
+
     // Called once after isFinished returns true
     protected void end() {
         SmartDashboard.putString("turnEndTime", LocalDateTime.now().toString());
     }
+
 
     // Called when another command which requires one or more of the same subsystems is scheduled to run
     protected void interrupted() {

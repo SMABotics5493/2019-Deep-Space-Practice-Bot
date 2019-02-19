@@ -19,7 +19,7 @@ public class OI {
     public Joystick driveJoystick = new Joystick(RobotMap.DRIVE_JOYSTICK);	
    private Joystick mechJoystick = new Joystick(RobotMap.JOYSTICK);	
 
-    // A,B,X,Y buttons on mechanism joystick
+    // ABXY buttons on mechanism joystick
 
     JoystickButton ballIntake = new JoystickButton(mechJoystick, RobotMap.JOYB_X);
     JoystickButton ballOuttake = new JoystickButton(mechJoystick, RobotMap.JOYB_B);
@@ -32,13 +32,12 @@ public class OI {
     POVButton hatchMotorForward = new POVButton(mechJoystick, 0);
     POVButton hatchMotorReverse = new POVButton(mechJoystick, 180);
 
-    // DPAD buttons on drive joystick
-    POVButton autoForward = new POVButton(driveJoystick, 0);
-    POVButton autoBackward = new POVButton(driveJoystick, 180);
-    POVButton autoLeft = new POVButton(driveJoystick, 270);
-    POVButton autoRight = new POVButton(driveJoystick, 90);    
-   
-   
+    // ABXY buttons on drive joystick
+    JoystickButton autoLeft = new JoystickButton(driveJoystick, RobotMap.JOYB_X);
+    JoystickButton autoRight = new JoystickButton(driveJoystick, RobotMap.JOYB_B);    
+    JoystickButton autoForward = new JoystickButton(driveJoystick, RobotMap.JOYB_Y);
+    JoystickButton autoBackward = new JoystickButton(driveJoystick, RobotMap.JOYB_A);
+      
 
     public Joystick getDriveJoystick() {	
      return driveJoystick;	
