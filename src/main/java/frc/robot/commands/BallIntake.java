@@ -16,6 +16,7 @@ public class BallIntake extends Command {
 
   @Override
   protected void initialize() {
+   
   }
 
   @Override

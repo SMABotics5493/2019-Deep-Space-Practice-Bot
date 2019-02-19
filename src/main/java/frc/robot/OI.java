@@ -29,8 +29,8 @@ public class OI {
     // DPAD buttons on mechanism joystick
     POVButton solenoidForward = new POVButton(mechJoystick, 90);
     POVButton solenoidReverse = new POVButton(mechJoystick, 270);
-    POVButton hatchMotorForward = new POVButton(mechJoystick, 0);
-    POVButton hatchMotorReverse = new POVButton(mechJoystick, 180);
+    POVButton hatchMotorForward = new POVButton(mechJoystick, 180);
+    POVButton hatchMotorReverse = new POVButton(mechJoystick, 0);
 
     // ABXY buttons on drive joystick
     JoystickButton autoLeft = new JoystickButton(driveJoystick, RobotMap.JOYB_X);
