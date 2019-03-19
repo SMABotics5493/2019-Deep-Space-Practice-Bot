@@ -21,7 +21,7 @@ public class Robot extends TimedRobot {
   public static BallLift ballLift;
   public static HatchPanel hatchPanel;
   public static HatchSolenoid hatchSolenoid;
-  //public static Transmission transmission;
+  public static Transmission transmission;
   public static OI oi;
 
   Command m_autonomousCommand;
@@ -34,7 +34,7 @@ public class Robot extends TimedRobot {
     ballLift = new BallLift();
     hatchPanel = new HatchPanel();
     hatchSolenoid = new HatchSolenoid();
-  //  transmission = new Transmission();
+    transmission = new Transmission();
     oi = new OI();
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("robotAutoMode", m_chooser);
