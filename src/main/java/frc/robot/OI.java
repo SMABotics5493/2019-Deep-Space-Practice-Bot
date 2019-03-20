@@ -3,6 +3,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;	
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.POVButton;
+import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.commands.AutoDrive;
 import frc.robot.commands.AutoTurn;	
 import frc.robot.commands.BallIntake;	
@@ -12,7 +13,9 @@ import frc.robot.commands.BallOuttake;
 import frc.robot.commands.HatchMotorForward;	
 import frc.robot.commands.HatchMotorReverse;	
 import frc.robot.commands.SolenoidForward;	
-import frc.robot.commands.SolenoidReverse;	
+import frc.robot.commands.SolenoidReverse;
+import frc.robot.commands.TransmissionLudicrousSpeed;
+import frc.robot.commands.TransmissionStupidlySlow;	
 
 public class OI {	
 
@@ -37,7 +40,11 @@ public class OI {
     JoystickButton autoRight = new JoystickButton(driveJoystick, RobotMap.JOYB_B);    
     JoystickButton autoForward = new JoystickButton(driveJoystick, RobotMap.JOYB_Y);
     JoystickButton autoBackward = new JoystickButton(driveJoystick, RobotMap.JOYB_A);
-      
+
+    // Transmission
+    JoystickButton TransmissionLudicrousSpeed = new JoystickButton(driveJoystick, RobotMap.JOYB_LT);
+    JoystickButton TransmissionStupidlySlow = new JoystickButton(driveJoystick, RobotMap.JOYB_RT);
+
 
     public Joystick getDriveJoystick() {	
      return driveJoystick;	
@@ -62,6 +69,9 @@ public class OI {
         autoBackward.whenPressed(new AutoDrive(-12));	
         autoLeft.whenPressed(new AutoTurn(-90));	
         autoRight.whenPressed(new AutoTurn(90));	
+
+        TransmissionLudicrousSpeed.whenPressed(new TransmissionLudicrousSpeed());
+        TransmissionStupidlySlow.whenPressed(new TransmissionStupidlySlow());
    }	
 
 }	
