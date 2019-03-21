@@ -3,11 +3,11 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class SolenoidForward extends Command {
+public class HatchReverse extends Command {
 
   private boolean isFinished;
 
-  public SolenoidForward() {
+  public HatchReverse() {
     requires(Robot.hatchSolenoid);
   }
 
@@ -17,10 +17,9 @@ public class SolenoidForward extends Command {
 
   @Override
   protected void execute() {
-    Robot.hatchSolenoid.forward();
+    Robot.hatchSolenoid.reverse();
     isFinished = false;
-     
-   }
+  }
 
   @Override
   protected boolean isFinished() {

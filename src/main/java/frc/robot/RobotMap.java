@@ -30,11 +30,11 @@ public class RobotMap {
   public static final int BALL_SHOOTER_LEFT = 3;
   public static final int BALL_SHOOTER_RIGHT = 5;
 
-  public static final int SOLENOID_FORWARD = 0;
-  public static final int SOLENOID_REVERSE = 1;
+  public static final int HATCH_FORWARD = 0;
+  public static final int HATCH_REVERSE = 1;
 
-  public static final int TRANSMISSION_FORWARD = 0;
-  public static final int TRANSMISSION_REVERSE = 1;
+  public static final int TRANSMISSION_FORWARD = 6;
+  public static final int TRANSMISSION_REVERSE = 7;
 
   public static final int PIGEON_IMU_MOTOR = 4;
   public static final int HATCH_PANEL =  4;

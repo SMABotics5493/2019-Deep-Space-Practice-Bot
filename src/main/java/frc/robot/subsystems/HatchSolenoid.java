@@ -7,7 +7,7 @@ import frc.robot.RobotMap;
 
 public class HatchSolenoid extends Subsystem {
   
-  DoubleSolenoid solenoid = new DoubleSolenoid(RobotMap.SOLENOID_FORWARD, RobotMap.SOLENOID_REVERSE);
+  DoubleSolenoid solenoid = new DoubleSolenoid(RobotMap.HATCH_FORWARD, RobotMap.HATCH_REVERSE);
 
   public void forward(){
     solenoid.set(DoubleSolenoid.Value.kForward);
