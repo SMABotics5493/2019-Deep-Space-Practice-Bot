@@ -11,8 +11,8 @@ import frc.robot.commands.BallLiftUp;
 import frc.robot.commands.BallOuttake;	
 import frc.robot.commands.HatchMotorForward;	
 import frc.robot.commands.HatchMotorReverse;	
-import frc.robot.commands.HatchForward;	
-import frc.robot.commands.HatchReverse;
+import frc.robot.commands.HatchForward;
+import frc.robot.commands.HatchReverse;	
 import frc.robot.commands.TransmissionLudicrousSpeed;
 import frc.robot.commands.TransmissionStupidlySlow;
 
