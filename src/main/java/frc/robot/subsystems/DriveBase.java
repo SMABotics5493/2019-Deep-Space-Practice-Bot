@@ -76,20 +76,20 @@ public class DriveBase extends Subsystem {
  }
 
  public void povDrive(double POV) {
-	if(POV == 180) {
+	if(POV == 0) {
 		drive.arcadeDrive(-Parameters.POVspeed, 0);
 	  } 
 
 	if(POV == 90) {
-		drive.arcadeDrive(0, Parameters.POVspeed);
+		drive.arcadeDrive(0, -Parameters.POVspeed);
 		}
 
-	if(POV == 0) {
+	if(POV == 180) {
 		drive.arcadeDrive(Parameters.POVspeed, 0); 
 		}
 
 	if(POV == 270) {
-		drive.arcadeDrive(0, -Parameters.POVspeed);
+		drive.arcadeDrive(0, Parameters.POVspeed);
 	} 
  }
  
