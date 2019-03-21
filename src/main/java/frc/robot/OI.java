@@ -3,6 +3,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;	
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.POVButton;
+import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.commands.AutoDrive;
 import frc.robot.commands.AutoTurn;	
 import frc.robot.commands.BallIntake;	
@@ -12,7 +13,9 @@ import frc.robot.commands.BallOuttake;
 import frc.robot.commands.HatchMotorForward;	
 import frc.robot.commands.HatchMotorReverse;	
 import frc.robot.commands.HatchForward;	
-import frc.robot.commands.HatchReverse;	
+import frc.robot.commands.HatchReverse;
+import frc.robot.commands.TransmissionLudicrousSpeed;
+import frc.robot.commands.TransmissionStupidlySlow;
 
 public class OI {	
 
@@ -64,6 +67,9 @@ public class OI {
         autoBackward.whenPressed(new AutoDrive(-12));	
         autoLeft.whenPressed(new AutoTurn(-90));	
         autoRight.whenPressed(new AutoTurn(90));	
+
+        transmissionLudicrousSpeed.whenPressed(new TransmissionLudicrousSpeed());
+        transmissionStupidlySlow.whenPressed(new TransmissionStupidlySlow());
    }	
 
 }	
