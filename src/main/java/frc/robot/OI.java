@@ -34,14 +34,14 @@ public class OI {
     POVButton hatchMotorReverse = new POVButton(mechJoystick, 180);
 
     // ABXY buttons on drive joystick
-    JoystickButton autoLeft = new JoystickButton(driveJoystick, RobotMap.JOYB_X);
+   /* JoystickButton autoLeft = new JoystickButton(driveJoystick, RobotMap.JOYB_X);
     JoystickButton autoRight = new JoystickButton(driveJoystick, RobotMap.JOYB_B);    
     JoystickButton autoForward = new JoystickButton(driveJoystick, RobotMap.JOYB_Y);
-    JoystickButton autoBackward = new JoystickButton(driveJoystick, RobotMap.JOYB_A);
+    JoystickButton autoBackward = new JoystickButton(driveJoystick, RobotMap.JOYB_A);*/
     
     // bumpers on drive joystick
-    JoystickButton transmissionStupidlySlow = new JoystickButton(driveJoystick, RobotMap.JOYB_LB);
-    JoystickButton transmissionLudicrousSpeed = new JoystickButton(driveJoystick, RobotMap.JOYB_RB);    
+    JoystickButton transmissionStupidlySlow = new JoystickButton(driveJoystick, RobotMap.JOYB_B);
+    JoystickButton transmissionLudicrousSpeed = new JoystickButton(driveJoystick, RobotMap.JOYB_X);    
 
     public Joystick getDriveJoystick() {	
      return driveJoystick;	
@@ -62,10 +62,10 @@ public class OI {
         hatchForward.whileHeld(new HatchForward());	
         hatchReverse.whileHeld(new HatchReverse());	
                 
-        autoForward.whenPressed(new AutoDrive(12));	
+       /* autoForward.whenPressed(new AutoDrive(12));	
         autoBackward.whenPressed(new AutoDrive(-12));	
         autoLeft.whenPressed(new AutoTurn(-90));	
-        autoRight.whenPressed(new AutoTurn(90));	
+        autoRight.whenPressed(new AutoTurn(90));*/	
 
         transmissionLudicrousSpeed.whenPressed(new TransmissionLudicrousSpeed());
         transmissionStupidlySlow.whenPressed(new TransmissionStupidlySlow());
