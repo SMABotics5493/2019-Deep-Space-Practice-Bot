@@ -3,7 +3,6 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;	
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.POVButton;
-import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.commands.AutoDrive;
 import frc.robot.commands.AutoTurn;	
 import frc.robot.commands.BallIntake;	
