@@ -20,10 +20,10 @@ import frc.robot.commands.JoystickDrive;
 
 public class DriveBase extends Subsystem {
 
-  WPI_VictorSPX leftFrontMotor;
-  WPI_VictorSPX rightFrontMotor;
-  WPI_TalonSRX leftBackMotor;
-	WPI_TalonSRX rightBackMotor;
+  WPI_VictorSPX leftFollower;
+  WPI_VictorSPX rightFollower;
+  WPI_TalonSRX leftMaster;
+	WPI_TalonSRX rightMaster;
 	WPI_TalonSRX pigeonMotor;
   public DifferentialDrive drive;
 	public PigeonIMU gyro;
@@ -44,25 +44,24 @@ public class DriveBase extends Subsystem {
   public DriveBase(){
     super();
 		pigeonMotor = new WPI_TalonSRX(RobotMap.PIGEON_IMU_MOTOR);
-
-    leftFrontMotor = new WPI_VictorSPX(RobotMap.LEFT_FRONT_MOTOR);
-    rightFrontMotor = new WPI_VictorSPX(RobotMap.RIGHT_FRONT_MOTOR);
-    leftBackMotor = new WPI_TalonSRX(RobotMap.LEFT_BACK_MOTOR);
-    rightBackMotor = new WPI_TalonSRX(RobotMap.RIGHT_BACK_MOTOR);
+    leftMaster = new WPI_TalonSRX(RobotMap.LEFT_MASTER);
+    rightMaster = new WPI_TalonSRX(RobotMap.RIGHT_MASTER);
+    leftFollower = new WPI_VictorSPX(RobotMap.LEFT_FOLLOWER);
+    rightFollower = new WPI_VictorSPX(RobotMap.RIGHT_FOLLOWER);
 
     leftEncoder = new Encoder(RobotMap.ENCODER_LEFTA,RobotMap.ENCODER_LEFTB,true, EncodingType.k4X);
 		rightEncoder = new Encoder(RobotMap.ENCODER_RIGHTA,RobotMap.ENCODER_RIGHTB,false,EncodingType.k4X);
 		leftEncoder.setDistancePerPulse(DistancePerPulse);
 		rightEncoder.setDistancePerPulse(DistancePerPulse);
     
-    SpeedController leftSide = new SpeedControllerGroup(leftFrontMotor, leftBackMotor);
-    SpeedController rightSide = new SpeedControllerGroup(rightFrontMotor, rightBackMotor);
+    SpeedController leftSide = new SpeedControllerGroup(leftFollower, leftMaster);
+    SpeedController rightSide = new SpeedControllerGroup(rightFollower, rightMaster);
 		drive = new DifferentialDrive(leftSide, rightSide);
 
-		leftBackMotor.configOpenloopRamp(voltsPerSecond);
-		rightBackMotor.configOpenloopRamp(voltsPerSecond);
-		leftFrontMotor.set(ControlMode.Follower, RobotMap.LEFT_BACK_MOTOR);
-		rightFrontMotor.set(ControlMode.Follower, RobotMap.RIGHT_BACK_MOTOR);
+		leftMaster.configOpenloopRamp(voltsPerSecond);
+		rightMaster.configOpenloopRamp(voltsPerSecond);
+		leftFollower.set(ControlMode.Follower, RobotMap.LEFT_MASTER);
+		rightFollower.set(ControlMode.Follower, RobotMap.RIGHT_MASTER);
 		gyro = new PigeonIMU(pigeonMotor);
 
     drive.setExpiration(0.1);
