@@ -24,8 +24,8 @@ public class OI {
     // ABXY buttons on mechanism joystick
     JoystickButton ballIntake = new JoystickButton(mechJoystick, RobotMap.JOYB_X);
     JoystickButton ballOuttake = new JoystickButton(mechJoystick, RobotMap.JOYB_B);
-    JoystickButton ballLiftUp = new JoystickButton(mechJoystick, RobotMap.JOYB_Y);
-    JoystickButton ballLiftDown = new JoystickButton(mechJoystick, RobotMap.JOYB_A);
+    JoystickButton ballLiftUp = new JoystickButton(mechJoystick, RobotMap.JOYB_A);
+    JoystickButton ballLiftDown = new JoystickButton(mechJoystick, RobotMap.JOYB_Y);
 
     // DPAD buttons on mechanism joystick
     POVButton hatchForward = new POVButton(mechJoystick, 270);
