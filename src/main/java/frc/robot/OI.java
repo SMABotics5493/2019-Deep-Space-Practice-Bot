@@ -3,8 +3,8 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;	
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.POVButton;
-import frc.robot.commands.AutoDrive;
-import frc.robot.commands.AutoTurn;	
+//import frc.robot.commands.AutoDrive;
+//import frc.robot.commands.AutoTurn;	
 import frc.robot.commands.BallIntake;	
 import frc.robot.commands.BallLiftDown;	
 import frc.robot.commands.BallLiftUp;	
@@ -28,10 +28,10 @@ public class OI {
     JoystickButton ballLiftDown = new JoystickButton(mechJoystick, RobotMap.JOYB_A);
 
     // DPAD buttons on mechanism joystick
-    POVButton hatchForward = new POVButton(mechJoystick, 90);
-    POVButton hatchReverse = new POVButton(mechJoystick, 270);
-    POVButton hatchMotorForward = new POVButton(mechJoystick, 0);
-    POVButton hatchMotorReverse = new POVButton(mechJoystick, 180);
+    POVButton hatchForward = new POVButton(mechJoystick, 270);
+    POVButton hatchReverse = new POVButton(mechJoystick, 90);
+    POVButton hatchMotorForward = new POVButton(mechJoystick, 180);
+    POVButton hatchMotorReverse = new POVButton(mechJoystick, 0);
 
     // ABXY buttons on drive joystick
    /* JoystickButton autoLeft = new JoystickButton(driveJoystick, RobotMap.JOYB_X);
