@@ -48,7 +48,12 @@ public class DriveBase extends Subsystem {
     leftFrontMotor = new WPI_VictorSPX(RobotMap.LEFT_FRONT_MOTOR);
     rightFrontMotor = new WPI_VictorSPX(RobotMap.RIGHT_FRONT_MOTOR);
     leftBackMotor = new WPI_TalonSRX(RobotMap.LEFT_BACK_MOTOR);
-    rightBackMotor = new WPI_TalonSRX(RobotMap.RIGHT_BACK_MOTOR);
+		rightBackMotor = new WPI_TalonSRX(RobotMap.RIGHT_BACK_MOTOR);
+		leftBackMotor.clearStickyFaults(0);
+		leftFrontMotor. clearStickyFaults(0);
+		rightBackMotor. clearStickyFaults(0);
+		rightFrontMotor. clearStickyFaults(0);
+
 
     leftEncoder = new Encoder(RobotMap.ENCODER_LEFTA,RobotMap.ENCODER_LEFTB,true, EncodingType.k4X);
 		rightEncoder = new Encoder(RobotMap.ENCODER_RIGHTA,RobotMap.ENCODER_RIGHTB,false,EncodingType.k4X);

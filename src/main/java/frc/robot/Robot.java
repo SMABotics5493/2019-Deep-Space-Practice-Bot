@@ -13,7 +13,6 @@ import frc.robot.subsystems.HatchPanel;
 import frc.robot.subsystems.HatchSolenoid;
 import frc.robot.subsystems.Transmission;
 
-
 public class Robot extends TimedRobot {
   public static DriveBase driveBase;
   public static BallShooter ballShooter;
