@@ -55,6 +55,8 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousInit() {
+    transmission.forward();
+    hatchSolenoid.forward();
     m_autonomousCommand = m_chooser.getSelected();
 
     if (m_autonomousCommand != null) {
@@ -69,6 +71,8 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
+    transmission.forward();
+    hatchSolenoid.forward();
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
