@@ -73,19 +73,40 @@ public class PIDCommand extends Command {
       double derivative = error - prevError;
     prevError = error;
     Object power = error*Kp + integral*Ki + derivative*Kd;
-  }
+    }
 
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    //return false; needed? where different transfering code since code is false, so where should it be or should is be there at all?
+    double closeEnough = 0.05; //5cm
+    double leftErr = leftPID.getError();
+    double rightErr = rightPID.getError();
+
+    boolean leftIsClose = Math.abs(leftPID.getError()) <= closeEnough;
+    boolean rightIsClose = Math.abs(rightPID.getError()) <= closeEnough;
+
+    //If debugging PID; then pollute dash board with some tuning values
+    if (DEBUG) {
+      SmartDashboard.putNumber("Left Dist", drive.getLeftDist() - leftStart);
+      SmartDashboard.putNumber("Right Dist", drive.getRightDist() - rightStart);
+      SmartDashboard.putNumber("Left Dist", drive.getLeftPower());
+      SmartDashboard.putNumber("Right Dist", drive.getRightPower());
+
+      SmartDashboard.putNumber("Left Err", leftErr);
+      SmartDashboard.putNumber("Right Err", rightErr);
+      SmartDashboard.putBoolean("Left Is Close", leftIsClose);
+      SmartDashboard.putBoolean("Right Is Close", rightIsClose);
+
+    }
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.driveBase.drive(0.0, 0.0);
   }
 
   // Called when another command which requires one or more of the same

@@ -41,7 +41,9 @@ public class OI {
     
     // bumpers on drive joystick
     JoystickButton transmissionStupidlySlow = new JoystickButton(driveJoystick, RobotMap.JOYB_B);
-    JoystickButton transmissionLudicrousSpeed = new JoystickButton(driveJoystick, RobotMap.JOYB_X);    
+    JoystickButton transmissionLudicrousSpeed = new JoystickButton(driveJoystick, RobotMap.JOYB_X);
+    //PID ditance button on drive joystick
+    JoystickButton PIDButton = new JoystickButton(driveJoystick, RobotMap.JOYB_A);
 
     public Joystick getDriveJoystick() {	
      return driveJoystick;	

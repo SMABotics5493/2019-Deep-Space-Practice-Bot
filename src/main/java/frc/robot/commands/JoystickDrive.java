@@ -42,6 +42,7 @@ public class JoystickDrive extends Command {
   @Override
   protected void end() {
     Robot.driveBase.resetDrive();
+    //Robot.driveBase.drive(0.0, 0.0); ??? how is this different from other code why isn't it working??
   }
 
   // Called when another command which requires one or more of the same
