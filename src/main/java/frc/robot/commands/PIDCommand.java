@@ -54,6 +54,7 @@ public class PIDCommand extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    //when we initialize we take the left and right to start there output with the endcoder info 
     if (DEBUG); {
       SmartDashboard.putData("Left PID", leftPID);
       SmartDashboard.putData("Right PID", rightPID);
@@ -65,14 +66,14 @@ public class PIDCommand extends Command {
   protected void execute() {
     double error;
     double prevError;
-      while (PIDbutton.whileheld())
+    while (PIDbutton.whileheld())
     error = setpoint - encoder;
-    integral = integral + error;
+    integralend = integral + error;
     if (error > 2)
-    integral = 0;
+    
       double derivative = error - prevError;
     prevError = error;
-    Object power = error*Kp + integral*Ki + derivative*Kd;
+    Object power = error*Kp + integralend*Ki + derivative*Kd;
     }
 
   }

@@ -8,7 +8,6 @@ import com.ctre.phoenix.sensors.PigeonIMU;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
@@ -43,12 +42,7 @@ public class DriveBase extends Subsystem implements PIDOutput {
 	public static double kp_turn = 0.005;
 	public static double voltsPerSecond = 5.18;
 
-	public final PIDController drivecontroller;
-	private final double Kp = 0;
-	private final double Ki = 0;
-	private final double Kd = 0;
-
-
+	
   public DriveBase(){
     super();
 		pigeonMotor = new WPI_TalonSRX(RobotMap.PIGEON_IMU_MOTOR);
@@ -71,7 +65,7 @@ public class DriveBase extends Subsystem implements PIDOutput {
 		leftFollower.set(ControlMode.Follower, RobotMap.LEFT_MASTER);
 		rightFollower.set(ControlMode.Follower, RobotMap.RIGHT_MASTER);
 		gyro = new PigeonIMU(pigeonMotor);
-		drivecontroller = new PIDController(Kp, Ki, Kd, leftEncoder + rightEncoder, this);
+		
 
     drive.setExpiration(0.1);
   }
@@ -134,7 +128,7 @@ public class DriveBase extends Subsystem implements PIDOutput {
 
 	@Override
 	public void pidWrite(double output) {
-		set(ControlMode.PercentOutput, output, output);
+		
 	
 	}
 }
