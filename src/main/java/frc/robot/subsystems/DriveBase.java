@@ -1,5 +1,7 @@
 package frc.robot.subsystems;
 
+import java.util.ResourceBundle.Control;
+
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
@@ -8,6 +10,8 @@ import com.ctre.phoenix.sensors.PigeonIMU;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
@@ -18,7 +22,7 @@ import frc.robot.Parameters;
 import frc.robot.RobotMap;
 import frc.robot.commands.JoystickDrive;
 
-public class DriveBase extends Subsystem {
+public class DriveBase extends Subsystem implements PIDOutput {
 
   WPI_VictorSPX leftFollower;
   WPI_VictorSPX rightFollower;
@@ -27,6 +31,10 @@ public class DriveBase extends Subsystem {
 	WPI_TalonSRX pigeonMotor;
   public DifferentialDrive drive;
 	public PigeonIMU gyro;
+	public final PIDController distanceController;
+	private final double KP = 0.02;
+	private final double KI = 0.02;
+	private final double KD = 0.02;
 
   public Encoder leftEncoder;
   public Encoder rightEncoder;
@@ -63,6 +71,10 @@ public class DriveBase extends Subsystem {
 		leftFollower.set(ControlMode.Follower, RobotMap.LEFT_MASTER);
 		rightFollower.set(ControlMode.Follower, RobotMap.RIGHT_MASTER);
 		gyro = new PigeonIMU(pigeonMotor);
+		distanceController = new PIDController(KP, KI, KD, leftEncoder + rightEncoder, this);
+		distanceController.setInputRange(180.0f, 180.0f);
+		distanceController.setOutputRange(.45, .45);
+		distanceController.setAbsoluteTolerance(2.0f);
 
     drive.setExpiration(0.1);
   }
@@ -119,6 +131,12 @@ public class DriveBase extends Subsystem {
 
 	public void displayYaw(){
 		SmartDashboard.putNumber("Yaw", getYaw());
+	}
+
+	@Override
+	public void pidWrite(double output) {
+		set(ControlMode.PercentOutput,output, output);
+
 	}
 }
 
