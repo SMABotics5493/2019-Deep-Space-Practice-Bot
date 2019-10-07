@@ -36,6 +36,7 @@ public class DriveBase extends Subsystem implements PIDOutput {
 	private final double KI = 0.02;
 	private final double KD = 0.02;
 
+
   public Encoder leftEncoder;
   public Encoder rightEncoder;
   public static double PulsesPerRevolution = 360;  //Same as PPR for E4T
@@ -75,8 +76,17 @@ public class DriveBase extends Subsystem implements PIDOutput {
 		distanceController.setInputRange(180.0f, 180.0f);
 		distanceController.setOutputRange(.45, .45);
 		distanceController.setAbsoluteTolerance(2.0f);
+		distanceController.setContinuous();
 
     drive.setExpiration(0.1);
+  }
+  public void straightdistance(double distance){
+	  leftEncoder.reset();
+	  rightEncoder.reset();
+	  distanceController.reset();
+	  distanceController.setPID(KP, KI, KD);
+	  distanceController.setSetpoint(distance);
+	  distanceController.enable();
   }
   public void drive(Joystick j){
 	drive.tankDrive(j.getRawAxis(RobotMap.LEFTYAXIS), j.getRawAxis(RobotMap.RIGHTYAXIS));
