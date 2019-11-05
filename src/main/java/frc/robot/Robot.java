@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.BallLift;
+import frc.robot.subsystems.ElevatorLift;
 import frc.robot.subsystems.BallShooter;
 import frc.robot.subsystems.DriveBase;
 import frc.robot.subsystems.HatchPanel;
@@ -19,6 +20,7 @@ public class Robot extends TimedRobot {
   public static BallLift ballLift;
   public static HatchPanel hatchPanel;
   public static HatchSolenoid hatchSolenoid;
+  public static ElevatorLift elevatorLift;
   //public static Transmission transmission;
   public static OI oi;
 
@@ -30,6 +32,7 @@ public class Robot extends TimedRobot {
     driveBase = new DriveBase();
     ballShooter = new BallShooter();
     ballLift = new BallLift();
+    elevatorLift = new ElevatorLift();
     hatchPanel = new HatchPanel();
     hatchSolenoid = new HatchSolenoid();
   //  transmission = new Transmission();

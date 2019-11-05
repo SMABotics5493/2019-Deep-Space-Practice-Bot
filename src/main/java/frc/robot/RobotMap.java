@@ -39,6 +39,7 @@ public class RobotMap {
   public static final int TRANSMISSION_REVERSE = 1;
 
   public static final int HATCH_PANEL =  5;
+  public static final int ELLAVATOR_LIFT = 0;
   public static final int BALL_SHOOTER_LIFT = 22;
 
   public static int ENCODER_LEFTA = 1;
@@ -51,6 +52,7 @@ public class RobotMap {
   public static final int ENCODER_BALL_SHOOTERA = 0;
   public static final int ENCODER_BALL_SHOOTERB = 1;
 	
+ 
 
 }
 

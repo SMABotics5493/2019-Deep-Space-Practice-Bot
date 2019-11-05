@@ -9,6 +9,7 @@ import frc.robot.commands.BallIntake;
 import frc.robot.commands.BallLiftDown;	
 import frc.robot.commands.BallLiftUp;	
 import frc.robot.commands.BallOuttake;	
+import frc.robot.commands.Elevatorlift;
 import frc.robot.commands.HatchMotorForward;	
 import frc.robot.commands.HatchMotorReverse;
 import frc.robot.commands.SolenoidForward;
