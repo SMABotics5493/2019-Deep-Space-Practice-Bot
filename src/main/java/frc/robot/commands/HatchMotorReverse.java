@@ -21,7 +21,7 @@ public class HatchMotorReverse extends Command {
   @Override
   protected void execute(){
     if (buttonMonitor.checkButtonState() == ButtonMonitor.ButtonState.Active){
-      Robot.hatchPanel.hatchReverse();
+      Robot.elevator.hatchReverse();
     }
   }
 
@@ -32,7 +32,7 @@ public class HatchMotorReverse extends Command {
 
   @Override
   protected void end() {
-   Robot.hatchPanel.end();
+   Robot.elevator.end();
   }
 
   @Override

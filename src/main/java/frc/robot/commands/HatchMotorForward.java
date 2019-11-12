@@ -21,7 +21,7 @@ public class HatchMotorForward extends Command {
   @Override
   protected void execute(){
     if (buttonMonitor.checkButtonState() == ButtonMonitor.ButtonState.Active){
-      Robot.hatchPanel.hatchForward();
+      Robot.elevator.hatchForward();
     }
   }
 
@@ -32,7 +32,7 @@ public class HatchMotorForward extends Command {
 
   @Override
   protected void end() {
-   Robot.hatchPanel.end();
+   Robot.elevator.end();
   }
 
   @Override

@@ -10,27 +10,27 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 
-public class HatchPanel extends Subsystem {
+public class Elevator extends Subsystem {
   
-  private WPI_TalonSRX hatchPanelMotor;
+  private WPI_TalonSRX elevatorMotor;
   public Encoder hatchEncoder; 
 
-  public HatchPanel() {
+  public Elevator() {
     super();
-    hatchPanelMotor = new WPI_TalonSRX(RobotMap.HATCH_PANEL);
+    elevatorMotor = new WPI_TalonSRX(RobotMap.HATCH_PANEL);
     //hatchEncoder = new Encoder(RobotMap.ENCODER_HATCHA,RobotMap.ENCODER_HATCHB, true, EncodingType.k4X);
   }
 
   public void hatchForward(){
-    Robot.hatchPanel.hatchPanelMotor.set(1.0);
+    Robot.elevator.elevatorMotor.set(1.0);
   }
 
   public void hatchReverse() {
-    Robot.hatchPanel.hatchPanelMotor.set(-0.5);
+    Robot.elevator.elevatorMotor.set(-0.5);
   }
 
   public void end(){
-    Robot.hatchPanel.hatchPanelMotor.set(0.0);
+    Robot.elevator.elevatorMotor.set(0.0);
   }
   public void hatchValue() {
 		reset();

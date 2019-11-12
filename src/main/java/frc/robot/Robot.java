@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.BallLift;
 import frc.robot.subsystems.BallShooter;
 import frc.robot.subsystems.DriveBase;
-import frc.robot.subsystems.HatchPanel;
+import frc.robot.subsystems.Elevator;
 //import frc.robot.subsystems.HatchSolenoid;
 ///import frc.robot.subsystems.Transmission;
 
@@ -16,7 +16,7 @@ public class Robot extends TimedRobot {
   public static DriveBase driveBase;
   public static BallShooter ballShooter;
   public static BallLift ballLift;
-  public static HatchPanel hatchPanel;
+  public static Elevator elevator;
   //public static HatchSolenoid hatchSolenoid;
   //public static Transmission transmission;
   public static OI oi;
@@ -30,7 +30,7 @@ public static Object OI;
     driveBase = new DriveBase();
     ballShooter = new BallShooter();
     ballLift = new BallLift();
-    hatchPanel = new HatchPanel();
+    elevator = new Elevator();
     //hatchSolenoid = new HatchSolenoid();
     //transmission = new Transmission();
     oi = new OI();
