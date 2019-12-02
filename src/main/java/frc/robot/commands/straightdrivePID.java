@@ -13,9 +13,15 @@ import frc.robot.Robot;
 public class straightdrivePID extends Command {
 
   double Distance;
-  boolean isFinished;
+  boolean isFinished = false;
+  boolean intErrorZone = false;
+  int count;
+
   public straightdrivePID(double distance) {
     requires(Robot.driveBase);
+   
+     
+
     Distance = distance;
 
     // Use requires() here to declare subsystem dependencies
@@ -33,18 +39,29 @@ public class straightdrivePID extends Command {
   @Override
   protected void execute() {
     double error = Robot.driveBase.distanceController.getError();
+    intErrorZone = Math.abs(error) < 2;
+    if(intErrorZone){
+      count++;
+        isFinished = count>=5;
+
+    }
+    else{
+      count = 0;
+    }
 
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return isFinished;
+
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.driveBase.distanceController.disable();
   }
 
   // Called when another command which requires one or more of the same

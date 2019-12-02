@@ -32,10 +32,13 @@ public class DriveBase extends Subsystem implements PIDOutput {
   public DifferentialDrive drive;
 	public PigeonIMU gyro;
 	public final PIDController distanceController;
+	public final PIDController leftdistanceController;
 	private final double KP = 0.02;
 	private final double KI = 0.02;
 	private final double KD = 0.02;
 
+	
+	
 
   public Encoder leftEncoder;
   public Encoder rightEncoder;
@@ -66,18 +69,18 @@ public class DriveBase extends Subsystem implements PIDOutput {
     SpeedController leftSide = new SpeedControllerGroup(leftFollower, leftMaster);
     SpeedController rightSide = new SpeedControllerGroup(rightFollower, rightMaster);
 		drive = new DifferentialDrive(leftSide, rightSide);
-
+		distanceController = new PIDController(KP, KI, KD, rightEncoder, rightSide);
+		leftdistanceController = new PIDController(KP, KI, KD, leftEncoder, leftSide);
+		distanceController.setInputRange(180.0f, 180.0f);
+		distanceController.setOutputRange(.45, .45);
+		distanceController.setAbsoluteTolerance(2.0f);
+		distanceController.setContinuous();
 		leftMaster.configOpenloopRamp(voltsPerSecond);
 		rightMaster.configOpenloopRamp(voltsPerSecond);
 		leftFollower.set(ControlMode.Follower, RobotMap.LEFT_MASTER);
 		rightFollower.set(ControlMode.Follower, RobotMap.RIGHT_MASTER);
 		gyro = new PigeonIMU(pigeonMotor);
-		distanceController = new PIDController(KP, KI, KD, leftEncoder + rightEncoder, this);
-		distanceController.setInputRange(180.0f, 180.0f);
-		distanceController.setOutputRange(.45, .45);
-		distanceController.setAbsoluteTolerance(2.0f);
-		distanceController.setContinuous();
-
+		
     drive.setExpiration(0.1);
   }
   public void straightdistance(double distance){
@@ -147,6 +150,9 @@ public class DriveBase extends Subsystem implements PIDOutput {
 	public void pidWrite(double output) {
 		set(ControlMode.PercentOutput,output, output);
 
+	}
+
+	private void set(ControlMode percentoutput, double output, double output2) {
 	}
 }
 
