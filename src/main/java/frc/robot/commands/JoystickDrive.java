@@ -1,12 +1,14 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class JoystickDrive extends Command {
 
   private boolean isFinished;
+
   public JoystickDrive() {
     requires(Robot.driveBase);
     // Use requires() here to declare subsystem dependencies
@@ -21,8 +23,8 @@ public class JoystickDrive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    var driveJoystick = Robot.oi.getDriveJoystick();
-    var pov = driveJoystick.getPOV();
+    Joystick driveJoystick = Robot.oi.getDriveJoystick();
+    int pov = driveJoystick.getPOV();
 
     if(pov < 0) {
       Robot.driveBase.drive(driveJoystick);

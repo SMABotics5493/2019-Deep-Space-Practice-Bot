@@ -1,20 +1,21 @@
-package frc.robot;	
+package frc.robot;
 
-import edu.wpi.first.wpilibj.Joystick;	
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.POVButton;
 //import frc.robot.commands.AutoDrive;
 //import frc.robot.commands.AutoTurn;	
-import frc.robot.commands.BallIntake;	
-import frc.robot.commands.BallLiftDown;	
-import frc.robot.commands.BallLiftUp;	
-import frc.robot.commands.BallOuttake;	
-import frc.robot.commands.HatchMotorForward;	
-import frc.robot.commands.HatchMotorReverse;	
+import frc.robot.commands.BallIntake;
+import frc.robot.commands.BallLiftDown;
+import frc.robot.commands.BallLiftUp;
+import frc.robot.commands.BallOuttake;
+import frc.robot.commands.HatchMotorForward;
+import frc.robot.commands.HatchMotorReverse;
 import frc.robot.commands.HatchForward;
-import frc.robot.commands.HatchReverse;	
+import frc.robot.commands.HatchReverse;
 import frc.robot.commands.TransmissionLudicrousSpeed;
 import frc.robot.commands.TransmissionStupidlySlow;
+import frc.robot.commands.straightdrivePID;
 
 public class OI {	
 
@@ -34,6 +35,7 @@ public class OI {
     POVButton hatchMotorReverse = new POVButton(mechJoystick, 0);
 
     // ABXY buttons on drive joystick
+    JoystickButton driveStraight = new JoystickButton(driveJoystick, RobotMap.JOYB_B);
    /* JoystickButton autoLeft = new JoystickButton(driveJoystick, RobotMap.JOYB_X);
     JoystickButton autoRight = new JoystickButton(driveJoystick, RobotMap.JOYB_B);    
     JoystickButton autoForward = new JoystickButton(driveJoystick, RobotMap.JOYB_Y);
@@ -61,7 +63,8 @@ public class OI {
         hatchMotorReverse.whileHeld(new HatchMotorReverse(hatchMotorReverse));	
         hatchForward.whileHeld(new HatchForward());	
         hatchReverse.whileHeld(new HatchReverse());	
-                
+        
+        driveStraight.whileHeld(new straightdrivePID(24));
        /* autoForward.whenPressed(new AutoDrive(12));	
         autoBackward.whenPressed(new AutoDrive(-12));	
         autoLeft.whenPressed(new AutoTurn(-90));	
