@@ -9,7 +9,7 @@ import frc.robot.subsystems.BallLift;
 import frc.robot.subsystems.BallShooter;
 import frc.robot.subsystems.DriveBase;
 import frc.robot.subsystems.Elevator;
-//import frc.robot.subsystems.HatchSolenoid;
+import frc.robot.subsystems.HatchSolenoid;
 ///import frc.robot.subsystems.Transmission;
 
 public class Robot extends TimedRobot {
@@ -17,7 +17,7 @@ public class Robot extends TimedRobot {
   public static BallShooter ballShooter;
   public static BallLift ballLift;
   public static Elevator elevator;
-  //public static HatchSolenoid hatchSolenoid;
+  public static HatchSolenoid hatchSolenoid;
   //public static Transmission transmission;
   public static OI oi;
 public static Object OI;
@@ -31,7 +31,7 @@ public static Object OI;
     ballShooter = new BallShooter();
     ballLift = new BallLift();
     elevator = new Elevator();
-    //hatchSolenoid = new HatchSolenoid();
+    hatchSolenoid = new HatchSolenoid();
     //transmission = new Transmission();
     oi = new OI();
     // chooser.addOption("My Auto", new MyAutoCommand());

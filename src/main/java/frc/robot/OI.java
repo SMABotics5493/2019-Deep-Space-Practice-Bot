@@ -6,10 +6,11 @@ import frc.robot.commands.BallIntake;
 import frc.robot.commands.BallLiftDown;
 import frc.robot.commands.BallLiftUp;
 import frc.robot.commands.BallOuttake;
-//import frc.robot.commands.HatchMotorForward;
-//import frc.robot.commands.HatchMotorReverse;
-//import frc.robot.commands.SolenoidForward;
-//import frc.robot.commands.SolenoidReverse;
+import frc.robot.commands.HatchMotorForward;
+import frc.robot.commands.HatchMotorReverse;
+import frc.robot.commands.SolenoidForward;
+import frc.robot.commands.SolenoidReverse;
+
 
 public class OI {
 
@@ -37,10 +38,10 @@ public class OI {
 
       ballIntake.whileHeld(new BallIntake(ballIntake));
       ballOuttake.whileHeld(new BallOuttake(ballOuttake));
-     // hatchMotorForward.whileHeld(new HatchMotorForward(hatchMotorForward));
-      //hatchMotorReverse.whileHeld(new HatchMotorReverse(hatchMotorReverse));
-      //solenoidForward.whileHeld(new SolenoidForward());
-      //solenoidReverse.whileHeld(new SolenoidReverse());
+      hatchMotorForward.whileHeld(new HatchMotorForward(hatchMotorForward));
+      hatchMotorReverse.whileHeld(new HatchMotorReverse(hatchMotorReverse));
+      solenoidForward.whileHeld(new SolenoidForward());
+      solenoidReverse.whileHeld(new SolenoidReverse());
       ballLiftUp.whileHeld(new BallLiftUp(ballLiftUp));
       ballLiftDown.whileHeld(new BallLiftDown(ballLiftDown));
     }

@@ -30,7 +30,7 @@ public class Elevator extends Subsystem {
   }
 
   public void end(){
-    Robot.elevator.elevatorMotor.set(0.0);
+    Robot.elevator.elevatorMotor.set(0.03);
   }
   public void hatchValue() {
 		reset();
